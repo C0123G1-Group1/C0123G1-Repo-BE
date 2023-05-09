@@ -1,4 +1,4 @@
-package models.repository.impl;
+package models.repository.Impl;
 
 import models.model.Admin;
 import models.repository.IAdminRepository;

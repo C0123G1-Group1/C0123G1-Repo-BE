@@ -1,7 +1,7 @@
 package models.service.impl;
 
 import models.repository.ICustomerRepository;
-import models.repository.impl.CustomerRepositoryImpl;
+import models.repository.Impl.CustomerRepositoryImpl;
 import models.service.ICustomerService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +12,8 @@ public class CustomerServiceImpl implements ICustomerService {
 
 
     @Override
-    public void saveCustomer(HttpServletRequest request, HttpServletResponse response) {
-        customerRepository.saveCustomer(request,response);
+    public boolean saveCustomer(HttpServletRequest request, HttpServletResponse response) {
+       return customerRepository.saveCustomer(request,response);
     }
 
     @Override

@@ -12,7 +12,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
+
 
 
 @WebServlet(name = "AccountServlet", value = "/account-servlet")
@@ -30,8 +30,9 @@ public class AccountServlet extends HttpServlet {
         String action = request.getParameter("action");
         switch (action) {
             case "register":
-                customerService.saveCustomer(request, response);
-                request.getRequestDispatcher("/register_form.jsp").forward(request, response);
+                boolean statusRegister = customerService.saveCustomer(request, response);
+                request.setAttribute("statusRegister",statusRegister);
+                request.getRequestDispatcher("/account/register_form.jsp").forward(request, response);
                 break;
             case "login":
                 String userName = request.getParameter("userName");

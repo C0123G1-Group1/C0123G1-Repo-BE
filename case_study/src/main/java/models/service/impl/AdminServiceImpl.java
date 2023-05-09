@@ -1,7 +1,7 @@
 package models.service.impl;
 
 import models.repository.IAdminRepository;
-import models.repository.impl.AdminRepositoryImpl;
+import models.repository.Impl.AdminRepositoryImpl;
 import models.service.IAdminService;
 
 public class AdminServiceImpl implements IAdminService {
