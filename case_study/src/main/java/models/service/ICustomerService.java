@@ -1,9 +1,12 @@
 package models.service;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import models.model.Customer;
+
+import java.util.List;
 
 public interface ICustomerService {
-    boolean saveCustomer(HttpServletRequest request, HttpServletResponse response);
-    boolean checkAccount(String userName, String password);
+    List<Customer> getAllCustomer();
+
+    boolean saveCustomer(Customer customer);
+
 }

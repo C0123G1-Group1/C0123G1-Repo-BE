@@ -1,21 +1,21 @@
 package models.repository.Impl;
 
-import models.model.Admin;
+import models.model.Account;
 import models.repository.IAdminRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdminRepositoryImpl implements IAdminRepository {
-    private static List<Admin> adminList = new ArrayList<>();
+    private static List<Account> accountList = new ArrayList<>();
     static {
-        adminList.add(new Admin("admin","admin2808"));
+        accountList.add(new Account("admin","admin2808"));
     }
     @Override
     public boolean checkAccountAdmin(String userName, String password) {
-        for (int i = 0; i < adminList.size(); i++) {
-            if(userName.equals(adminList.get(i).getUserName())){
-                return password.equals(adminList.get(i).getPassword());
+        for (int i = 0; i < accountList.size(); i++) {
+            if(userName.equals(accountList.get(i).getUserName())){
+                return password.equals(accountList.get(i).getPassword());
             } else {
                 return false;
             }

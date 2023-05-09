@@ -1,18 +1,18 @@
 package controller;
 
 
+import models.model.Customer;
 import models.service.IAdminService;
 import models.service.ICustomerService;
-
 import models.service.impl.AdminServiceImpl;
 import models.service.impl.CustomerServiceImpl;
 
-
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 
 
 @WebServlet(name = "AccountServlet", value = "/account-servlet")
@@ -22,7 +22,7 @@ public class AccountServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/index.jsp").forward(request,response);
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     @Override
@@ -30,8 +30,9 @@ public class AccountServlet extends HttpServlet {
         String action = request.getParameter("action");
         switch (action) {
             case "register":
-                boolean statusRegister = customerService.saveCustomer(request, response);
-                request.setAttribute("statusRegister",statusRegister);
+                Customer customer =new Customer();
+                boolean statusRegister = customerService.saveCustomer(customer);
+                request.setAttribute("statusRegister", statusRegister);
                 request.getRequestDispatcher("/account/register_form.jsp").forward(request, response);
                 break;
             case "login":
@@ -48,15 +49,16 @@ public class AccountServlet extends HttpServlet {
                         request.getRequestDispatcher("/index.jsp").forward(request, response);
                     }
                 } else {
-                    boolean result = customerService.checkAccount(userName, password);
-                    if (result) {
-                        request.getRequestDispatcher("/users/user.jsp").forward(request, response);
-                    } else {
-                        request.setAttribute("userName", userName);
-                        request.setAttribute("status", "fail");
-                        request.getRequestDispatcher("/index.jsp").forward(request, response);
-                    }
+////                    boolean result = customerService.checkAccount(userName, password);
+//                    if (result) {
+//                        request.getRequestDispatcher("/users/user.jsp").forward(request, response);
+//                    } else {
+//                        request.setAttribute("userName", userName);
+//                        request.setAttribute("status", "fail");
+//                        request.getRequestDispatcher("/index.jsp").forward(request, response);
+//                    }
                 }
         }
+
     }
 }
