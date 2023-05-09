@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface ICustomerRepository {
-    void saveCustomer(HttpServletRequest request, HttpServletResponse response);
+    boolean saveCustomer(HttpServletRequest request, HttpServletResponse response);
     boolean checkAccount(String userName, String password);
 
 }

@@ -1,4 +1,4 @@
-package models.repository.impl;
+package models.repository.Impl;
 
 import models.model.Customer;
 import models.repository.BaseRepository;
@@ -18,7 +18,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
 
 
     @Override
-    public void saveCustomer(HttpServletRequest request, HttpServletResponse response) {
+    public boolean saveCustomer(HttpServletRequest request, HttpServletResponse response) {
         String customerName = request.getParameter("customerName");
         String email = request.getParameter("email");
         String phoneNumber = request.getParameter("phoneNumber");
@@ -50,12 +50,14 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             }
             if(transction == 2){
                 connection.commit();
+                return true;
             } else {
                 connection.rollback();
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return false;
     }
 
     @Override

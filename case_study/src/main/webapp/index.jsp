@@ -50,7 +50,7 @@
                         </form>
                     </div>
                     <div class="row">
-                        <p>Don't have an account? <a href="/register_form.jsp">Register Here</a></p>
+                        <p>Don't have an account? <a href="/account/register_form.jsp">Register Here</a></p>
                     </div>
                 </div>
             </div>

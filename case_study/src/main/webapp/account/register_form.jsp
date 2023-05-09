@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>IG1 Store</title>
@@ -24,35 +25,41 @@
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-5" style="height: 100vh">
                                 <h4 class="text-uppercase text-center mb-2">Create an account</h4>
+                                <c:if test="${statusRegister}">
+                                    <h5>Dang ky thanh cong</h5>
+                                </c:if>
+                                <c:if test="${!statusRegister}">
+                                    <h5>Dang ky that bai</h5>
+                                </c:if>
                                 <form action="/account-servlet" method="post">
                                     <input type="text" name="action" value="register" hidden>
                                     <div class="form-outline mb-2">
-                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="customerName" />
                                         <label class="form-label" for="form3Example1cg">User Name</label>
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="customerName" />
                                     </div>
 
                                     <div class="form-outline mb-2">
-                                        <input type="email" id="form3Example2cg" class="form-control form-control-lg" name="email"/>
                                         <label class="form-label" for="form3Example2cg">Your Email</label>
+                                        <input type="email" id="form3Example2cg" class="form-control form-control-lg" name="email"/>
                                     </div>
                                     <div class="form-outline mb-2">
-                                        <input type="text" id="form3Example3cg" class="form-control form-control-lg" name="phoneNumber"/>
                                         <label class="form-label" for="form3Example3cg">Phone number</label>
+                                        <input type="text" id="form3Example3cg" class="form-control form-control-lg" name="phoneNumber"/>
                                     </div>
                                     <div class="form-outline mb-2">
-                                        <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="address"/>
                                         <label class="form-label" for="form3Example4cg">Address</label>
+                                        <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="address"/>
                                     </div>
 
                                     <div class="form-outline mb-2">
-                                        <input oninput="checkPassword()" type="password" id="form3Example5cg" class="form-control form-control-lg"/>
                                         <label class="form-label" for="form3Example5cg">Password</label>
+                                        <input oninput="checkPassword()" type="password" id="form3Example5cg" class="form-control form-control-lg"/>
                                     </div>
 
                                     <div class="form-outline mb-2">
+                                        <label class="form-label" for="form3Example6cdg">Repeat your password</label>
                                         <input oninput="checkPassword()" type="password" id="form3Example6cdg" class="form-control form-control-lg" name="password"/>
                                         <small id="check"></small>
-                                        <label class="form-label" for="form3Example6cdg">Repeat your password</label>
                                     </div>
 
                                     <div class="d-flex justify-content-center">
@@ -60,7 +67,7 @@
                                                 class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                                     </div>
 
-                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="index.jsp" class="fw-bold text-body"><u>Login here</u></a></p>
+                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="../index.jsp" class="fw-bold text-body"><u>Login here</u></a></p>
                                 </form>
 
                             </div>
