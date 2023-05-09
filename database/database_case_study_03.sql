@@ -15,6 +15,8 @@ CREATE TABLE customers(
     phone_number VARCHAR(11) UNIQUE NOT NULL,
     address VARCHAR(250) NOT NULL,
     account_id INT,
+    createAt DATETIME NOT NULL,
+    updateAt DATETIME NOT NULL,
     FOREIGN KEY (account_id) REFERENCES account_customer(account_id)
 );
 
@@ -24,18 +26,23 @@ CREATE TABLE product_type(
 );
 
 CREATE TABLE products(
-	product_id INT PRIMARY KEY,
+	product_id INT PRIMARY KEY AUTO_INCREMENT,
     product_name VARCHAR(50) NOT NULL,
 	product_type_id INT,
     `describe` VARCHAR(50) NOT NULL,
     price DOUBLE CHECK(price > 0),
     product_image_url VARCHAR(250) NOT NULL,
+    createAt DATETIME NOT NULL,
+    updateAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(product_type_id) REFERENCES product_type(product_type_id)
 );
 CREATE TABLE accessory(
 	accessory_id INT PRIMARY KEY AUTO_INCREMENT,
     accessory_name VARCHAR(50) NOT NULL,
-    accessory_price DOUBLE CHECK(accessory_price > 0)
+    accessory_price DOUBLE CHECK(accessory_price > 0),
+    image_accessory VARCHAR(250),
+    createAt DATETIME NOT NULL,
+    updateAt DATETIME NOT NULL
 );
 
 CREATE TABLE `order`(
@@ -50,19 +57,17 @@ CREATE TABLE `order`(
 CREATE TABLE order_detail(
 	order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT,
+	order_detail_date DATETIME,
     accessory_id INT,
     FOREIGN KEY(order_id) REFERENCES `order`(order_id),
     FOREIGN KEY(accessory_id) REFERENCES accessory(accessory_id)
 );
+INSERT INTO product_type (product_type_name) VALUES ("Iphone"),("SamSung"),("Vivo"),("Asus"),("OPPO");
 
--- INSERT INTO product_type (product_type_name) VALUES ("Iphone"),("SamSung");
--- INSERT INTO products (product_id,product_name,product_type_id,`describe`,price,product_image_url) 
--- VALUES ("Iphone XS MAX",20,1,"Mau nho"),
--- 	   ("Iphone 12 Pro MA",25,1,"Mau do");
 -- INSERT INTO account_customer (user_name,`password`) 
 -- VALUES ("khanh","khanh123"),
 -- 		("khang","khang123");
---         
+--     
 -- INSERT INTO customers(customer_name, email, phone_number, address, account_id ) 
 -- VALUES ("Kieu Quoc Khanh", "khanhkieu098@gmail.com","0338410349","Duy Xuyen, Quang Nam",1),
 -- 		("Phan Vu An Khang", "ankhang@gmail.com","0438710349","Da Nang",2)
@@ -86,4 +91,7 @@ CREATE TABLE order_detail(
 
 -- UPDATE products set product_name = "q", product_type_id = 2, `describe` = "q", price = 2, product_image_url ="q" WHERE product_id = 3;
 
-
+-- SELECT * from account_customer;
+-- SELECT c.*, ac.user_name , ac.password from customers as c INNER JOIN account_customer as ac on c.account_id = ac.account_id;
+-- SELECT * from products;
+-- UPDATE products set product_name = "abc", updateAt = current_timestamp() WHERE product_id = 2;
