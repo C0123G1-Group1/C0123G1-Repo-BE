@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d25cb45-a8d5-4581-a71e-26e1995f3533" name="Changes" comment="edit project">
-      <change afterPath="$PROJECT_DIR$/../README.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -154,7 +153,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683595679545</updated>
-      <workItem from="1683595680853" duration="674000" />
+      <workItem from="1683595680853" duration="1348000" />
     </task>
     <servers />
   </component>
