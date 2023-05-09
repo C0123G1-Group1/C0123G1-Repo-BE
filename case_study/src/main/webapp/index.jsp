@@ -18,7 +18,7 @@
     <div class="container-fluid d-flex justify-content-center align-items-center">
         <div class="row main-content bg-success text-center">
             <div class="col-md-4 text-center company__info">
-                <img src="I G 1.gif" alt="" style="border-radius: 30px">
+                <img src="IG1 (1).gif" alt="" style="border-radius: 30px">
             </div>
             <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
                 <div class="container-fluid">
@@ -36,12 +36,14 @@
                             <div class="row">
                                 <input type="password" name="password" id="password" class="form__input"
                                        placeholder="Password" value="${password}">
+                                <small id="statusLogin" class="text-danger"></small>
                             </div>
-<%--                            <div class="row">--%>
-<%--                                <input type="checkbox" name="remember_me" id="remember_me" class="">--%>
-<%--                                <label for="remember_me">Remember Me!</label>--%>
-<%--                            </div>--%>
-                            <small id="startuLogin"></small>
+                            <div class="row">
+                                <label>
+                                    <input type="checkbox" name="remember_me" id="remember_me" class="">
+                                    Remember Me!
+                                </label>
+                            </div>
                             <div class="row">
                                 <input type="submit" value="Submit" class="btn">
                             </div>
@@ -54,7 +56,7 @@
             </div>
         </div>
     </div>
-    <input id="status" value="${action}" hidden>
+    <input id="status" value="${status}" hidden>
     <div id="canh-bao" style="display: none;"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -62,14 +64,13 @@
         crossorigin="anonymous"></script>
 <script>
     function statusLogin() {
-        document.getElementById("statusLogin").value = "Incorrect username or password";
+        document.getElementById("statusLogin").innerText = "Incorrect username or password";
     }
 
     let checkLogin = document.getElementById("status").value;
     if (checkLogin === "fail") {
         statusLogin()
     }
-
 </script>
 </body>
 </html>

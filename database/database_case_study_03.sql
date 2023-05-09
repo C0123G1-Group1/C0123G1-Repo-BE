@@ -16,7 +16,7 @@ CREATE TABLE customers(
     address VARCHAR(250) NOT NULL,
     account_id INT,
     createAt DATETIME NOT NULL,
-    updateAt DATETIME NOT NULL,
+    updateAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (account_id) REFERENCES account_customer(account_id)
 );
 
@@ -63,35 +63,3 @@ CREATE TABLE order_detail(
     FOREIGN KEY(accessory_id) REFERENCES accessory(accessory_id)
 );
 INSERT INTO product_type (product_type_name) VALUES ("Iphone"),("SamSung"),("Vivo"),("Asus"),("OPPO");
-
--- INSERT INTO account_customer (user_name,`password`) 
--- VALUES ("khanh","khanh123"),
--- 		("khang","khang123");
---     
--- INSERT INTO customers(customer_name, email, phone_number, address, account_id ) 
--- VALUES ("Kieu Quoc Khanh", "khanhkieu098@gmail.com","0338410349","Duy Xuyen, Quang Nam",1),
--- 		("Phan Vu An Khang", "ankhang@gmail.com","0438710349","Da Nang",2)
--- ;
-
--- INSERT INTO `order`(order_date,customer_id,product_id) 
--- VALUES(curdate(),2,1),
--- 	(curdate(),2,2);
---     
--- INSERT INTO accessory (accessory_name, accessory_price) VALUES("Tai nghe sony", 10),("Cuc sac 1000W", 5);
-
--- INSERT INTO order_detail (order_id,accessory_id) VALUES (1,1) ,(1,2);
-
--- SELECT c.customer_name,p.product_name FROM customers AS c
--- INNER JOIN `order` AS o ON c.customer_id = o.customer_id
--- INNER JOIN order_detail AS od ON o.order_id = od.order_id
--- INNER JOIN products AS p ON o.product_id = p.product_id;
-
--- SELECT * FROM products WHERE product_name LIKE "%Iphone%";
--- DELETE FROM products WHERE product_id = 13 ;
-
--- UPDATE products set product_name = "q", product_type_id = 2, `describe` = "q", price = 2, product_image_url ="q" WHERE product_id = 3;
-
--- SELECT * from account_customer;
--- SELECT c.*, ac.user_name , ac.password from customers as c INNER JOIN account_customer as ac on c.account_id = ac.account_id;
--- SELECT * from products;
--- UPDATE products set product_name = "abc", updateAt = current_timestamp() WHERE product_id = 2;
