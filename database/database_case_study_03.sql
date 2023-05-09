@@ -52,8 +52,8 @@ CREATE TABLE accessory(
     accessory_name VARCHAR(50) NOT NULL,
     accessory_price DOUBLE CHECK(accessory_price > 0),
     image_accessory TEXT NOT NULL,
-    createAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updateAt DATETIME DEFAULT CURRENT_TIMESTAMP
+    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    update_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `order`(
