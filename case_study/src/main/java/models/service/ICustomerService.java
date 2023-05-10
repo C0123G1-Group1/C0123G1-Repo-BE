@@ -9,4 +9,7 @@ public interface ICustomerService {
 
     boolean saveCustomer(Customer customer);
 
+    boolean deleteCustomer(int id, String account);
+
+    List<Customer> searchCustomer(String nameCustomer,String addressCustomer);
 }
