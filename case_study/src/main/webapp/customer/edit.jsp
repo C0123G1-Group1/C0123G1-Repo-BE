@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: TRUNG THIEN
-  Date: 5/9/2023
-  Time: 19:43
+  Date: 5/11/2023
+  Time: 01:39
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Thêm mới khách hàng</title>
+    <title>Sửa thông tin khách hàng</title>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -24,27 +24,25 @@
     </nav>
     <div class="container">
         <div class="row">
-            <h3>Thêm mới user</h3>
+            <h3>Sửa thông tin khách hàng</h3>
         </div>
         <div class="row">
-            <div>
-                <form method="post" action="/customer?action=create">
+                <form method="post" action="/customer?action=edit">
                     <label>Tên đăng nhập</label>
-                    <input class="form-control" type="text" name="userName"><br>
+                    <input disabled class="form-control" type="text" name="userName" value="${customer.getAccount().getUserName()}"><br>
                     <label>Mật khẩu</label>
-                    <input class="form-control" type="password" name="password"><br>
+                    <input class="form-control" type="password" name="password" value="${customer.getAccount().getPassword()}"><br>
                     <label>Họ và Tên</label>
-                    <input class="form-control" type="text" name="fullName"><br>
+                    <input class="form-control" type="text" name="fullName" value="${customer.getName()}"><br>
                     <label>Email</label>
-                    <input class="form-control" type="email" name="email"><br>
+                    <input class="form-control" type="email" name="email" value="${customer.getEmail()}"><br>
                     <label>Số điện thoại</label>
-                    <input class="form-control" type="number" name="phoneNumber"><br>
+                    <input class="form-control" type="number" name="phoneNumber" value="${customer.getPhoneNumber()}"><br>
                     <label>Địa chỉ</label>
-                    <input class="form-control" type="text" name="address"><br>
-                    <button class="btn btn-success">Thêm</button>
+                    <input class="form-control" type="text" name="address"value="${customer.getAddress()}"><br>
+                    <button class="btn btn-success">Sửa</button>
                 </form>
-                <p style="color: blue;font-weight: bold;justify-content: center">${mess}</p>
-            </div>
+<%--                <p style="color: blue;font-weight: bold;justify-content: center">${mess}</p>--%>
         </div>
     </div>
 </div>
@@ -53,4 +51,3 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-

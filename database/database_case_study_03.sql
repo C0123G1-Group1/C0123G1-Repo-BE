@@ -1,11 +1,9 @@
 CREATE DATABASE ig1_store;
 USE ig1_store;
-
 CREATE TABLE roles (
 	role_id INT PRIMARY KEY AUTO_INCREMENT,
     role_name VARCHAR(50) NOT NULL
 );
-
 CREATE TABLE account_users(
 	account_id INT PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(50) UNIQUE NOT NULL,
@@ -18,7 +16,6 @@ CREATE TABLE users_role (
     FOREIGN KEY (role_id) REFERENCES roles(role_id),
     FOREIGN KEY(account_id) REFERENCES account_users(account_id)
 );
-
 CREATE TABLE customers(
 	customer_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_name VARCHAR(50) NOT NULL,
@@ -30,12 +27,10 @@ CREATE TABLE customers(
     update_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (account_id) REFERENCES account_users(account_id)
 );
-
 CREATE TABLE product_type(
 	product_type_id INT PRIMARY KEY AUTO_INCREMENT,
     product_type_name VARCHAR(50) NOT NUll
 );
-
 CREATE TABLE products(
 	product_id INT PRIMARY KEY AUTO_INCREMENT,
     product_name VARCHAR(50) NOT NULL,
@@ -47,32 +42,22 @@ CREATE TABLE products(
     updateAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(product_type_id) REFERENCES product_type(product_type_id)
 );
-CREATE TABLE accessory(
-	accessory_id INT PRIMARY KEY AUTO_INCREMENT,
-    accessory_name VARCHAR(50) NOT NULL,
-    accessory_price DOUBLE CHECK(accessory_price > 0),
-    image_accessory TEXT NOT NULL,
-    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    update_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE `order`(
+CREATE TABLE `orders`(
 	order_id INT PRIMARY KEY AUTO_INCREMENT,
-    order_date DATETIME,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     customer_id INT,
-    product_id INT,
-    price_order LONG ,
-    FOREIGN KEY(customer_id) REFERENCES customers(customer_id),
-    FOREIGN KEY(product_id) REFERENCES products(product_id)
+    FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
-
 CREATE TABLE order_detail(
 	order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT,
-	order_detail_date DATETIME,
-    accessory_id INT,
-    FOREIGN KEY(order_id) REFERENCES `order`(order_id),
-    FOREIGN KEY(accessory_id) REFERENCES accessory(accessory_id)
+    product_id INT NOT NULL,
+	product_type_id INT NOT NULL,
+    price DOUBLE CHECK(price >0),
+    quantity INT check(quantity >0),
+    order_detail_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(order_id) REFERENCES `orders`(order_id),
+    FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
 
 INSERT INTO account_users (user_name,`password`) VALUES ("admin", "admin123"),
@@ -117,16 +102,16 @@ VALUES ("Kiều Quốc Khánh","quockhanh@gmail.com", "0123456001","Quảng Nam"
 ("Ngô Thị Ánh Tuyết","anhtuyet@gmail.com", "0123456024","Quảng Nam", 25),
 ("Trương Hà Mai","hamai@gmail.com", "0123456025","Nghệ An", 26),
 ("Nguyễn Thảo Mai","thaomai@gmail.com", "0123456026","Thái Bình", 27);
-INSERT INTO product_type (product_type_name) VALUES ("Iphone"), ("SamSung"), ("Vivo"), ("Asus");
 
 SELECT*FROM customers;
-DELETE FROM customers WHERE customer_id=4;
-SELECT c.*,ac.account_id,ac.user_name,ac.password FROM customers AS c 
-INNER JOIN account_users AS ac ON c.account_id=ac.account_id;
+-- DELETE FROM customers WHERE customer_id=4;
+-- SELECT c.*,ac.account_id,ac.user_name,ac.password FROM customers AS c 
+-- INNER JOIN account_users AS ac ON c.account_id=ac.account_id;
 
-SELECT*FROM account_users;
-DELETE FROM account_users WHERE user_name="hai";
-INSERT INTO account_users (user_name,password) VALUE("hoa","1234");
-SELECT c.*,ac.account_id,ac.user_name,ac.password FROM customers AS c 
-INNER JOIN account_users AS ac ON c.account_id=ac.account_id WHERE customer_name LIKE "%ie%" AND address LIKE "%Quang%" ;
-SELECT*FROM customers WHERE customer_name LIKE "%ie%" AND address LIKE "%Quang%" ;
+-- SELECT*FROM account_users;
+-- DELETE FROM account_users WHERE user_name="hai";
+-- INSERT INTO account_users (user_name,password) VALUE("hoa","1234");
+-- SELECT c.*,ac.account_id,ac.user_name,ac.password FROM customers AS c 
+-- INNER JOIN account_users AS ac ON c.account_id=ac.account_id WHERE customer_name LIKE "%ie%" AND address LIKE "%Quang%" ;
+-- SELECT*FROM customers WHERE customer_name LIKE "%ie%" AND address LIKE "%Quang%" ;
+ 

@@ -32,4 +32,9 @@ public class CustomerServiceImpl implements ICustomerService {
         List<Customer>customerList=customerRepository.searchCustomer(nameCustomer,addressCustomer);
         return customerList;
     }
+
+    @Override
+    public Customer getCustomer(int id) {
+        return customerRepository.getCustomer(id);
+    }
 }

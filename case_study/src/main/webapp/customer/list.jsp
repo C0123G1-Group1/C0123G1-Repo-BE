@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Danh sách khách hàng</title>
-    <link rel="stylesheet" href="bootstrap520/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/bootstrap520/css/bootstrap.css"/>
     <link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -19,8 +19,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: sticky;top:0;left: 0;right: 0">
     <div class="container-fluid">
         <div>
-            <button class="btn btn-success" onclick="window.location.href='/customer/create.jsp'">Thêm mới</button>
+            <button class="btn btn-success" onclick="window.location.href='/customer?action=create'">Thêm mới</button>
         </div>
+        <h4 style="color: red; font-weight: bold">${mess}</h4>
         <form action="/customer" class="d-flex">
             <input type="hidden" name="action" value="search">
             <input class="form-control me-2" type="text" placeholder="Nhập tên khách hàng" aria-label="Search"
@@ -36,7 +37,7 @@
     <div class="row">
         <div class="d-flex">
         </div>
-        <table id="tableCustomer" class="table table-striped">
+        <table id="tableCustomer" class="table table-hover">
             <thead>
             <tr>
                 <th>ID</th>
@@ -65,13 +66,13 @@
                                 onclick="infoDelete('${customer.getId()}','${customer.getName()}','${customer.getAccount().getUserName()}')">
                             Delete
                         </button>
+                        <button class="btn btn-success" onclick="window.location.href='/customer?action=edit&customerId=${customer.getId()}'">Sửa</button>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
-    <p style="color: red">${mess}</p>
 </div>
 <%--Modal delete--%>
 <div class="modal fade" id="deleteModal" tabindex="-1"
@@ -101,6 +102,9 @@
         </div>
     </div>
 </div>
+<footer style="margin-top: 50px">
+    <jsp:include page="/header_footer/footer.jsp"></jsp:include>
+</footer>
 <script>
     function infoDelete(id, name, account) {
         document.getElementById("customerId").value = id;
@@ -119,7 +123,7 @@
         $('#tableCustomer').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
-            "pageLength": 5
+            "pageLength": 10
         });
     });
 </script>

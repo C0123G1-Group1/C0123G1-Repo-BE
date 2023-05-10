@@ -18,13 +18,20 @@ public class CustomerServlet extends HttpServlet {
     private ICustomerService customerService = new CustomerServiceImpl();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)  {
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
         }
         switch (action) {
+            case "create":
+                try {
+                    request.getRequestDispatcher("/customer/create.jsp").forward(request,response);
+                } catch (ServletException | IOException e) {
+                    e.printStackTrace();
+                }
             case "edit":
+                sendCustomer(request,response);
                 break;
             case "search":
                 searchCustomer(request, response);
@@ -46,6 +53,10 @@ public class CustomerServlet extends HttpServlet {
                 break;
             case "delete":
                 deleteCustomer(request, response);
+                break;
+            case "edit":
+                editCustomer(request,response);
+                break;
         }
     }
 
@@ -125,5 +136,18 @@ public class CustomerServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+    }
+    private void sendCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int id= Integer.parseInt(request.getParameter("customerId"));
+        Customer customer =customerService.getCustomer(id);
+        request.setAttribute("customer",customer);
+        try {
+            request.getRequestDispatcher("/customer/edit.jsp").forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void editCustomer(HttpServletRequest request,HttpServletResponse response){
+
     }
 }
