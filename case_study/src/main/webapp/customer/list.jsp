@@ -12,6 +12,8 @@
     <title>Danh sách khách hàng</title>
     <link rel="stylesheet" href="bootstrap520/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: sticky;top:0;left: 0;right: 0">
@@ -106,17 +108,20 @@
         document.getElementById("deleteName").innerText = name;
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="datatables/js/jquery.dataTables.min.js"></script>
 <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('#tableCustomer').dataTable( {
+    $(document).ready(function () {
+        $('#tableCustomer').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
             "pageLength": 5
-        } );
-    } );
+        });
+    });
 </script>
 </body>
 </html>
