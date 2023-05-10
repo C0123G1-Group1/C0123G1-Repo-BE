@@ -36,7 +36,7 @@ CREATE TABLE product_type(
     product_type_name VARCHAR(50) NOT NUll
 );
 
-CREATE TABLE products(
+CREATE TABLE products( 
 	product_id INT PRIMARY KEY AUTO_INCREMENT,
     product_name VARCHAR(50) NOT NULL,
 	product_type_id INT,
@@ -83,8 +83,9 @@ VALUES ("khanh","khanh@gmail.com", "0123456789","Quang Nam", 1),
 ("hai","hai@gmail.com", "0123456789","Quang Nam", 4);
 INSERT INTO product_type (product_type_name) VALUES ("Iphone"), ("SamSung"), ("Vivo"), ("Asus");
 
+INSERT INTO products (product_name, product_type_id, `describe`,price,product_image_url) VALUES ('Iphone X',1,'asd',123,'asd');
 
+SELECT * FROM products;
 
-
-
-
+UPDATE products SET product_name="sgdgfdad", product_type_id=2, `describe`="dsfdsf",price=43,product_image_url="dsfsd" ,updateAt=current_timestamp() Where product_id=8;
+SELECT * FROM products p WHERE p.product_name='sad' AND p.price BETWEEN 0 and 50;
