@@ -1,23 +1,26 @@
 package models.service.impl;
 
+import models.model.Customer;
 import models.repository.ICustomerRepository;
 import models.repository.Impl.CustomerRepositoryImpl;
 import models.service.ICustomerService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class CustomerServiceImpl implements ICustomerService {
     ICustomerRepository customerRepository = new CustomerRepositoryImpl();
 
 
     @Override
-    public boolean saveCustomer(HttpServletRequest request, HttpServletResponse response) {
-       return customerRepository.saveCustomer(request,response);
+    public List<Customer> getAllCustomer() {
+        List<Customer> customerList= customerRepository.getAllCustomer();
+        return customerList;
     }
 
     @Override
-    public boolean checkAccount(String userName, String password) {
-        return customerRepository.checkAccount(userName, password);
+    public boolean saveCustomer(Customer customer) {
+        return customerRepository.saveCustomer(customer);
     }
+
+
 }
