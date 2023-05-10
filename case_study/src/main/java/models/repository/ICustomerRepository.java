@@ -7,6 +7,5 @@ public interface ICustomerRepository {
     List<Customer> getAllCustomer();
 
     boolean saveCustomer(Customer customer);
-
-
+    boolean deleteCustomer(int id);
 }

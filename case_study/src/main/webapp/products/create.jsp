@@ -14,11 +14,11 @@
 <center>
     <h1>Product Management</h1>
     <h2>
-        <a href="/product">List All Product</a>
+        <a href="/product-servlet">List All Product</a>
     </h2>
 </center>
 <div align="center">
-    <form action="/product?action=create" method="post">
+    <form action="/product-servlet?action=create" method="post">
         <table border="1" cellpadding="5">
             <caption>
                 <h2>Add New Product</h2>
@@ -32,7 +32,11 @@
             <tr>
                 <th>Loại sản phẩm</th>
                 <td>
-                    <input type="text" name="productType" id="productType" size="45"/>
+<%--                    <input type="text" name="productType" id="productType" size="45"/>--%>
+                    <select name="productType" id="">
+                        <option value="1">Phone</option>
+                        <option value="2">Accessory</option>
+                    </select>
                 </td>
             </tr>
             <tr>

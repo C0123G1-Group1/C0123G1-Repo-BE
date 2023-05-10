@@ -2,8 +2,8 @@ package controller;
 
 
 import models.model.Product;
-import models.service.products.IProductService;
-import models.service.products.impl.ProductService;
+import models.service.IProductService;
+import models.service.impl.ProductServiceImpl;
 
 
 import javax.servlet.ServletException;
@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductServlet", value = "/product")
+@WebServlet(name = "ProductServlet", value = "/product-servlet")
 public class ProductServlet extends HttpServlet {
-    private IProductService productService=new ProductService();
+    private IProductService productService=new ProductServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String action=request.getParameter("action");
@@ -40,7 +40,7 @@ public class ProductServlet extends HttpServlet {
         Product product=productService.findById(id);
         request.setAttribute("product", product);
         try {
-            request.getRequestDispatcher("view/products/edit.jsp").forward(request,response);
+            request.getRequestDispatcher("products/edit.jsp").forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -62,7 +62,7 @@ public class ProductServlet extends HttpServlet {
         List<Product> productList=productService.getList();
         request.setAttribute("productList",productList);
         try {
-            request.getRequestDispatcher("view/products/list.jsp").forward(request,response);
+            request.getRequestDispatcher("/products/list.jsp").forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -111,10 +111,9 @@ public class ProductServlet extends HttpServlet {
                 searchProductList=productService.search(name,15000000,1000000000);
                 break;
         }
-//        List<Product> searchProductList=productService.search(name,);
         request.setAttribute("productList",searchProductList);
         try {
-            request.getRequestDispatcher("view/products/list.jsp").forward(request,response);
+            request.getRequestDispatcher("products/list.jsp").forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -166,7 +165,7 @@ public class ProductServlet extends HttpServlet {
         Product product=new Product(name,productType,describe,price,productImage);
         productService.createAt(product);
         try {
-            request.getRequestDispatcher("view/products/create.jsp").forward(request,response);
+            request.getRequestDispatcher("products/create.jsp").forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

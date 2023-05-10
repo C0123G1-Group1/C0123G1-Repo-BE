@@ -1,8 +1,8 @@
 package models.repository.Impl;
 
-import connection.BaseRepository;
 import models.model.Account;
 import models.model.Customer;
+import models.repository.BaseRepository;
 import models.repository.ICustomerRepository;
 
 import java.sql.Connection;
@@ -17,6 +17,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     private final String INSERT_CUSTOMER = "INSERT INTO customers(customer_name, email, phone_number, address, account_id) VALUES (?,?,?,?,?);";
     private final String INSERT_ACCOUNT="INSERT INTO account_users (user_name,password) VALUE(?,?);";
     private final String SELECT_ACCOUNT="SELECT*FROM account_users;";
+    private final  String DELETE_CUSTOMER = "DELETE FROM customers WHERE customer_id = ?;";
 
 
     @Override
@@ -79,6 +80,19 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             } else {
                 connection.rollback();
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteCustomer(int id) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER);
+            preparedStatement.setInt(1,id);
+            return preparedStatement.executeUpdate() >0;
         } catch (SQLException e) {
             e.printStackTrace();
         }

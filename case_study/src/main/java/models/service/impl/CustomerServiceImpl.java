@@ -22,5 +22,8 @@ public class CustomerServiceImpl implements ICustomerService {
         return customerRepository.saveCustomer(customer);
     }
 
-
+    @Override
+    public boolean deleteCustomer(int id) {
+        return customerRepository.deleteCustomer(id);
+    }
 }

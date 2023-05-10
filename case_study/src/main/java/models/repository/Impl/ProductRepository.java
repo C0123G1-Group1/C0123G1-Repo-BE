@@ -1,8 +1,8 @@
-package models.repository.products.impl;
+package models.repository.Impl;
 
 import models.model.Product;
 import models.repository.BaseRepository;
-import models.repository.products.IProductRepostory;
+import models.repository.IProductRepostory;
 
 
 import java.sql.Connection;

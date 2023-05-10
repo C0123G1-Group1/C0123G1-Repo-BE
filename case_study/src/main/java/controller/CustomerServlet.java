@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "CustomerServlet", value = "/customer")
+@WebServlet(name = "CustomerServlet", value = "/customer-servlet")
 public class CustomerServlet extends HttpServlet {
     private ICustomerService customerService = new CustomerServiceImpl();
 
@@ -40,6 +40,20 @@ public class CustomerServlet extends HttpServlet {
         switch (action) {
             case "create":
                 createCustomer(request,response);
+                break;
+            case "delete":
+                int id = Integer.parseInt(request.getParameter("id"));
+                boolean statusDelete = customerService.deleteCustomer(id);
+                request.setAttribute("statusDelete",statusDelete);
+                try {
+                    List<Customer> customerList = customerService.getAllCustomer();
+                    request.setAttribute("customerList",customerList);
+                    request.getRequestDispatcher("/customer/list.jsp").forward(request,response);
+                } catch (ServletException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
         }
     }

@@ -8,5 +8,5 @@ public interface ICustomerService {
     List<Customer> getAllCustomer();
 
     boolean saveCustomer(Customer customer);
-
+    boolean deleteCustomer(int id);
 }

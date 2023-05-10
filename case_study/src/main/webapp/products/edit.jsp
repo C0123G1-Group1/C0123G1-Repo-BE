@@ -12,18 +12,14 @@
     <title>Title</title>
 </head>
 <body>
-<h1>User Management</h1>
-<h2>
-    <a href="/product">List All Users</a>
-</h2>
     <center>
-        <h1>User Management</h1>
+        <h1>Product Management</h1>
         <h2>
-            <a href="/product">List All Users</a>
+            <a href="/product-servlet">List All Product</a>
         </h2>
     </center>
     <div align="center">
-        <form action="/product?action=edit" method="post">
+        <form action="/product-servlet?action=edit" method="post">
             <table border="1" cellpadding="5">
                 <caption>
                     <h2>

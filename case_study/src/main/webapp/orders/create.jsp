@@ -19,7 +19,7 @@
     </div>
     <div class="row">
         <div>
-            <form method="post" action="/customer-servlet?action=create">
+            <form method="post" action="/customer?action=create">
                 <label>Tên đăng nhập</label>
                 <input class="form-control" type="text" name="userName"><br>
                 <label>Mật khẩu</label>
@@ -33,7 +33,7 @@
                 <label>Địa chỉ</label>
                 <input class="form-control" type="text" name="address"><br>
                 <button class="btn btn-success">Thêm</button>
-                <button class="btn btn-success" type="button" onclick="window.location.href='/customer-servlet'">Xem danh sách</button>
+                <button class="btn btn-success" type="button" onclick="window.location.href='/customer'">Xem danh sách</button>
             </form>
             <p style="color: blue;font-weight: bold;justify-content: center">${mess}</p>
         </div>

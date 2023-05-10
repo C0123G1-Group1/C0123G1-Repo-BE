@@ -47,32 +47,24 @@ CREATE TABLE products(
     updateAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(product_type_id) REFERENCES product_type(product_type_id)
 );
-CREATE TABLE accessory(
-	accessory_id INT PRIMARY KEY AUTO_INCREMENT,
-    accessory_name VARCHAR(50) NOT NULL,
-    accessory_price DOUBLE CHECK(accessory_price > 0),
-    image_accessory TEXT NOT NULL,
-    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    update_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
 
-CREATE TABLE `order`(
+CREATE TABLE `orders`(
 	order_id INT PRIMARY KEY AUTO_INCREMENT,
-    order_date DATETIME,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     customer_id INT,
-    product_id INT,
-    price_order LONG ,
-    FOREIGN KEY(customer_id) REFERENCES customers(customer_id),
-    FOREIGN KEY(product_id) REFERENCES products(product_id)
+    FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
 
 CREATE TABLE order_detail(
 	order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT,
-	order_detail_date DATETIME,
-    accessory_id INT,
-    FOREIGN KEY(order_id) REFERENCES `order`(order_id),
-    FOREIGN KEY(accessory_id) REFERENCES accessory(accessory_id)
+    product_id INT NOT NULL,
+	product_type_id INT NOT NULL,
+    price DOUBLE CHECK(price >0),
+    quantity INT check(quantity >0),
+    order_detail_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(order_id) REFERENCES `orders`(order_id),
+    FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
 
 INSERT INTO account_users (user_name,`password`) VALUES ("khanh", "khanh123"), ("thien", "thien123"), ("khang", "khang123"), ("hai", "hai123"),("admin", "admin123");
@@ -80,12 +72,23 @@ INSERT INTO customers (customer_name, email,phone_number,address,account_id)
 VALUES ("khanh","khanh@gmail.com", "0123456789","Quang Nam", 1),
 ("khang","khang@gmail.com", "1123456789","Quang Nam", 3),
 ("thien","thien@gmail.com", "0223456789","Quang Nam", 2),
-("hai","hai@gmail.com", "0123456789","Quang Nam", 4);
-INSERT INTO product_type (product_type_name) VALUES ("Iphone"), ("SamSung"), ("Vivo"), ("Asus");
+("hai","hai@gmail.com", "0523456789","Quang Nam", 4);
+INSERT INTO product_type (product_type_name) VALUES ("Phone"), ("Accessory");
+INSERT INTO products (product_name, product_type_id, `describe`,price,product_image_url) 
+VALUES ('Iphone X',1,'asd',123,'asd'),
+('Iphone XS',1,'asd',123,'asd'),
+('Tai nghe',2,'asd',123,'asd');
+INSERT into `orders` (customer_id) VALUES (1);
+INSERT INTO order_detail (order_id, product_id, product_type_id, price, quantity )
+ VALUES (1,1,1,123,1),
+ (1,2,1,123,1);
 
-INSERT INTO products (product_name, product_type_id, `describe`,price,product_image_url) VALUES ('Iphone X',1,'asd',123,'asd');
+SELECT o.order_id, c.customer_name, SUM(od.price) as price_total , o.order_date
+from customers as c 
+inner join `orders` as o on c.customer_id = o.customer_id
+INNER join order_detail as od on o.order_id = od.order_id
+GROUP BY o.order_id;
+-- INNER join products as p on od.product_id = p.product_id
 
-SELECT * FROM products;
+DELETE FROM customers WHERE customer_id = 5;
 
-UPDATE products SET product_name="sgdgfdad", product_type_id=2, `describe`="dsfdsf",price=43,product_image_url="dsfsd" ,updateAt=current_timestamp() Where product_id=8;
-SELECT * FROM products p WHERE p.product_name='sad' AND p.price BETWEEN 0 and 50;
