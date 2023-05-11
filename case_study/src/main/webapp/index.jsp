@@ -14,6 +14,9 @@
     </style>
 </head>
 <body>
+
+<%--<c:redirect url="/admin/admin.jsp"></c:redirect>--%>
+<%--<c:redirect url="/users/home.jsp"></c:redirect>--%>
 <div id="bg-img" class="d-flex align-items-center">
     <div class="container-fluid d-flex justify-content-center align-items-center">
         <div class="row main-content bg-success text-center">

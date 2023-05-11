@@ -1,10 +1,12 @@
 package models.repository;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import models.model.Customer;
+import java.util.List;
 
 public interface ICustomerRepository {
-    boolean saveCustomer(HttpServletRequest request, HttpServletResponse response);
-    boolean checkAccount(String userName, String password);
+    List<Customer> getAllCustomer();
 
+    boolean saveCustomer(Customer customer);
+    boolean deleteCustomer(int id);
+    Customer getCustomerById(int id);
 }

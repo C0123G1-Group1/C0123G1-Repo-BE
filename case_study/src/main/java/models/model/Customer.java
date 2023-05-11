@@ -1,37 +1,58 @@
 package models.model;
 
 public class Customer {
-    private int id_customer;
-    private String customer_name;
+    private int id;
+    private String name;
     private String email;
+    private String phoneNumber;
     private String address;
-    private String password;
+    private Account account;
+    private String createAt;
+    private String updateAt;
 
     public Customer() {
     }
 
-    public Customer(int id_customer, String customer_name, String email, String address, String password) {
-        this.id_customer = id_customer;
-        this.customer_name = customer_name;
+    public Customer(int id, String name, Account account) {
+        this.id = id;
+        this.name = name;
+        this.account = account;
+    }
+
+    public Customer(String name, String email, String phoneNumber, String address, Account account) {
+        this.name = name;
         this.email = email;
+        this.phoneNumber = phoneNumber;
         this.address = address;
-        this.password = password;
+        this.account = account;
     }
 
-    public int getId_customer() {
-        return id_customer;
+    public Customer(int id, String name, String email, String phoneNumber,
+                    String address, Account account, String createAt, String updateAt) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.account = account;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
     }
 
-    public void setId_customer(int id_customer) {
-        this.id_customer = id_customer;
+    public int getId() {
+        return id;
     }
 
-    public String getCustomer_name() {
-        return customer_name;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -42,6 +63,14 @@ public class Customer {
         this.email = email;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -50,11 +79,27 @@ public class Customer {
         this.address = address;
     }
 
-    public String getPassword() {
-        return password;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public String getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(String createAt) {
+        this.createAt = createAt;
+    }
+
+    public String getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(String updateAt) {
+        this.updateAt = updateAt;
     }
 }
