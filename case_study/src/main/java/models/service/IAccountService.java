@@ -1,5 +1,10 @@
 package models.service;
 
+import models.model.Account;
+
+import java.util.List;
+
 public interface IAccountService {
-    boolean checkAccount(String userName, String password);
+    String checkRole(int id);
+    List<Account> getAllAccount();
 }

@@ -17,6 +17,42 @@ public class OrderRepositoryImpl implements IOrderRepository {
             "inner join `orders` as o on c.customer_id = o.customer_id\n" +
             "INNER join order_detail as od on o.order_id = od.order_id\n" +
             "GROUP BY o.order_id;";
+
+    private final String INSERT_ORDER = "INSERT into `orders` (customer_id) VALUES (?);";
+    private final String SELECT_ORDER_BY_ID = "SELECT * FROM orders WHERE customer_id = ?;";
+
+    @Override
+    public boolean addOrder(int customerId) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ORDER);
+            preparedStatement.setInt(1,customerId);
+            return preparedStatement.executeUpdate() >0;
+        } catch (SQLException e) {
+           e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public int getOrderId(int customerId) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ORDER_BY_ID);
+            preparedStatement.setInt(1,customerId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                if(resultSet.getInt("customer_id") == customerId){
+                    int orderId = resultSet.getInt("order_id");
+                  return orderId;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     @Override
     public List<Order> getAll() {
         List<Order> orderList = new ArrayList<>();

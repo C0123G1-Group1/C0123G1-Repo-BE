@@ -15,9 +15,10 @@ import java.util.List;
 public class CustomerRepositoryImpl implements ICustomerRepository {
     private final String SELECT_ALL_CUSTOMER = "SELECT c.*,ac.user_name,ac.password FROM customers AS c INNER JOIN account_users AS ac ON c.account_id=ac.account_id;";
     private final String INSERT_CUSTOMER = "INSERT INTO customers(customer_name, email, phone_number, address, account_id) VALUES (?,?,?,?,?);";
-    private final String INSERT_ACCOUNT="INSERT INTO account_users (user_name,password) VALUE(?,?);";
-    private final String SELECT_ACCOUNT="SELECT*FROM account_users;";
-    private final  String DELETE_CUSTOMER = "DELETE FROM customers WHERE customer_id = ?;";
+    private final String INSERT_ACCOUNT = "INSERT INTO account_users (user_name,password) VALUE(?,?);";
+    private final String SELECT_ACCOUNT = "SELECT*FROM account_users;";
+    private final String SELECT_CUSTOMER_ID = "SELECT * FROM customers WHERE customer_id = ?;";
+    private final String DELETE_CUSTOMER = "DELETE FROM customers WHERE customer_id = ?;";
 
 
     @Override
@@ -39,7 +40,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                 String userName = resultSet.getString("user_name");
                 String password = resultSet.getString("password");
                 Account account = new Account(accountId, userName, password);
-                Customer customer =new Customer(customerId, name, email, phoneNumber, address, account, createAt, updateAt);
+                Customer customer = new Customer(customerId, name, email, phoneNumber, address, account, createAt, updateAt);
                 customerList.add(customer);
             }
             return customerList;
@@ -48,6 +49,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         }
         return null;
     }
+
     @Override
     public boolean saveCustomer(Customer customer) {
         Connection connection = BaseRepository.getConnectDB();
@@ -91,12 +93,31 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER);
-            preparedStatement.setInt(1,id);
-            return preparedStatement.executeUpdate() >0;
+            preparedStatement.setInt(1, id);
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public Customer getCustomerById(int id) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_ID);
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int customerId = resultSet.getInt("customer_id");
+                String cuatomerName = resultSet.getString("customer_name");
+                Customer customer = new Customer(customerId, cuatomerName);
+                return customer;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
 }

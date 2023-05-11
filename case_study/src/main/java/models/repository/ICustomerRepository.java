@@ -8,4 +8,5 @@ public interface ICustomerRepository {
 
     boolean saveCustomer(Customer customer);
     boolean deleteCustomer(int id);
+    Customer getCustomerById(int id);
 }

@@ -1,13 +1,21 @@
 package models.service.impl;
 
+import models.model.Account;
 import models.repository.IAccountRepository;
 import models.repository.Impl.AccountRepositoryImpl;
 import models.service.IAccountService;
 
+import java.util.List;
+
 public class AccountReposiroryImpl implements IAccountService {
     IAccountRepository accountRepository = new AccountRepositoryImpl();
     @Override
-    public boolean checkAccount(String userName, String password) {
-        return accountRepository.checkAccount(userName,password);
+    public String checkRole(int id) {
+        return accountRepository.checkRole(id);
+    }
+
+    @Override
+    public List<Account> getAllAccount() {
+        return accountRepository.getAllAccount();
     }
 }

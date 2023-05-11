@@ -13,7 +13,12 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String name, String email, String phoneNumber, String address,Account account) {
+    public Customer(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Customer(String name, String email, String phoneNumber, String address, Account account) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;

@@ -9,8 +9,19 @@ import java.util.List;
 
 public class OrderServiceImpl implements IOrderService {
     IOrderRepository orderRepository = new OrderRepositoryImpl();
+
+    @Override
+    public int getOrderId(int customerId) {
+        return orderRepository.getOrderId(customerId);
+    }
+
     @Override
     public List<Order> getAll() {
         return orderRepository.getAll();
+    }
+
+    @Override
+    public boolean addOrder(int customerId) {
+        return orderRepository.addOrder(customerId);
     }
 }
