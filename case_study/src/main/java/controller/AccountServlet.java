@@ -46,19 +46,6 @@ public class AccountServlet extends HttpServlet {
                 String userName = request.getParameter("userName");
                 String password = request.getParameter("password");
                 Account account = null;
-//                if (userName.equals("admin")) {
-//                    boolean statusLogin = accountService.checkAccount(userName,password);
-//                    if (statusLogin) {
-//                        request.setAttribute("statusLogin",statusLogin);
-//                        request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);
-//                    } else {
-//                        request.setAttribute("userName", userName);
-//                        request.setAttribute("statusLogin",statusLogin);
-//                        request.getRequestDispatcher("/index.jsp").forward(request, response);
-//                    }
-//                } else {
-//                    boolean statusLogin = accountService.checkRole(userName,password);
-//                    if (statusLogin) {
                 List<Account> accountList = accountService.getAllAccount();
                 for (Account a : accountList) {
                     if (userName.equals(a.getUserName()) && password.equals(a.getPassword())) {
@@ -66,11 +53,12 @@ public class AccountServlet extends HttpServlet {
                         break;
                     }
                 }
+                customer = customerService.getCustomerById(account.getId());
                 Boolean statusLogin = true;
                 if (account != null) {
                     HttpSession session = request.getSession();
-                    session.setAttribute("userSession", account);
-                    String role = accountService.checkRole(account.getId());
+                    session.setAttribute("userSession", customer);
+                    String role = accountService.checkRole(customer.getAccount().getId());
                     if (role.equals("users")) {
                         List<Product> productList = productService.getList();
                         request.setAttribute("productList", productList);
@@ -83,17 +71,6 @@ public class AccountServlet extends HttpServlet {
                     request.setAttribute("statusLogin", statusLogin);
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
-//                HttpSession session = request.getSession();
-////                        session.setAttribute("userSession", userName);
-//                List<Customer> customerList = customerService.getAllCustomer();
-//                request.setAttribute("customerList", customerList);
-//                request.getRequestDispatcher("/users/home.jsp").forward(request, response);
-////                    } else {
-//                        request.setAttribute("userName", userName);
-//                        request.setAttribute("statusLogin",statusLogin);
-//                        request.getRequestDispatcher("/index.jsp").forward(request, response);
-//                    }
-//        }
         }
 
     }

@@ -83,12 +83,52 @@ INSERT INTO order_detail (order_id, product_id, product_type_id, price, quantity
  VALUES (1,1,1,123,1),
  (1,2,1,123,1);
 
-SELECT o.order_id, c.customer_name, SUM(od.price) as price_total , o.order_date
+SELECT o.order_id, c.customer_id ,c.customer_name, SUM(od.price) as price_total , o.order_date
 from customers as c 
 inner join `orders` as o on c.customer_id = o.customer_id
 INNER join order_detail as od on o.order_id = od.order_id
+WHERE c.customer_id = 1
 GROUP BY o.order_id;
 -- INNER join products as p on od.product_id = p.product_id
 
-DELETE FROM customers WHERE customer_id = 5;
+SELECT * FROM account_users;
+
+SELECT * FROM customers WHERE customer_id = 1;
+
+INSERT INTO order_detail ()
+
+SELECT * FROM orders WHERE customer_id = 8;
+
+
+SELECT p.* 
+FROM order_detail AS od 
+INNER JOIN orders AS o ON od.order_id = o.order_id
+INNER JOIN customers AS c ON o.customer_id = c.customer_id
+INNER JOIN products AS p ON od.product_id = p.product_id
+WHERE c.customer_id = 1;
+
+
+SELECT r.role_name 
+FROM users_role  AS u
+INNER JOIN account_users AS ac ON u.account_id = ac.account_id
+INNER JOIN roles AS r ON u.role_id = r.role_id
+WHERE ac.account_id = 1;
+
+SELECT c.*,ac.user_name, ac.password
+FROM customers AS c
+INNER JOIN account_users AS ac ON c.account_id = ac.account_id
+WHERE customer_id = 1;
+
+INSERT INTO `ig1_store`.`roles` (`role_id`, `role_name`) VALUES ('1', 'users');
+INSERT INTO `ig1_store`.`roles` (`role_id`, `role_name`) VALUES ('2', 'admin');
+
+
+INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`) VALUES ('1', '1');
+INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`) VALUES ('1', '2');
+INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`) VALUES ('1', '3');
+INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`) VALUES ('1', '4');
+INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`) VALUES ('2', '5');
+
+
+
 

@@ -13,9 +13,10 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, String name) {
+    public Customer(int id, String name, Account account) {
         this.id = id;
         this.name = name;
+        this.account = account;
     }
 
     public Customer(String name, String email, String phoneNumber, String address, Account account) {

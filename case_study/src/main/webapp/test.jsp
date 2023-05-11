@@ -1,10 +1,11 @@
 <%@ page import="models.model.Account" %>
+<%@ page import="models.model.Customer" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>IG1 Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -726,6 +727,7 @@
     </style>
 </head>
 <body>
+<c:set var="customer" value="<%=session.getAttribute("userSession")%>"
 <header class="sticky-top">
     <input type="checkbox" name="" id="chk1">
     <img src="coollogo_com-32663401.png">
@@ -767,7 +769,7 @@
             <svg class="iconm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path>
             </svg>
-            <%=((Account)session.getAttribute("userSession")).getUserName()%>
+            <%=((Customer)session.getAttribute("userSession")).getName()%>
         </a></li>
         <li style="cursor: pointer"><a>
             Đăng xuất</a></li>
@@ -806,6 +808,7 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+
 <div class="product row h-25">
     <img width="100%" height="100" loading="lazy" class=" lazyloaded"
          data-src="https://images.fpt.shop/unsafe/fit-in/1200x100/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/5/10/638193055769462434_H7_1200x100.png"
@@ -819,9 +822,8 @@
                             <a href="" class="product-thumb">
                                 <img style="margin-top: 1vw" src="${product.getProductImage()}">
                             </a>
-                            <a href="/order-servlet?action=buy" class="buy-now" data-toggle="modal"
-                               data-target="#detail">Mua
-                                ngay</a>
+                            <a href="/order-servlet?action=buy&productId=${product.getId()}&customerId=" class="buy-now" data-toggle="modal"
+                               data-target="#detail">Mua ngay</a>
                         </div>
                     </div>
                     <div class="product-info">
@@ -835,102 +837,102 @@
     </div>
 </div>
 
-<div class="product">
-    <img width="100%" height="120"
-         src="https://firebasestorage.googleapis.com/v0/b/c0822g1-mobile-shop-d949d.appspot.com/o/anh2.PNG?alt=media&amp;token=3bde8fb6-57a8-4c49-9d7d-e06f22a7a629">
+<%--<div class="product">--%>
+<%--    <img width="100%" height="120"--%>
+<%--         src="https://firebasestorage.googleapis.com/v0/b/c0822g1-mobile-shop-d949d.appspot.com/o/anh2.PNG?alt=media&amp;token=3bde8fb6-57a8-4c49-9d7d-e06f22a7a629">--%>
 
-    <div class="wrapper">
-        <ul class="products">
-            <div class="previous">
-                <a class="previous">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-            </div>
-            <li *ngfor="let commodity of commodities">
-                <div class="product-item">
-                    <div class="product-top">
-                        <a href="" class="product-thumb">
-                            <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2021/07/ip-14-696x392.jpeg">
-                        </a>
-                        <a class="buy-now" data-toggle="modal" data-target="#detail">Mua
-                            ngay</a>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <a href="" class="product-cat"></a>
-                    <a href="" class="product-name">IP14<span
-                            style="background-color: lightgray;color: #007bff;font-weight: 600"></span></a>
-                    <div class="product-price">15.000.000VND</div>
-                </div>
-            </li>
-            <div class="next">
-                <a class="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
-            </div>
-        </ul>
-    </div>
-</div>
-<div class="modal fade" id="detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết</h4>
-                <button type="button" id="dissmis" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card">
-                    <img [src]="commodity.image" class="card-img-top" style="max-height: 200px; padding: 5px 5px">
-                    <div class="card-body">
-                        <h5 class="card-title" style="color: crimson ">{{commodity.name | titlecase }}</h5>
-                        <p style="color: red; font-weight: bold" class="card-text">{{commodity.price | currency:
-                            "VND"}}</p>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <table class="table table-hover">
-                        <tbody>
-                        <tr>
-                            <th>Camera</th>
-                            <td>{{commodity.camera}} MP</td>
-                        </tr>
-                        <tr>
-                            <th>Camera trước</th>
-                            <td>{{commodity.selfie}} MP</td>
-                        </tr>
-                        <tr>
-                            <th>Dung lượng</th>
-                            <td>{{commodity.capacity}} MP</td>
-                        </tr>
-                        <tr>
-                            <th>CPU</th>
-                            <td>{{commodity.cpu}}</td>
-                        </tr>
-                        <tr>
-                            <th>Bảo hành</th>
-                            <td>{{commodity.guarantee}} tháng</td>
-                        </tr>
-                        <tr>
-                            <th>Nơi sản xuất</th>
-                            <td>{{commodity.origin}}</td>
-                        </tr>
-                        <tr>
-                            <th>Chi tiết</th>
-                            <td>{{commodity.description}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Thêm vào giỏ hàng
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+<%--    <div class="wrapper">--%>
+<%--        <ul class="products">--%>
+<%--            <div class="previous">--%>
+<%--                <a class="previous">--%>
+<%--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>--%>
+<%--                </a>--%>
+<%--            </div>--%>
+<%--            <li *ngfor="let commodity of commodities">--%>
+<%--                <div class="product-item">--%>
+<%--                    <div class="product-top">--%>
+<%--                        <a href="" class="product-thumb">--%>
+<%--                            <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2021/07/ip-14-696x392.jpeg">--%>
+<%--                        </a>--%>
+<%--                        <a class="buy-now" data-toggle="modal" data-target="#detail">Mua--%>
+<%--                            ngay</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="product-info">--%>
+<%--                    <a href="" class="product-cat"></a>--%>
+<%--                    <a href="" class="product-name">IP14<span--%>
+<%--                            style="background-color: lightgray;color: #007bff;font-weight: 600"></span></a>--%>
+<%--                    <div class="product-price">15.000.000VND</div>--%>
+<%--                </div>--%>
+<%--            </li>--%>
+<%--            <div class="next">--%>
+<%--                <a class="next">--%>
+<%--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>--%>
+<%--                </a>--%>
+<%--            </div>--%>
+<%--        </ul>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<%--<div class="modal fade" id="detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
+<%--    <div class="modal-dialog">--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--                <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết</h4>--%>
+<%--                <button type="button" id="dissmis" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                    <span aria-hidden="true">×</span>--%>
+<%--                </button>--%>
+<%--            </div>--%>
+<%--            <div class="modal-body">--%>
+<%--                <div class="card">--%>
+<%--                    <img [src]="commodity.image" class="card-img-top" style="max-height: 200px; padding: 5px 5px">--%>
+<%--                    <div class="card-body">--%>
+<%--                        <h5 class="card-title" style="color: crimson ">{{commodity.name | titlecase }}</h5>--%>
+<%--                        <p style="color: red; font-weight: bold" class="card-text">{{commodity.price | currency:--%>
+<%--                            "VND"}}</p>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="card-info">--%>
+<%--                    <table class="table table-hover">--%>
+<%--                        <tbody>--%>
+<%--                        <tr>--%>
+<%--                            <th>Camera</th>--%>
+<%--                            <td>{{commodity.camera}} MP</td>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <th>Camera trước</th>--%>
+<%--                            <td>{{commodity.selfie}} MP</td>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <th>Dung lượng</th>--%>
+<%--                            <td>{{commodity.capacity}} MP</td>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <th>CPU</th>--%>
+<%--                            <td>{{commodity.cpu}}</td>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <th>Bảo hành</th>--%>
+<%--                            <td>{{commodity.guarantee}} tháng</td>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <th>Nơi sản xuất</th>--%>
+<%--                            <td>{{commodity.origin}}</td>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <th>Chi tiết</th>--%>
+<%--                            <td>{{commodity.description}}</td>--%>
+<%--                        </tr>--%>
+<%--                        </tbody>--%>
+<%--                    </table>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="modal-footer">--%>
+<%--                <button type="button" class="btn btn-primary">Thêm vào giỏ hàng--%>
+<%--                </button>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 <div class="container-fluid mt-5 pt-5 " style="background-color: orange">
     <footer class="ml-xl-5 ml-md-4 ml-3 ">

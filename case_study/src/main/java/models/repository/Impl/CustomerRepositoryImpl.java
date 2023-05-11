@@ -17,7 +17,10 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     private final String INSERT_CUSTOMER = "INSERT INTO customers(customer_name, email, phone_number, address, account_id) VALUES (?,?,?,?,?);";
     private final String INSERT_ACCOUNT = "INSERT INTO account_users (user_name,password) VALUE(?,?);";
     private final String SELECT_ACCOUNT = "SELECT*FROM account_users;";
-    private final String SELECT_CUSTOMER_ID = "SELECT * FROM customers WHERE customer_id = ?;";
+    private final String SELECT_CUSTOMER_ID = "SELECT *\n" +
+            "FROM customers AS c\n" +
+            "INNER JOIN account_users AS ac ON c.account_id = ac.account_id\n" +
+            "WHERE customer_id = ?;";
     private final String DELETE_CUSTOMER = "DELETE FROM customers WHERE customer_id = ?;";
 
 
@@ -111,7 +114,11 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             while (resultSet.next()) {
                 int customerId = resultSet.getInt("customer_id");
                 String cuatomerName = resultSet.getString("customer_name");
-                Customer customer = new Customer(customerId, cuatomerName);
+                int accountId = resultSet.getInt("account_id");
+                String userName = resultSet.getString("user_name");
+                String password = resultSet.getString("password");
+                Account account = new Account(accountId,userName,password);
+                Customer customer = new Customer(customerId, cuatomerName,account);
                 return customer;
             }
         } catch (SQLException e) {
