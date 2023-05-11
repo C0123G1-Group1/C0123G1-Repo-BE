@@ -58,7 +58,7 @@ public class AccountServlet extends HttpServlet {
                 if (account != null) {
                     HttpSession session = request.getSession();
                     session.setAttribute("userSession", customer);
-                    String role = accountService.checkRole(customer.getAccount().getId());
+                    String role = accountService.checkRole(account.getId());
                     if (role.equals("users")) {
                         List<Product> productList = productService.getList();
                         request.setAttribute("productList", productList);
@@ -72,6 +72,5 @@ public class AccountServlet extends HttpServlet {
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
         }
-
     }
 }

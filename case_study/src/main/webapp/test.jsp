@@ -727,7 +727,7 @@
     </style>
 </head>
 <body>
-<c:set var="customer" value="<%=session.getAttribute("userSession")%>"
+<%--<c:set var="customerId" value="<%=((Customer)session.getAttribute("userSession")).getId()%>"></c:set>--%>
 <header class="sticky-top">
     <input type="checkbox" name="" id="chk1">
     <img src="coollogo_com-32663401.png">
@@ -822,7 +822,7 @@
                             <a href="" class="product-thumb">
                                 <img style="margin-top: 1vw" src="${product.getProductImage()}">
                             </a>
-                            <a href="/order-servlet?action=buy&productId=${product.getId()}&customerId=" class="buy-now" data-toggle="modal"
+                            <a href="/order-servlet?action=buy&productId=${product.getId()}&customerId=${customerId}" class="buy-now" data-toggle="modal"
                                data-target="#detail">Mua ngay</a>
                         </div>
                     </div>
