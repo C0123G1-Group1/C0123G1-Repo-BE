@@ -21,6 +21,8 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     private final String DELETE_ACCOUNT = "DELETE FROM account_users WHERE user_name=?;";
     private final String SEARCH_CUSTOMER = "SELECT c.*,ac.user_name,ac.password FROM customers AS c INNER JOIN account_users AS ac ON c.account_id=ac.account_id WHERE c.customer_name LIKE ? AND c.address LIKE ?;";
     private final String SELECT_CUSTOMER = "SELECT c.*,ac.user_name,ac.password FROM customers AS c INNER JOIN account_users AS ac ON c.account_id=ac.account_id WHERE c.customer_id= ?;";
+    private final String EDIT_ACCOUNT = "UPDATE account_users SET password = ? WHERE  account_id=?;";
+    private final String EDIT_CUSTOMER = "UPDATE customers SET customer_name=?,email=?,phone_number=?,address=?,update_at=current_timestamp() WHERE  account_id=?;";
 
 
     @Override
@@ -178,5 +180,26 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public boolean editCustomer(Customer customer) {
+        Connection connection =BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement =connection.prepareStatement(EDIT_ACCOUNT);
+            preparedStatement.setString(1,customer.getAccount().getPassword());
+            preparedStatement.setInt(2,customer.getAccount().getId());
+            preparedStatement.executeUpdate();
+            preparedStatement=connection.prepareStatement(EDIT_CUSTOMER);
+            preparedStatement.setString(1,customer.getName());
+            preparedStatement.setString(2,customer.getEmail());
+            preparedStatement.setString(3,customer.getPhoneNumber());
+            preparedStatement.setString(4,customer.getAddress());
+            preparedStatement.setInt(5,customer.getAccount().getId());
+            return preparedStatement.executeUpdate()>0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

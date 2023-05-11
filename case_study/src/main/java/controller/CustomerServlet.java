@@ -148,6 +148,27 @@ public class CustomerServlet extends HttpServlet {
         }
     }
     public void editCustomer(HttpServletRequest request,HttpServletResponse response){
-
+        int userId= Integer.parseInt(request.getParameter("userId"));
+        String userName= request.getParameter("userNameHidden");
+        String password= request.getParameter("password");
+        String fullName= request.getParameter("fullName");
+        String email= request.getParameter("email");
+        String phoneNumber= request.getParameter("phoneNumber");
+        String address= request.getParameter("address");
+        Account account =new Account(userId,userName,password);
+        Customer customer = new Customer(fullName, email, phoneNumber , address, account);
+        boolean check = customerService.editCustomer(customer);
+        String mess = "";
+        if (check) {
+            mess = "Sửa thành công";
+        } else {
+            mess = "Sửa thất bại";
+        }
+        request.setAttribute("mess", mess);
+        try {
+            request.getRequestDispatcher("/customer/edit.jsp").forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

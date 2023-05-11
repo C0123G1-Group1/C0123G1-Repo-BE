@@ -19,19 +19,19 @@
             <div>
                 <button class="btn btn-success" type="button" onclick="window.location.href='/customer'">Xem danh sách</button>
             </div>
-            <h4 style="color: red; font-weight: bold">${mess}</h4>
         </div>
     </nav>
     <div class="container">
         <div class="row">
+            <h4 style="color: blue; font-weight: bold">${mess}</h4>
             <h3>Sửa thông tin khách hàng</h3>
         </div>
         <div class="row">
                 <form method="post" action="/customer?action=edit">
                     <label>Tên đăng nhập</label>
-                    <input disabled class="form-control" type="text" name="userName" value="${customer.getAccount().getUserName()}"><br>
+                    <input disabled class="form-control" type="text" name="userNameDisable" value="${customer.getAccount().getUserName()}"><br>
                     <label>Mật khẩu</label>
-                    <input class="form-control" type="password" name="password" value="${customer.getAccount().getPassword()}"><br>
+                    <input class="form-control" type="text" name="password" value="${customer.getAccount().getPassword()}"><br>
                     <label>Họ và Tên</label>
                     <input class="form-control" type="text" name="fullName" value="${customer.getName()}"><br>
                     <label>Email</label>
@@ -42,7 +42,8 @@
                     <input class="form-control" type="text" name="address"value="${customer.getAddress()}"><br>
                     <button class="btn btn-success">Sửa</button>
                 </form>
-<%--                <p style="color: blue;font-weight: bold;justify-content: center">${mess}</p>--%>
+            <input hidden class="form-control" type="text" name="userNameHidden" value="${customer.getAccount().getUserName()}"><br>
+            <input hidden class="form-control" type="text" name="userId" value="${customer.getAccount().getId()}"><br>
         </div>
     </div>
 </div>

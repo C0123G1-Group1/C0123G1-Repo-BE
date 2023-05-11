@@ -14,4 +14,6 @@ public interface ICustomerService {
     List<Customer> searchCustomer(String nameCustomer,String addressCustomer);
 
     Customer getCustomer(int id);
+
+    boolean editCustomer(Customer customer);
 }
