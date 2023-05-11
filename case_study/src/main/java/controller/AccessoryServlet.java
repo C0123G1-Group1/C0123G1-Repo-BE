@@ -1,8 +1,9 @@
 package controller;
 
-import model.Accessory;
-import service.accessory.IAccessoryService;
-import service.accessory.impl.AccessoryService;
+
+import models.model.Product;
+import models.service.IAccessoryService;
+import models.service.impl.AccessoryService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,50 +13,60 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AccessoryServlet", urlPatterns = "/accessory")
+@WebServlet(name = "AccessoryServlet",urlPatterns = "/accessory")
 public class AccessoryServlet extends HttpServlet {
     private IAccessoryService accessoryService = new AccessoryService();
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
         }
         switch (action) {
-            case "create": {
-                request.getRequestDispatcher("/view/accessory/create.jsp").forward(request, response);
+            case "create":
+                showCreateForm(request, response);
                 break;
-            }
-            case "delete": {
-                int id = Integer.parseInt(request.getParameter("id"));
-                accessoryService.delete(id);
+            case "edit":
+                showEditForm(request, response);
+                break;
+            default:
                 showList(request, response);
-                break;
-            }
-            case "update": {
-                int id = Integer.parseInt(request.getParameter("id"));
-                Accessory accessory = accessoryService.findById(id);
-                request.setAttribute("accessory", accessory);
-                request.getRequestDispatcher("/view/accessory/update.jsp").forward(request, response);
-                break;
-            }
-            default: {
-                showList(request, response);
-                break;
-            }
         }
     }
 
-    private void showList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Accessory> accessoryList = accessoryService.findAll();
-        if (accessoryList == null) {
-            request.getRequestDispatcher("/view/accessory/error.jsp").forward(request, response);
-        } else {
-            request.setAttribute("accessoryList", accessoryList);
-            request.getRequestDispatcher("/view/accessory/list.jsp").forward(request, response);
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = accessoryService.findById(id);
+        request.setAttribute("product", product);
+        try {
+            request.getRequestDispatcher("view/accessorys/edit.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
+    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.getRequestDispatcher("view/accessorys/create.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showList(HttpServletRequest request, HttpServletResponse response) {
+        List<Product> productList = accessoryService.getList();
+        request.setAttribute("productList", productList);
+        try {
+            request.getRequestDispatcher("view/accessorys/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -63,60 +74,115 @@ public class AccessoryServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "create": {
-                String nameAccessory = request.getParameter("nameAccessory");
-                double priceAccessory = Double.parseDouble(request.getParameter("priceAccessory"));
-                String imageAccessory = request.getParameter("imageAccessory");
-                if (nameAccessory == null || imageAccessory == null) {
-                    request.getRequestDispatcher("/view/accessory/create.jsp").forward(request, response);
-                }
-                accessoryService.save(new Accessory(nameAccessory, priceAccessory, imageAccessory));
-                showList(request, response);
+            case "create":
+                createProduct(request, response);
                 break;
-            }
-            case "update": {
-                Integer id = Integer.parseInt(request.getParameter("id"));
-                String nameAccessory = request.getParameter("nameAccessory");
-                double priceAccessory = Double.parseDouble(request.getParameter("priceAccessory"));
-                String imageAccessory = request.getParameter("imageAccessory");
-                accessoryService.update(id, new Accessory(nameAccessory, priceAccessory, imageAccessory));
-                showList(request, response);
+            case "delete":
+                removeProduct(request, response);
                 break;
-            }
-            case "search": {
-                String name = request.getParameter("nameAccessory");
-                int price = Integer.parseInt(request.getParameter("priceAccessory"));
-                List<Accessory> accessoryList = null;
-                switch (price) {
-                    case 1:
-                        accessoryList = accessoryService.findByNameAndPrice(name, 0, 500000);
-                        request.setAttribute("accessoryList", accessoryList);
-                        request.getRequestDispatcher("/view/accessory/list.jsp").forward(request, response);
-                        break;
-                    case 2:
-                        accessoryList = accessoryService.findByNameAndPrice(name, 500000, 1000000);
-                        request.setAttribute("accessoryList", accessoryList);
-                        request.getRequestDispatcher("/view/accessory/list.jsp").forward(request, response);
-                        break;
-                    case 3:
-                        accessoryList = accessoryService.findByNameAndPrice(name, 1000000, 5000000);
-                        request.setAttribute("accessoryList", accessoryList);
-                        request.getRequestDispatcher("/view/accessory/list.jsp").forward(request, response);
-                        break;
-                    case 4:
-                        accessoryList = accessoryService.findByNameAndPrice(name, 5000000, 100000000);
-                        request.setAttribute("accessoryList", accessoryList);
-                        request.getRequestDispatcher("/view/accessory/list.jsp").forward(request, response);
-                        break;
-                    case 5:
-                        showList(request, response);
-                        break;
-                    default: {
-                    }
-                }
+            case "edit":
+                editProduct(request, response);
+                break;
+            case "search":
+                seachProduct(request, response);
+                break;
 
-            }
         }
-
     }
+
+    private void seachProduct(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        int price = Integer.parseInt(request.getParameter("price"));
+        List<Product> searchProductList = null;
+        switch (price) {
+            case 1:
+                searchProductList=accessoryService.search(name,0,1000000);
+                break;
+            case 2:
+                searchProductList = accessoryService.search(name, 0, 1000000);
+                break;
+            case 3:
+                searchProductList = accessoryService.search(name, 1000001, 3000000);
+                break;
+            case 4:
+                searchProductList = accessoryService.search(name, 3000001, 5000000);
+                break;
+            case 5:
+                searchProductList = accessoryService.search(name, 5000001, 10000000);
+                break;
+        }
+        request.setAttribute("productList", searchProductList);
+        try {
+            request.getRequestDispatcher("view/accessorys/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void editProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        int productType = Integer.parseInt(request.getParameter("productType"));
+        String describe = request.getParameter("describe");
+        double price = Double.parseDouble(((request.getParameter("price"))));
+        String productImage = request.getParameter("productImage");
+        Product product = new Product(id, name, productType, describe, price, productImage);
+        boolean checkEdit = accessoryService.edit(product);
+        String mess;
+        if (checkEdit) {
+            mess = "Editing is successful";
+        } else {
+            mess = "Edit failed";
+        }
+        request.setAttribute("mess", mess);
+        try {
+            request.getRequestDispatcher("view/accessorys/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void removeProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        boolean checkRemove = accessoryService.remove(id);
+        if (checkRemove) {
+            checkRemove = accessoryService.remove(id);
+        }
+        String mess;
+        if (checkRemove) {
+            mess = "Delete successfully";
+        } else {
+            mess = "Deletion failed";
+        }
+        request.setAttribute("mess", mess);
+        try {
+            request.getRequestDispatcher("view/accessorys/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createProduct(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        int productType = Integer.parseInt(request.getParameter("productType"));
+        String describe = request.getParameter("describe");
+        double price = Double.parseDouble(((request.getParameter("price"))));
+        String productImage = request.getParameter("productImage");
+        Product product = new Product(name, productType, describe, price, productImage);
+        accessoryService.createAt(product);
+        try {
+            request.getRequestDispatcher("view/accessorys/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
