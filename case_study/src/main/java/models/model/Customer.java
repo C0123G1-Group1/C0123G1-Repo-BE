@@ -19,6 +19,16 @@ public class Customer {
         this.account = account;
     }
 
+    public Customer(int id, String name, String email, String phoneNumber, String address, String createAt, String updateAt) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+    }
+
     public Customer(String name, String email, String phoneNumber, String address, Account account) {
         this.name = name;
         this.email = email;

@@ -1,10 +1,6 @@
 package controller;
 
-import models.model.Customer;
-import models.model.Order;
-import models.model.OrderDetail;
-import models.model.Product;
-import models.repository.IOrderDetailRepository;
+import models.model.*;
 import models.service.ICustomerService;
 import models.service.IOrderDetailSevice;
 import models.service.IOrderService;
@@ -18,7 +14,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "OrderServlet", value = "/order-servlet")
@@ -47,11 +42,16 @@ public class OrderServlet extends HttpServlet {
                 request.getRequestDispatcher("/users/product.jsp").forward(request, response);
                 break;
             case "delete":
-                int productId = Integer.parseInt(request.getParameter("productId"));
-                orderDetailSevice.deleteOrderDetail(productId);
+                customerId = Integer.parseInt(request.getParameter("customerId"));
+                int productOrderDetailId = Integer.parseInt(request.getParameter("productOrderDetailId"));
+                boolean statusOrderDetail = orderDetailSevice.deleteOrderDetail(productOrderDetailId);
+                List<ProductDAO> productDAOList = orderDetailSevice.getOrderDetailProduct(customerId);
+                request.setAttribute("statusOrderDetail",statusOrderDetail);
+                request.setAttribute("productDAOList",productDAOList);
+                request.getRequestDispatcher("/users/order_detail.jsp").forward(request,response);
                 break;
             case "buy":
-                orderDetail(request, response);
+                buyOrderDetail(request, response);
                 break;
             case "displayProducts":
                 productList = productService.getList();
@@ -59,19 +59,24 @@ public class OrderServlet extends HttpServlet {
                 request.getRequestDispatcher("/users/product.jsp").forward(request, response);
                 break;
             case "orderDetail":
-                customerId = Integer.parseInt(request.getParameter("customerId"));
-                productList = orderDetailSevice.getOrderDetailProduct(customerId);
-                request.setAttribute("productList", productList);
-                request.getRequestDispatcher("/users/order_detail.jsp").forward(request, response);
+                orderDetail(request, response);
                 break;
             default:
-                List<Customer> customerList = customerService.getAllCustomer();
-                request.setAttribute("customerList", customerList);
-                request.getRequestDispatcher("/users/home.jsp").forward(request, response);
+                List<CustomerDAO> customerDAOList = orderDetailSevice.getCustomerOrder();
+                request.setAttribute("customerDAOList", customerDAOList);
+                request.getRequestDispatcher("/admin/order.jsp").forward(request, response);
         }
     }
 
     private void orderDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int customerId;
+        customerId = Integer.parseInt(request.getParameter("customerId"));
+        List<ProductDAO> productDAOList = orderDetailSevice.getOrderDetailProduct(customerId);
+        request.setAttribute("productDAOList", productDAOList);
+        request.getRequestDispatcher("/users/order_detail.jsp").forward(request, response);
+    }
+
+    private void buyOrderDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int customerId;
         int productId = Integer.parseInt(request.getParameter("productId"));
         customerId = Integer.parseInt(request.getParameter("customerId"));

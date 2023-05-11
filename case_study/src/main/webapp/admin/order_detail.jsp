@@ -31,7 +31,6 @@
         </div>
     </div>
 </nav>
-<c:set var="customerId" value="<%= ((Customer)session.getAttribute(\"userSession\")).getId() %>"></c:set>
 <div>
     <table class="table table-hover">
         <thead>
@@ -65,7 +64,7 @@
                 <td>${productDAOList.getQuantity()}</td>
                 <td>
                     <button class="btn btn-danger"
-                            onclick="window.location.href='/order-servlet?action=delete&customerId=${customerId}&productOrderDetailId=${productDAOList.getOrderDetailId()}'">
+                            onclick="window.location.href='/order-detail-servlet?action=delete&customerId=${productDAOList.getId()}&productOrderDetailId=${productDAOList.getOrderDetailId()}'">
                         Delete
                     </button>
                 </td>

@@ -1,7 +1,9 @@
 package models.service.impl;
 
+import models.model.Customer;
+import models.model.CustomerDAO;
 import models.model.OrderDetail;
-import models.model.Product;
+import models.model.ProductDAO;
 import models.repository.IOrderDetailRepository;
 import models.repository.Impl.OrderDetailRepositoryImpl;
 import models.service.IOrderDetailSevice;
@@ -16,17 +18,22 @@ public class OrderDetailServiceImpl implements IOrderDetailSevice {
     }
 
     @Override
-    public boolean deleteOrderDetail(int productId) {
-        return orderDetailRepository.deleteOrderDetail(productId);
+    public boolean deleteOrderDetail(int productOrderDetailId) {
+        return orderDetailRepository.deleteOrderDetail(productOrderDetailId);
     }
 
     @Override
-    public List<Product> getOrderDetailProduct(int customerId) {
+    public List<ProductDAO> getOrderDetailProduct(int customerId) {
         return orderDetailRepository.getOrderDetailProduct(customerId);
     }
 
     @Override
     public List<OrderDetail> getOrderDetail( int customerId) {
         return orderDetailRepository.getOrderDetail(customerId);
+    }
+
+    @Override
+    public List<CustomerDAO> getCustomerOrder() {
+        return orderDetailRepository.getCustomerOrder();
     }
 }

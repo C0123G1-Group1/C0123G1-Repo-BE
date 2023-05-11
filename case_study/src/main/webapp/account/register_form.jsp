@@ -28,10 +28,10 @@
                                 <c:if test="${statusRegister}">
                                     <h5>Dang ky thanh cong</h5>
                                 </c:if>
-                                <c:if test="${!statusRegister}">
+                                <c:if test="${statusRegister == false}">
                                     <h5>Dang ky that bai</h5>
                                 </c:if>
-                                <form action="/account-servlet" method="post">
+                                <form action="/account-servlet?action=register" method="post">
                                     <input type="text" name="action" value="register" hidden>
                                     <div class="form-outline mb-2">
                                         <label class="form-label" for="form3Example1cg">User Name</label>
@@ -66,10 +66,8 @@
                                         <button type="submit"
                                                 class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                                     </div>
-
                                     <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="../index.jsp" class="fw-bold text-body"><u>Login here</u></a></p>
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -78,17 +76,17 @@
         </div>
     </section>
     <script>
-        // function checkPassword() {
-        //     let passwordFirst = document.getElementById("form3Example5cg").value;
-        //     let passwordLast = document.getElementById("form3Example6cdg").value;
-        //     if(passwordLast !== ""){
-        //         if(passwordFirst === passwordLast){
-        //             document.getElementById("check").innerText = "Trung khop";
-        //         }else {
-        //             document.getElementById("check").innerText = "khong trung";
-        //         }
-        //     }
-        // }
+        function checkPassword() {
+            let passwordFirst = document.getElementById("form3Example5cg").value;
+            let passwordLast = document.getElementById("form3Example6cdg").value;
+            if(passwordLast !== ""){
+                if(passwordFirst === passwordLast){
+                    document.getElementById("check").innerText = "Trung khop";
+                }else {
+                    document.getElementById("check").innerText = "khong trung";
+                }
+            }
+        }
     </script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

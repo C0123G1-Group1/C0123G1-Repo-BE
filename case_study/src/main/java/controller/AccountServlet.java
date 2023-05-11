@@ -37,10 +37,8 @@ public class AccountServlet extends HttpServlet {
         String action = request.getParameter("action");
         switch (action) {
             case "register":
-                Customer customer = new Customer();
-                boolean statusRegister = customerService.saveCustomer(customer);
-                request.setAttribute("statusRegister", statusRegister);
-                request.getRequestDispatcher("/account/register_form.jsp").forward(request, response);
+                registerAccount(request, response);
+                Customer customer;
                 break;
             case "login":
                 String userName = request.getParameter("userName");
@@ -71,5 +69,18 @@ public class AccountServlet extends HttpServlet {
                 }
                 break;
         }
+    }
+
+    private void registerAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String customerName = request.getParameter("customerName");
+        String email = request.getParameter("email");
+        String phoneNumber = request.getParameter("phoneNumber");
+        String address = request.getParameter("address");
+        String password = request.getParameter("password");
+        Account account = new Account(customerName,password);
+        Customer customer = new Customer(customerName,email,phoneNumber,address,account);
+        boolean statusRegister = customerService.saveCustomer(customer);
+        request.setAttribute("statusRegister", statusRegister);
+        request.getRequestDispatcher("/account/register_form.jsp").forward(request, response);
     }
 }

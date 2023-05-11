@@ -133,21 +133,6 @@
     </div>
   </div>
 </div>
-<%--<nav aria-label="Page navigation example">--%>
-<%--    <ul class="pagination justify-content-end">--%>
-<%--        <li class="page-item">--%>
-<%--            <a class="page-link" href="#">Previous</a>--%>
-<%--        </li>--%>
-<%--        <c:forEach varStatus="i" begin="1" end="${Math.ceil(productListSize/10.0)}">--%>
-<%--            <li class="page-item"><a class="page-link"--%>
-<%--                                     href="/products-servlet?action=displayPageAdmin&page=${i.count}">${i.count}</a>--%>
-<%--            </li>--%>
-<%--        </c:forEach>--%>
-<%--        <li class="page-item">--%>
-<%--            <a class="page-link" href="#">Next</a>--%>
-<%--        </li>--%>
-<%--    </ul>--%>
-<%--</nav>--%>
 <script>
   function deleteCustomer(id, name) {
     document.getElementById("customerId").value = id;
