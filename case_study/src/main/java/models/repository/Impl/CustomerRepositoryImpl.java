@@ -124,7 +124,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     }
 
     @Override
-    public List<Customer> searchCustomer(String nameCustomer,String addressCustomer) {
+    public List<Customer> searchCustomer(String nameCustomer, String addressCustomer) {
         List<Customer> customerList = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
         try {
@@ -155,13 +155,13 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
 
     @Override
     public Customer getCustomer(int id) {
-        Connection connection =BaseRepository.getConnectDB();
+        Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement =connection.prepareStatement(SELECT_CUSTOMER);
-            preparedStatement.setInt(1,id);
-            ResultSet resultSet= preparedStatement.executeQuery();
-            Customer customer=null;
-            if (resultSet.next()){
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Customer customer = null;
+            if (resultSet.next()) {
                 int customerId = resultSet.getInt("customer_id");
                 String name = resultSet.getString("customer_name");
                 String email = resultSet.getString("email");
@@ -184,21 +184,27 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
 
     @Override
     public boolean editCustomer(Customer customer) {
-        Connection connection =BaseRepository.getConnectDB();
-        try {
-            PreparedStatement preparedStatement =connection.prepareStatement(EDIT_ACCOUNT);
-            preparedStatement.setString(1,customer.getAccount().getPassword());
-            preparedStatement.setInt(2,customer.getAccount().getId());
-            preparedStatement.executeUpdate();
-            preparedStatement=connection.prepareStatement(EDIT_CUSTOMER);
-            preparedStatement.setString(1,customer.getName());
-            preparedStatement.setString(2,customer.getEmail());
-            preparedStatement.setString(3,customer.getPhoneNumber());
-            preparedStatement.setString(4,customer.getAddress());
-            preparedStatement.setInt(5,customer.getAccount().getId());
-            return preparedStatement.executeUpdate()>0;
-        } catch (SQLException e) {
-            e.printStackTrace();
+        List<Customer> customerList = getAllCustomer();
+        Connection connection = BaseRepository.getConnectDB();
+        for (Customer c : customerList) {
+            if (!c.getEmail().equals(customer.getEmail()) && !c.getPhoneNumber().equals(customer.getPhoneNumber())) {
+                try {
+                    PreparedStatement preparedStatement = connection.prepareStatement(EDIT_ACCOUNT);
+                    preparedStatement.setString(1, customer.getAccount().getPassword());
+                    preparedStatement.setInt(2, customer.getAccount().getId());
+                    preparedStatement.executeUpdate();
+                    preparedStatement = connection.prepareStatement(EDIT_CUSTOMER);
+                    preparedStatement.setString(1, customer.getName());
+                    preparedStatement.setString(2, customer.getEmail());
+                    preparedStatement.setString(3, customer.getPhoneNumber());
+                    preparedStatement.setString(4, customer.getAddress());
+                    preparedStatement.setInt(5, customer.getAccount().getId());
+                    return preparedStatement.executeUpdate() > 0;
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return false;
     }

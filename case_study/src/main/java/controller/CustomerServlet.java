@@ -18,7 +18,7 @@ public class CustomerServlet extends HttpServlet {
     private ICustomerService customerService = new CustomerServiceImpl();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)  {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -137,25 +137,22 @@ public class CustomerServlet extends HttpServlet {
             }
         }
     }
-    private void sendCustomer(HttpServletRequest request, HttpServletResponse response) {
+    private void sendCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id= Integer.parseInt(request.getParameter("customerId"));
         Customer customer =customerService.getCustomer(id);
         request.setAttribute("customer",customer);
-        try {
+
             request.getRequestDispatcher("/customer/edit.jsp").forward(request,response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
+
     }
     public void editCustomer(HttpServletRequest request,HttpServletResponse response){
-        int userId= Integer.parseInt(request.getParameter("userId"));
-        String userName= request.getParameter("userNameHidden");
+        String userName= request.getParameter("userNameH");
         String password= request.getParameter("password");
         String fullName= request.getParameter("fullName");
         String email= request.getParameter("email");
         String phoneNumber= request.getParameter("phoneNumber");
         String address= request.getParameter("address");
-        Account account =new Account(userId,userName,password);
+        Account account =new Account(userName,password);
         Customer customer = new Customer(fullName, email, phoneNumber , address, account);
         boolean check = customerService.editCustomer(customer);
         String mess = "";

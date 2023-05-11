@@ -84,7 +84,7 @@
             <form method="post" action="/customer?action=edit">
                 <label>Tên đăng nhập</label>
                 <input disabled class="form-control" type="text" name="userNameDisable"
-                       value="${customer.getAccount().getUserName()}"><br>
+                       value="${customer.getAccount().getUserName()}"><input hidden class="form-control" type="text" name="userNameH" value="${customer.getAccount().getUserName()}"><br>
                 <label>Mật khẩu</label>
                 <input class="form-control" type="text" name="password"
                        value="${customer.getAccount().getPassword()}"><br>
@@ -98,9 +98,6 @@
                 <input class="form-control" type="text" name="address" value="${customer.getAddress()}"><br>
                 <button class="btn btn-success">Sửa</button>
             </form>
-            <input hidden class="form-control" type="text" name="userNameHidden"
-                   value="${customer.getAccount().getUserName()}"><br>
-            <input hidden class="form-control" type="text" name="userId" value="${customer.getAccount().getId()}"><br>
         </div>
         <div class="col-3">
         </div>

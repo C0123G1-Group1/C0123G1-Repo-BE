@@ -22,29 +22,36 @@
             <h4 style="color: red; font-weight: bold">${mess}</h4>
         </div>
     </nav>
-    <div class="container">
-        <div class="row">
-            <h3>Thêm mới user</h3>
+</div>
+<div class="container-fluid">
+    <div class="row justify-content-center" >
+        <div class="col-auto">
+            <h2>Thêm mới khách hàng</h2>
         </div>
-        <div class="row">
-            <div>
-                <form method="post" action="/customer?action=create">
-                    <label>Tên đăng nhập</label>
-                    <input class="form-control" type="text" name="userName"><br>
-                    <label>Mật khẩu</label>
-                    <input class="form-control" type="password" name="password"><br>
-                    <label>Họ và Tên</label>
-                    <input class="form-control" type="text" name="fullName"><br>
-                    <label>Email</label>
-                    <input class="form-control" type="email" name="email"><br>
-                    <label>Số điện thoại</label>
-                    <input class="form-control" type="number" name="phoneNumber"><br>
-                    <label>Địa chỉ</label>
-                    <input class="form-control" type="text" name="address"><br>
-                    <button class="btn btn-success">Thêm</button>
-                </form>
-                <p style="color: blue;font-weight: bold;justify-content: center">${mess}</p>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <h4 style="color: blue; font-weight: bold">${mess}</h4>
+            <form method="post" action="/customer?action=create">
+                <label>Tên đăng nhập</label>
+                <input class="form-control" type="text" name="userName"><br>
+                <label>Mật khẩu</label>
+                <input class="form-control" type="password" name="password"><br>
+                <label>Họ và Tên</label>
+                <input class="form-control" type="text" name="fullName"><br>
+                <label>Email</label>
+                <input class="form-control" type="email" name="email"><br>
+                <label>Số điện thoại</label>
+                <input class="form-control" type="number" name="phoneNumber"><br>
+                <label>Địa chỉ</label>
+                <input class="form-control" type="text" name="address"><br>
+                <button class="btn btn-success">Thêm</button>
+            </form>
+            <p style="color: blue;font-weight: bold;justify-content: center">${mess}</p>
+        </div>
+        <div class="col-3">
         </div>
     </div>
 </div>

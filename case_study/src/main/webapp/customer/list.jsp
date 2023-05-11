@@ -17,62 +17,70 @@
 </head>
 <body>
 <jsp:include page="/header_footer/header.jsp"></jsp:include>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: sticky;top:0;left: 0;right: 0">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light " style="position: sticky;top:0;left: 0;right: 0;background-color:
+#e8e8e8">
+    <div class="container-fluid py-3">
         <div>
-            <button class="btn btn-success" onclick="window.location.href='/customer?action=create'">Thêm mới</button>
+            <button class="btn btn-outline-success" onclick="window.location.href='/customer?action=create'">Thêm mới
+            </button>
         </div>
         <h4 style="color: red; font-weight: bold">${mess}</h4>
-        <form action="/customer" class="d-flex">
+        <form action="/customer" class="d-flex my-0">
             <input type="hidden" name="action" value="search">
             <input class="form-control me-2" type="text" placeholder="Nhập tên khách hàng" aria-label="Search"
                    name="nameCustomer" value="${nameCustomer}">
             <input class="form-control me-2" type="text" placeholder="Nhập địa chỉ" aria-label="Search"
                    name="addressCustomer" value="${addressCustomer}">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-primary" type="submit">Tìm kiếm</button>
         </form>
     </div>
 </nav>
 <div class="container-fluid ">
-    <h3>Danh sách khách hàng</h3>
     <div class="row">
-        <div class="d-flex">
-        </div>
-        <table id="tableCustomer" class="table table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tên</th>
-                <th>Email</th>
-                <th>SĐT</th>
-                <th>Địa chỉ</th>
-                <th>Ngày thêm</th>
-                <th>Ngày sửa</th>
-                <th>Thao tác</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="customer" items="${customerList}">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div>
+                <h3>Danh sách khách hàng</h3>
+            </div>
+            <table id="tableCustomer" class="table table-hover">
+                <thead>
                 <tr>
-                    <td>${customer.getId()}</td>
-                    <td>${customer.getName()}</td>
-                    <td>${customer.getEmail()}</td>
-                    <td>${customer.getPhoneNumber()}</td>
-                    <td>${customer.getAddress()}</td>
-                    <td>${customer.getCreateAt()}</td>
-                    <td>${customer.getUpdateAt()}</td>
-                    <td>
-                        <button class="btn btn-danger" type="button" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal"
-                                onclick="infoDelete('${customer.getId()}','${customer.getName()}','${customer.getAccount().getUserName()}')">
-                            Delete
-                        </button>
-                        <button class="btn btn-success" onclick="window.location.href='/customer?action=edit&customerId=${customer.getId()}'">Sửa</button>
-                    </td>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>SĐT</th>
+                    <th>Địa chỉ</th>
+                    <th>Thao tác</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <c:forEach var="customer" items="${customerList}">
+                    <tr>
+                        <td>${customer.getName()}</td>
+                        <td>${customer.getEmail()}</td>
+                        <td>${customer.getPhoneNumber()}</td>
+                        <td>${customer.getAddress()}</td>
+                        <td>
+                            <button class="btn btn-warning"
+                                    onclick="window.location.href='/customer?action=edit&customerId=${customer.getId()}'">
+                                Sửa
+                            </button>
+                            <button class="btn btn-danger" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal"
+                                    onclick="infoDelete('${customer.getId()}','${customer.getName()}','${customer.getAccount().getUserName()}')">
+                                Xóa
+                            </button>
+                            <button class="btn btn-info" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal1"
+                                    onclick="infoDetail('${customer.getId()}','${customer.getName()}','${customer.getCreateAt()}','${customer.getUpdateAt()}')">
+                                Chi tiết
+                            </button>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-2"></div>
     </div>
 </div>
 <%--Modal delete--%>
@@ -103,6 +111,28 @@
         </div>
     </div>
 </div>
+<%--Modal detail--%>
+<div class="modal" id="deleteModal1" tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Chi tiết khách hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <form action="/customer?action=delete" method="post">
+                <div class="modal-body">
+                    <p>ID khách hàng:  <span id="customerIdDetail"></span></p>
+                    <p>Tên Khách hàng: <span id="customerNameDetail"></span></p>
+                    <p>Ngày thêm:      <span id="customerCreateAtDetail"></span></p>
+                    <p>Ngày Sửa:       <span id="customerUpdateAtDetail"></span></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <footer style="margin-top: 50px">
     <jsp:include page="/header_footer/footer.jsp"></jsp:include>
 </footer>
@@ -111,6 +141,13 @@
         document.getElementById("customerId").value = id;
         document.getElementById("nameAccount").value = account;
         document.getElementById("deleteName").innerText = name;
+    }
+
+    function infoDetail(id, name, createAt, updateAt) {
+        document.getElementById("customerIdDetail").innerText = id;
+        document.getElementById("customerNameDetail").innerText = name;
+        document.getElementById("customerCreateAtDetail").innerText = createAt;
+        document.getElementById("customerUpdateAtDetail").innerText = updateAt;
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
