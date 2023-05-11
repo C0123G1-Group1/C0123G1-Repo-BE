@@ -26,7 +26,7 @@
             <tr>
                 <th>Tên</th>
                 <td>
-                    <input type="text" name="name" id="name" size="45"/>
+                    <input type="text" name="name" id="name" size="45" required/>
                 </td>
             </tr>
             <tr>
@@ -42,19 +42,19 @@
             <tr>
                 <th>Thông tin</th>
                 <td>
-                    <input type="text" name="describe" id="describe" size="15"/>
+                    <input type="text" name="describe" id="describe" size="15" required/>
                 </td>
             </tr>
             <tr>
                 <th>Giá</th>
                 <td>
-                    <input type="text" name="price" id="price" size="15"/>
+                    <input type="text" name="price" id="price" size="15" required/>
                 </td>
             </tr>
             <tr>
                 <th>Hình ảnh</th>
                 <td>
-                    <input type="text" name="productImage" id="productImage" size="15"/>
+                    <input type="text" name="productImage" id="productImage" size="15" required/>
                 </td>
             </tr>
             <tr>

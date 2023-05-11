@@ -9,54 +9,44 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<form action="/order-servlet?action=createOrderDetail" method="post">
-    <table border="1" cellpadding="5">
-        <tr>
-            <th>Order Id</th>
-            <td>
-                <input type="text" name="orderId" id="describe" size="15" value="${orderId}" readonly/>
-            </td>
-        </tr>
+<div class="container-fluid">
+    <div class="row justify-content-center" >
+        <div class="col-auto">
+            <h2>Chỉnh sửa thông tin</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <h4 style="color: blue; font-weight: bold">${mess}</h4>
+            <form method="post" action="/order-servlet?action=createOrderDetail">
+                <input type="text" name="orderId" id="describe" size="15" value="${orderId}" hidden/>
+                <input type="text" name="customerId" id="name" size="45" value="${customerId}" hidden/>
+                <input type="text" name="productId" id="productId" size="15" value="${productId}" hidden/>
+                <input type="text" name="productType" id="productImage" size="15" value="${productType}" hidden/>
+                <label for="productName">Product Name</label>
+                <input class="form-control" type="text" id="productName" name="productName" size="15" value="${productName}" readonly/>
+                <label for="price">Price</label>
+                <input class="form-control" type="text" id="price" name="price" value="${price}" readonly>
+                <br>
+                <label for="quantity">Quantity</label>
+                <input class="form-control" type="text" id="quantity" name="quantity" required>
+                <br>
+                <button class="btn btn-success">Buy</button>
+            </form>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
 
-        <tr>
-            <th>Customer Id</th>
-            <td>
-                <input type="text" name="customerId" id="name" size="45" value="${customerId}" readonly/>
-            </td>
-        </tr>
-
-        <tr>
-            <th>Product Id</th>
-            <td>
-                <input type="text" name="productId" id="productId" size="15" value="${productId}" readonly/>
-            </td>
-        </tr>
-        <tr>
-            <th>ProductType</th>
-            <td>
-                <input type="text" name="productType" id="productImage" size="15" value="${productType}" readonly/>
-            </td>
-        </tr>
-        <tr>
-            <th>Price</th>
-            <td>
-                <input type="text" name="price" id="price" size="15" value="${price}" readonly/>
-            </td>
-        </tr>
-        <tr>
-            <th>Quantity</th>
-            <td>
-                <input type="text" name="quantity" id="quantity" size="15"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-                <input type="submit" value="Buy"/>
-            </td>
-        </tr>
-    </table>
-</form>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </html>

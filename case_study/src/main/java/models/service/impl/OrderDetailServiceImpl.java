@@ -16,7 +16,17 @@ public class OrderDetailServiceImpl implements IOrderDetailSevice {
     }
 
     @Override
-    public List<Product> getOrderDetail(int customerId) {
+    public boolean deleteOrderDetail(int productId) {
+        return orderDetailRepository.deleteOrderDetail(productId);
+    }
+
+    @Override
+    public List<Product> getOrderDetailProduct(int customerId) {
+        return orderDetailRepository.getOrderDetailProduct(customerId);
+    }
+
+    @Override
+    public List<OrderDetail> getOrderDetail( int customerId) {
         return orderDetailRepository.getOrderDetail(customerId);
     }
 }

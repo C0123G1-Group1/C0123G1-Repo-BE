@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface IOrderDetailRepository {
     boolean addOrderDetail(OrderDetail orderDetail);
-    List<Product> getOrderDetail(int customerId);
+    boolean deleteOrderDetail(int productId);
+    List<Product> getOrderDetailProduct(int customerId);
+    List<OrderDetail> getOrderDetail( int customerId);
 }

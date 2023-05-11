@@ -53,24 +53,23 @@ public class AccountServlet extends HttpServlet {
                         break;
                     }
                 }
-                customer = customerService.getCustomerById(account.getId());
-                Boolean statusLogin = true;
                 if (account != null) {
+                    customer = customerService.getCustomerById(account.getId());
                     HttpSession session = request.getSession();
                     session.setAttribute("userSession", customer);
                     String role = accountService.checkRole(account.getId());
                     if (role.equals("users")) {
                         List<Product> productList = productService.getList();
                         request.setAttribute("productList", productList);
-                        request.getRequestDispatcher("test.jsp").forward(request, response);
+                        request.getRequestDispatcher("/users/test.jsp").forward(request, response);
                     } else if (role.equals("admin")) {
                         request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);
                     }
                 } else {
-                    statusLogin = false;
-                    request.setAttribute("statusLogin", statusLogin);
+                    request.setAttribute("statusLogin", false);
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
+                break;
         }
     }
 }

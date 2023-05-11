@@ -46,17 +46,12 @@ public class OrderServlet extends HttpServlet {
                 request.setAttribute("productList", productList);
                 request.getRequestDispatcher("/users/product.jsp").forward(request, response);
                 break;
-            case "buy":
+            case "delete":
                 int productId = Integer.parseInt(request.getParameter("productId"));
-                customerId = Integer.parseInt(request.getParameter("customerId"));
-                int orderId = orderService.getOrderId(customerId);
-                Product product = productService.findById(productId);
-                request.setAttribute("orderId", orderId);
-                request.setAttribute("customerId", customerId);
-                request.setAttribute("productId", productId);
-                request.setAttribute("productType", product.getProductType());
-                request.setAttribute("price", product.getPrice());
-                request.getRequestDispatcher("/users/create.jsp").forward(request, response);
+                orderDetailSevice.deleteOrderDetail(productId);
+                break;
+            case "buy":
+                orderDetail(request, response);
                 break;
             case "displayProducts":
                 productList = productService.getList();
@@ -64,16 +59,31 @@ public class OrderServlet extends HttpServlet {
                 request.getRequestDispatcher("/users/product.jsp").forward(request, response);
                 break;
             case "orderDetail":
-                    customerId = Integer.parseInt(request.getParameter("customerId"));
-                    productList = orderDetailSevice.getOrderDetail(customerId);
-                    request.setAttribute("productList",productList);
-                    request.getRequestDispatcher("/users/order_detail.jsp").forward(request,response);
+                customerId = Integer.parseInt(request.getParameter("customerId"));
+                productList = orderDetailSevice.getOrderDetailProduct(customerId);
+                request.setAttribute("productList", productList);
+                request.getRequestDispatcher("/users/order_detail.jsp").forward(request, response);
                 break;
             default:
-                List<Order> orderList = orderService.getAll();
-                request.setAttribute("orderList", orderList);
-                request.getRequestDispatcher("/orders/list.jsp").forward(request, response);
+                List<Customer> customerList = customerService.getAllCustomer();
+                request.setAttribute("customerList", customerList);
+                request.getRequestDispatcher("/users/home.jsp").forward(request, response);
         }
+    }
+
+    private void orderDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int customerId;
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        customerId = Integer.parseInt(request.getParameter("customerId"));
+        int orderId = orderService.getOrderId(customerId);
+        Product product = productService.findById(productId);
+        request.setAttribute("orderId", orderId);
+        request.setAttribute("customerId", customerId);
+        request.setAttribute("productId", productId);
+        request.setAttribute("productName", product.getName());
+        request.setAttribute("productType", product.getProductType());
+        request.setAttribute("price", product.getPrice());
+        request.getRequestDispatcher("/users/create.jsp").forward(request, response);
     }
 
     @Override
@@ -94,10 +104,9 @@ public class OrderServlet extends HttpServlet {
                 OrderDetail orderDetail = new OrderDetail(orderId, customerId, productId, productType, price, quantity);
                 boolean statusOrderDetail = orderDetailSevice.addOrderDetail(orderDetail);
                 List<Product> productList = productService.getList();
-                request.setAttribute("productList",productList);
-                request.setAttribute("customerId",customerId);
-                request.setAttribute("statusOrderDetail",statusOrderDetail);
-                request.getRequestDispatcher("/users/product.jsp").forward(request,response);
+                request.setAttribute("productList", productList);
+                request.setAttribute("statusOrderDetail", statusOrderDetail);
+                request.getRequestDispatcher("/users/test.jsp").forward(request, response);
                 break;
         }
     }

@@ -21,15 +21,15 @@
         <div>
             <form method="post" action="/customer-servlet?action=create">
                 <label>Tên đăng nhập</label>
-                <input class="form-control" type="text" name="userName"><br>
+                <input class="form-control" type="text" name="userName" required><br>
                 <label>Mật khẩu</label>
-                <input class="form-control" type="password" name="password"><br>
+                <input class="form-control" type="password" name="password" required><br>
                 <label>Họ và Tên</label>
-                <input class="form-control" type="text" name="fullName"><br>
+                <input class="form-control" type="text" name="fullName" required><br>
                 <label>Email</label>
-                <input class="form-control" type="email" name="email"><br>
+                <input class="form-control" type="email" name="email" required><br>
                 <label>Số điện thoại</label>
-                <input class="form-control" type="number" name="phoneNumber"><br>
+                <input class="form-control" type="number" name="phoneNumber" required><br>
                 <label>Địa chỉ</label>
                 <input class="form-control" type="text" name="address"><br>
                 <button class="btn btn-success">Thêm</button>

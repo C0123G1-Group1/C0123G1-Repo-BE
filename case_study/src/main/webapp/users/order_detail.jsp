@@ -48,7 +48,6 @@
             <th scope="col">Describe</th>
             <th scope="col">Price</th>
             <th scope="col">Create At</th>
-            <th scope="col">Update At</th>
             <th scope="col">Actions</th>
         </tr>
         </thead>
@@ -68,12 +67,11 @@
                 <td>${product.getDescribe()}</td>
                 <td>${product.getPrice()}</td>
                 <td>${product.getCreatAt()}</td>
-                <td>${product.getUpdateAt()}</td>
                 <td>
-<%--                    <button class="btn btn-warning"--%>
-<%--                            onclick="window.location.href='/order-servlet?action=buy&productId=${product.getId()}&customerId=${customerId}'">--%>
-<%--                        Buy--%>
-<%--                    </button>--%>
+                    <button class="btn btn-danger"
+                            onclick="window.location.href='/order-servlet?action=delete&productId=${product.getId()}&customerId=${customerId}'">
+                        Delete
+                    </button>
                 </td>
                 </td>
             </tr>

@@ -105,7 +105,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -126,7 +126,7 @@
                     <option value="1">Dưới 5 triệu</option>
                     <option value="2">5-10 triệu</option>
                     <option value="3">10-15 triệu</option>
-                    <option value="3">Trên 15 triệu</option>
+                    <option value="4">Trên 15 triệu</option>
                 </select>
                 <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>

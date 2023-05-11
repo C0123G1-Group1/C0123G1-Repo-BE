@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +14,6 @@
     </style>
 </head>
 <body>
-
-<%--<c:redirect url="/admin/admin.jsp"></c:redirect>--%>
-<%--<c:redirect url="/users/home.jsp"></c:redirect>--%>
 <div id="bg-img" class="d-flex align-items-center">
     <div class="container-fluid d-flex justify-content-center align-items-center">
         <div class="row main-content bg-success text-center">
@@ -59,20 +56,19 @@
             </div>
         </div>
     </div>
-    <input id="status" value="${status}" hidden>
+    <c:set var="status" value="${statusLogin}"></c:set>
     <div id="canh-bao" style="display: none;"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 <script>
+    let status = ${status};
+    if(!status){
+        statusLogin();
+    }
     function statusLogin() {
         document.getElementById("statusLogin").innerText = "Incorrect username or password";
-    }
-
-    let checkLogin = document.getElementById("status").value;
-    if (checkLogin === "fail") {
-        statusLogin()
     }
 </script>
 </body>

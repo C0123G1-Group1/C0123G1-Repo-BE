@@ -727,10 +727,10 @@
     </style>
 </head>
 <body>
-<%--<c:set var="customerId" value="<%=((Customer)session.getAttribute("userSession")).getId()%>"></c:set>--%>
+<c:set var="customerId" value="<%= ((Customer)session.getAttribute(\"userSession\")).getId() %>"></c:set>
 <header class="sticky-top">
     <input type="checkbox" name="" id="chk1">
-    <img src="coollogo_com-32663401.png">
+    <img src="../coollogo_com-32663401.png">
     <div class="logo">
         <div class="search-box">
             <input style="margin-top: 30px" type="text" id="search"
@@ -759,12 +759,15 @@
                 </div>
             </div>
         </li>
-        <li style="cursor: pointer"><a>
+        <li style="cursor: pointer">
+            <a href="/order-servlet?action=orderDetail&customerId=${customerId}">
             <svg class="iconm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                 <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path>
             </svg>
             <span style="height: 15px; width: 15px;position: absolute"
-                  class="badge rounded-pill badge-notification bg-danger"></span>Giỏ hàng</a></li>
+                  class="badge rounded-pill badge-notification bg-danger"></span>Giỏ hàng
+            </a>
+        </li>
         <li (click)="checkProfile()"><a>
             <svg class="iconm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path>
@@ -837,103 +840,6 @@
     </div>
 </div>
 
-<%--<div class="product">--%>
-<%--    <img width="100%" height="120"--%>
-<%--         src="https://firebasestorage.googleapis.com/v0/b/c0822g1-mobile-shop-d949d.appspot.com/o/anh2.PNG?alt=media&amp;token=3bde8fb6-57a8-4c49-9d7d-e06f22a7a629">--%>
-
-<%--    <div class="wrapper">--%>
-<%--        <ul class="products">--%>
-<%--            <div class="previous">--%>
-<%--                <a class="previous">--%>
-<%--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>--%>
-<%--                </a>--%>
-<%--            </div>--%>
-<%--            <li *ngfor="let commodity of commodities">--%>
-<%--                <div class="product-item">--%>
-<%--                    <div class="product-top">--%>
-<%--                        <a href="" class="product-thumb">--%>
-<%--                            <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2021/07/ip-14-696x392.jpeg">--%>
-<%--                        </a>--%>
-<%--                        <a class="buy-now" data-toggle="modal" data-target="#detail">Mua--%>
-<%--                            ngay</a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="product-info">--%>
-<%--                    <a href="" class="product-cat"></a>--%>
-<%--                    <a href="" class="product-name">IP14<span--%>
-<%--                            style="background-color: lightgray;color: #007bff;font-weight: 600"></span></a>--%>
-<%--                    <div class="product-price">15.000.000VND</div>--%>
-<%--                </div>--%>
-<%--            </li>--%>
-<%--            <div class="next">--%>
-<%--                <a class="next">--%>
-<%--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>--%>
-<%--                </a>--%>
-<%--            </div>--%>
-<%--        </ul>--%>
-<%--    </div>--%>
-<%--</div>--%>
-<%--<div class="modal fade" id="detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
-<%--    <div class="modal-dialog">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h4 class="modal-title" id="exampleModalLabel">Thông tin chi tiết</h4>--%>
-<%--                <button type="button" id="dissmis" class="close" data-dismiss="modal" aria-label="Close">--%>
-<%--                    <span aria-hidden="true">×</span>--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-<%--                <div class="card">--%>
-<%--                    <img [src]="commodity.image" class="card-img-top" style="max-height: 200px; padding: 5px 5px">--%>
-<%--                    <div class="card-body">--%>
-<%--                        <h5 class="card-title" style="color: crimson ">{{commodity.name | titlecase }}</h5>--%>
-<%--                        <p style="color: red; font-weight: bold" class="card-text">{{commodity.price | currency:--%>
-<%--                            "VND"}}</p>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="card-info">--%>
-<%--                    <table class="table table-hover">--%>
-<%--                        <tbody>--%>
-<%--                        <tr>--%>
-<%--                            <th>Camera</th>--%>
-<%--                            <td>{{commodity.camera}} MP</td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <th>Camera trước</th>--%>
-<%--                            <td>{{commodity.selfie}} MP</td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <th>Dung lượng</th>--%>
-<%--                            <td>{{commodity.capacity}} MP</td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <th>CPU</th>--%>
-<%--                            <td>{{commodity.cpu}}</td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <th>Bảo hành</th>--%>
-<%--                            <td>{{commodity.guarantee}} tháng</td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <th>Nơi sản xuất</th>--%>
-<%--                            <td>{{commodity.origin}}</td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <th>Chi tiết</th>--%>
-<%--                            <td>{{commodity.description}}</td>--%>
-<%--                        </tr>--%>
-<%--                        </tbody>--%>
-<%--                    </table>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                <button type="button" class="btn btn-primary">Thêm vào giỏ hàng--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
 <div class="container-fluid mt-5 pt-5 " style="background-color: orange">
     <footer class="ml-xl-5 ml-md-4 ml-3 ">
         <div class="row justify-content-end">
@@ -992,5 +898,14 @@
         </div>
     </footer>
 </div>
+<c:set var="status" value="${statusOrderDetail}"></c:set>
+<script>
+    let status = ${status};
+    if(!status){
+        alert("Unsuccessful purchase");
+    } else {
+        alert("Successful purchase")
+    }
+</script>
 </body>
 </html>
