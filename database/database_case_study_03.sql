@@ -1,11 +1,9 @@
 CREATE DATABASE ig1_store;
 USE ig1_store;
-
 CREATE TABLE roles (
 	role_id INT PRIMARY KEY AUTO_INCREMENT,
     role_name VARCHAR(50) NOT NULL
 );
-
 CREATE TABLE account_users(
 	account_id INT PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(50) UNIQUE NOT NULL,
@@ -18,7 +16,6 @@ CREATE TABLE users_role (
     FOREIGN KEY (role_id) REFERENCES roles(role_id),
     FOREIGN KEY(account_id) REFERENCES account_users(account_id)
 );
-
 CREATE TABLE customers(
 	customer_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_name VARCHAR(50) NOT NULL,
@@ -30,13 +27,11 @@ CREATE TABLE customers(
     update_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (account_id) REFERENCES account_users(account_id)
 );
-
 CREATE TABLE product_type(
 	product_type_id INT PRIMARY KEY AUTO_INCREMENT,
     product_type_name VARCHAR(50) NOT NUll
 );
-
-CREATE TABLE products( 
+CREATE TABLE products(
 	product_id INT PRIMARY KEY AUTO_INCREMENT,
     product_name VARCHAR(50) NOT NULL,
 	product_type_id INT,
@@ -47,14 +42,12 @@ CREATE TABLE products(
     updateAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(product_type_id) REFERENCES product_type(product_type_id)
 );
-
 CREATE TABLE `orders`(
 	order_id INT PRIMARY KEY AUTO_INCREMENT,
     order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     customer_id INT,
     FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 );
-
 CREATE TABLE order_detail(
 	order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT,
@@ -66,9 +59,8 @@ CREATE TABLE order_detail(
     FOREIGN KEY(order_id) REFERENCES `orders`(order_id),
     FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
-
 INSERT INTO product_type (product_type_name) VALUES ("Phone"), ("Accessory");
-INSERT INTO products (product_name, product_type_id,`describe`,price,product_image_url) 
+INSERT INTO products (product_name, product_typee_id,`describe`,price,product_image_url)
 VALUES ("Iphone X", 1,"Cấu hình:
 -Màn hình: 5.8”, Super Retina Oled
 -Camera: 12MP
@@ -183,9 +175,13 @@ Sạc lại qua 2 cổng vào Micro USB và Type C.
 Lõi pin Polymer bền bỉ, hạn chế chai pin.
 Dung lượng lớn 20.000 mAh, cấp đủ năng lượng cho nhiều thiết bị.",800,"https://cdn.tgdd.vn/Products/Images/57/229038/sac-du-phong-polymer-20000mah-type-c-xmobile-p69d-thumb-1-600x600.jpeg")
 ;
-
 INSERT INTO `ig1_store`.`roles` (`role_id`, `role_name`) VALUES ('1', 'users');
 INSERT INTO `ig1_store`.`roles` (`role_id`, `role_name`) VALUES ('2', 'admin');
+INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`)
+VALUES  ('1', '1'), ('1', '2'),('1', '3'),('1', '4'),('1', '5'),('1', '6'),('1', '7'),('1', '8'),('1', '9'),('1', '10'),('1', '11'),
+('1', '12'),('1', '13'),('1', '14'),('1', '15'),('1', '16'),('1', '17'),('1', '18'),('1', '19'),('1', '20'),('1', '21'),
+('1', '22'),('1', '23'),('1', '24'),('1', '25'),('1', '26'),(2,27);
+;
 INSERT INTO account_users (user_name,`password`) VALUES ("khanh", "khanh123"), ("thien", "thien123"),
 ("khang", "khang123"), ("hai", "hai123"),
                                                          ("hoa", "hoa123"), ("an", "an123"),
@@ -227,11 +223,3 @@ VALUES ("Kiều Quốc Khánh","quockhanh@gmail.com", "0123456001","Quảng Nam"
 ("Ngô Thị Ánh Tuyết","anhtuyet@gmail.com", "0123456024","Quảng Nam", 24),
 ("Trương Hà Mai","hamai@gmail.com", "0123456025","Nghệ An", 25),
 ("Nguyễn Thảo Mai","thaomai@gmail.com", "0123456026","Thái Bình", 26);
-
-INSERT INTO users_role (role_id, account_id) 
-VALUES  ('1', '1'), ('1', '2'),('1', '3'),('1', '4'),('1', '5'),('1', '6'),('1', '7'),('1', '8'),('1', '9'),('1', '10'),('1', '11'),
-('1', '12'),('1', '13'),('1', '14'),('1', '15'),('1', '16'),('1', '17'),('1', '18'),('1', '19'),('1', '20'),('1', '21'),
-('1', '22'),('1', '23'),('1', '24'),('1', '25'),('1', '26'),(2,27);
-
-
-

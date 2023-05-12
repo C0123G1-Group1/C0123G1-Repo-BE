@@ -11,59 +11,39 @@
     <title>Title</title>
 </head>
 <body>
-<center>
-    <h1>Product Management</h1>
-    <h2>
-        <a href="/product-servlet">List All Product</a>
-    </h2>
-</center>
-<div align="center">
-    <form action="/product-servlet?action=create" method="post">
-        <table border="1" cellpadding="5">
-            <caption>
-                <h2>Add New Product</h2>
-            </caption>
-            <tr>
-                <th>Tên</th>
-                <td>
-                    <input type="text" name="name" id="name" size="45" required/>
-                </td>
-            </tr>
-            <tr>
-                <th>Loại sản phẩm</th>
-                <td>
-<%--                    <input type="text" name="productType" id="productType" size="45"/>--%>
-                    <select name="productType" id="">
-                        <option value="1">Phone</option>
-                        <option value="2">Accessory</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th>Thông tin</th>
-                <td>
-                    <input type="text" name="describe" id="describe" size="15" required/>
-                </td>
-            </tr>
-            <tr>
-                <th>Giá</th>
-                <td>
-                    <input type="text" name="price" id="price" size="15" required/>
-                </td>
-            </tr>
-            <tr>
-                <th>Hình ảnh</th>
-                <td>
-                    <input type="text" name="productImage" id="productImage" size="15" required/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Save"/>
-                </td>
-            </tr>
-        </table>
-    </form>
+<jsp:include page="/header_footer/header.jsp"></jsp:include>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="justify-content-center">
+            <h2>Create New Product</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <h4 style="color: blue; font-weight: bold">${mess}</h4>
+            <form method="post" action="/product?action=create">
+                <label>Name</label>
+                <input class="form-control" type="text" name="name" required><br>
+                <label>Type</label>
+                <select class="form-control" name="productType" id="">
+                    <option value="1">Phone</option>
+                </select><br>
+                <label>Describe</label>
+                <input class="form-control" type="text" name="describe" required><br>
+                <label>Price</label>
+                <input class="form-control" type="number" name="price" required><br>
+                <label>Image</label>
+                <input class="form-control" type="text" name="productImage" required><br>
+                <button class="btn btn-success">Create</button>
+            </form>
+            <div style="color: blue;font-weight: bold;justify-content: center">${mess}</div>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
 </div>
+<jsp:include page="/header_footer/footer.jsp"></jsp:include>
 </body>
 </html>

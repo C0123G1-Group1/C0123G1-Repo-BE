@@ -1,5 +1,6 @@
 package models.repository.Impl;
 
+
 import models.model.Product;
 import models.repository.BaseRepository;
 import models.repository.IProductRepostory;
@@ -13,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository implements IProductRepostory {
-    private static final String GET_ALL = "SELECT * FROM products;";
+    private static final String GET_ALL = "SELECT * FROM products WHERE product_type_id=1;";
     private static final String GET_BY_ID = "SELECT * FROM products WHERE product_id=?;";
     private static final String INSERT_INTO = "INSERT INTO products (product_name, product_type_id, `describe`,price,product_image_url) VALUES (?,?,?,?,?);";
     private static final String DELETE_BY_ID = "DELETE FROM products WHERE product_id=?;";
     private static final String UPDATE_BY_ID = "UPDATE products SET product_name=?, product_type_id=?, `describe`=?,price=?,product_image_url=?,updateAt=current_timestamp() Where product_id=?;";
-    private static final String SEARCH_PRODUCT = "SELECT * FROM products p WHERE p.product_name=? AND p.price BETWEEN ? and ?;";
+    private static final String SEARCH_PRODUCT = "SELECT * FROM products  WHERE product_type_id LIKE 1 AND product_name LIKE ? AND price BETWEEN ? and ?;";
     private static final String SEARCH_PRODUCT_USER = "SELECT * FROM products WHERE product_name LIKE ?;";
 
     @Override
@@ -123,7 +124,7 @@ public class ProductRepository implements IProductRepostory {
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_PRODUCT);
-            preparedStatement.setString(1, name);
+            preparedStatement.setString(1, '%' + name + '%');
             preparedStatement.setDouble(2, startPrice);
             preparedStatement.setDouble(3, endPricee);
             ResultSet resultSet = preparedStatement.executeQuery();

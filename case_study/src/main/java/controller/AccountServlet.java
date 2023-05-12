@@ -1,24 +1,18 @@
 package controller;
 
 
-import models.model.Account;
-import models.model.Customer;
-import models.model.Product;
-import models.service.IAccountService;
+
 import models.service.ICustomerService;
 import models.service.IProductService;
 import models.service.impl.AccountServiceImpl;
 import models.service.impl.CustomerServiceImpl;
 import models.service.impl.ProductServiceImpl;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
+
 
 
 @WebServlet(name = "AccountServlet", value = "/account-servlet")

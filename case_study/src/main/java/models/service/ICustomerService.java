@@ -8,6 +8,12 @@ public interface ICustomerService {
     List<Customer> getAllCustomer();
 
     boolean saveCustomer(Customer customer);
-    boolean deleteCustomer(int id);
-    Customer getCustomerById(int id);
+
+    boolean deleteCustomer(int id, String account);
+
+    List<Customer> searchCustomer(String nameCustomer,String addressCustomer);
+
+    Customer getCustomer(int id);
+
+    boolean editCustomer(Customer customer);
 }
