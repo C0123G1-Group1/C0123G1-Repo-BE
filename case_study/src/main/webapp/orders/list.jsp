@@ -56,48 +56,38 @@
         </div>
     </div>
 </nav>
+
 <div class="my-3">
-    <button type="button" class="btn btn-primary mx-2" onclick="window.location.href='/products/create_product.jsp'">Create Product
+    <button type="button" class="btn btn-primary mx-2" onclick="window.location.href='/orders/create.jsp'">Create Order
     </button>
 </div>
+
 <div>
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">Product ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Describe</th>
-            <th scope="col">Price(VND)</th>
+            <th scope="col">Order ID</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Price</th>
+            <th scope="col">Create Date</th>
             <th scope="col">Manipulate</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="productList" items="${productList}">
+        <c:forEach var="orderList" items="${orderList}">
             <tr>
-                <td>${productList.getProductId()}</td>
-                <td>${productList.getProductName()}</td>
-                <td>
-                    <c:if test="${productList.getProductType() == 1}">
-                        Iphone
-                    </c:if>
-                    <c:if test="${productList.getProductType() == 2}">
-                        SamSung
-                    </c:if>
-                    <c:if test="${productList.getProductType() == 3}">
-                        Vivo
-                    </c:if>
-                </td>
-                <td>${productList.getDescribe()}</td>
-                <td>${productList.getPrice()}</td>
+                <td>${orderList.getId()}</td>
+                <td>${orderList.getCustomerName()}</td>
+                <td>${orderList.getPrice()}</td>
+                <td>${orderList.getOrderDate()}</td>
                 <td>
                     <button type="submit" class="btn btn-danger" data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
-                            onclick="deleteProduct('${productList.getProductId()}','${productList.getProductName()}')">
+                            onclick="deleteOrder('${orderList.getId()}','${orderList.getCustomerName()}')">
                         Delete
                     </button>
                     <button class="btn btn-warning"
-                            onclick="window.location.href='/products-servlet?action=update&productId=${productList.getProductId()}'">
+                            onclick="window.location.href='/order-servlet?action=update&id=${orderList.getId()}'">
                         Update
                     </button>
                     <button class="btn btn-info">Detail</button>
@@ -113,15 +103,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Product</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Order</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
-            <form action="/products-servlet" method="post">
+            <form action="/order-servlet" method="post">
                 <div class="modal-body">
                     <input type="text" name="action" value="delete" hidden>
-                    <input type="text" id="productId" name="productId" hidden>
-                    Do you want to delete the product <span id="productName"></span> ?
+                    <input type="text" id="orderId" name="id" hidden>
+                    Do you want to delete the order <span id="customerName"></span> ?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
@@ -133,25 +123,25 @@
         </div>
     </div>
 </div>
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-end">
-        <li class="page-item">
-            <a class="page-link" href="#">Previous</a>
-        </li>
-        <c:forEach varStatus="i" begin="1" end="${Math.ceil(productListSize/10.0)}">
-            <li class="page-item"><a class="page-link"
-                                     href="/products-servlet?action=displayPageAdmin&page=${i.count}">${i.count}</a>
-            </li>
-        </c:forEach>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav>
+<%--<nav aria-label="Page navigation example">--%>
+<%--    <ul class="pagination justify-content-end">--%>
+<%--        <li class="page-item">--%>
+<%--            <a class="page-link" href="#">Previous</a>--%>
+<%--        </li>--%>
+<%--        <c:forEach varStatus="i" begin="1" end="${Math.ceil(productListSize/10.0)}">--%>
+<%--            <li class="page-item"><a class="page-link"--%>
+<%--                                     href="/products-servlet?action=displayPageAdmin&page=${i.count}">${i.count}</a>--%>
+<%--            </li>--%>
+<%--        </c:forEach>--%>
+<%--        <li class="page-item">--%>
+<%--            <a class="page-link" href="#">Next</a>--%>
+<%--        </li>--%>
+<%--    </ul>--%>
+<%--</nav>--%>
 <script>
-    function deleteProduct(id, name) {
-        document.getElementById("productId").value = id;
-        document.getElementById("productName").innerText = name;
+    function deleteOrder(id, name) {
+        document.getElementById("orderId").value = id;
+        document.getElementById("customerName").innerText = name;
     }
 </script>
 </body>
