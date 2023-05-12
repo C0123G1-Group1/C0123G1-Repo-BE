@@ -1,15 +1,14 @@
-package models.service.products.impl;
+package models.service.impl;
 
 import models.model.Product;
-import models.repository.products.IProductRepostory;
-import models.repository.products.impl.ProductRepository;
-import models.service.products.IProductService;
+import models.repository.IProductRepostory;
+import models.repository.Impl.ProductRepository;
+import models.service.IProductService;
 
 import java.util.List;
 
 public class ProductService implements IProductService {
-    private IProductRepostory productRepostory = new ProductRepository();
-
+    private IProductRepostory productRepostory=new ProductRepository();
     @Override
     public List<Product> getList() {
         return productRepostory.getList();

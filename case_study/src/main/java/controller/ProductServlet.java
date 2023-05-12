@@ -2,8 +2,9 @@ package controller;
 
 
 import models.model.Product;
-import models.service.products.IProductService;
-import models.service.products.impl.ProductService;
+
+import models.service.IProductService;
+import models.service.impl.ProductService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
