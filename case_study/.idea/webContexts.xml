@@ -3,6 +3,7 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/account/register_form.jsp" value="file://$PROJECT_DIR$/src/main/webapp/account" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/users/create.jsp" value="file://$PROJECT_DIR$/src/main/webapp/users" />
       </map>
     </option>

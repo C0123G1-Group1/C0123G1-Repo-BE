@@ -15,32 +15,36 @@
 <body>
 <div class="container-fluid">
     <div class="row justify-content-center" >
-        <div class="col-auto">
-            <h2>Chỉnh sửa thông tin</h2>
+        <div class="col-auto" t>
+            <h2>Chi tiết sản phẩm</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-8">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-6"><img src="${productImage}" alt="" width="100%" border="1" style="border-radius: 5px"></div>
+                    <div class="col-6">${productDescribe}</div>
+                </div>
+            </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <h4 style="color: blue; font-weight: bold">${mess}</h4>
             <form method="post" action="/order-servlet?action=createOrderDetail">
                 <input type="text" name="orderId" id="describe" size="15" value="${orderId}" hidden/>
                 <input type="text" name="customerId" id="name" size="45" value="${customerId}" hidden/>
                 <input type="text" name="productId" id="productId" size="15" value="${productId}" hidden/>
                 <input type="text" name="productType" id="productImage" size="15" value="${productType}" hidden/>
-                <label for="productName">Product Name</label>
+                <label for="productName">Tên sản phẩm</label>
                 <input class="form-control" type="text" id="productName" name="productName" size="15" value="${productName}" readonly/>
-                <label for="price">Price</label>
+                <label for="price">Giá</label>
                 <input class="form-control" type="text" id="price" name="price" value="${price}" readonly>
                 <br>
-                <label for="quantity">Quantity</label>
+                <label for="quantity">Số lượng</label>
                 <input class="form-control" type="text" id="quantity" name="quantity" required>
                 <br>
-                <button class="btn btn-success">Buy</button>
+                <button class="btn btn-success">Mua</button>
             </form>
-        </div>
-        <div class="col-3">
         </div>
     </div>
 </div>

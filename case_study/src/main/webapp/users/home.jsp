@@ -35,9 +35,8 @@
             display: flex;
             flex-wrap: wrap;
             list-style: none;
-            justify-content: space-between;
             width: 100%;
-            margin-left: 65px;
+            margin-left: 75px;
             margin-bottom: 0;
         }
 
@@ -45,7 +44,7 @@
             flex-basis: 17%;
             padding: 0;
             box-sizing: border-box;
-            margin: 10px 7.5px;
+            margin: 10px 12.5px;
         }
 
         ul.products li .product-top {
@@ -202,7 +201,7 @@
         }
 
         .product {
-            background-color: lightgray;
+            background-color: white;
             margin-left: 0;
         }
 
@@ -716,13 +715,12 @@
         }
 
         li a {
-            color: blue;
+            color: #000000;
         }
 
         li a:hover {
-            color: black;
-            list-style: lower-alpha;
-            text-decoration: underline gray;
+            color: #ea2e2e;
+            /*list-style: lower-alpha;*/
         }
     </style>
 </head>
@@ -733,49 +731,37 @@
     <img src="../coollogo_com-32663401.png">
     <div class="logo">
         <div class="search-box">
-            <input style="margin-top: 30px" type="text" id="search"
-                   placeholder="Tìm kiếm theo tên điện thoại: Iphone...">
-            <button style="margin-top: 30px">
-                <svg class="iconm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
-                </svg>
-            </button>
+            <form action="/product-servlet?action=searchUser" method="post">
+                <input style="margin-top: 30px" type="text" id="search" name="productName"
+                       placeholder="Tìm kiếm theo tên điện thoại: Iphone...">
+                <button style="margin-top: 30px">
+                    <svg class="iconm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                    </svg>
+                </button>
+            </form>
         </div>
     </div>
-    <ul>
-        <li>
-            <div class="dropdown">
-                <a class="nut_dropdown">Danh mục</a>
-                <div class="noidung_dropdown">
-                    <div class="dropdown-item">
-                        <a class="dropdown-item" href="#">Action</a>
-                    </div>
-                    <div class="dropdown-item">
-                        <a class="dropdown-item" href="#">Another action</a>
-                    </div>
-                    <div class="dropdown-item">
-                        <a class="dropdown-item" href="#">Another action</a>
-                    </div>
-                </div>
-            </div>
-        </li>
+    <ul style="margin-top: 25px">
         <li style="cursor: pointer">
             <a href="/order-servlet?action=orderDetail&customerId=${customerId}">
-            <svg class="iconm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path>
-            </svg>
-            <span style="height: 15px; width: 15px;position: absolute"
-                  class="badge rounded-pill badge-notification bg-danger"></span>Giỏ hàng
+                <svg class="iconm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                    <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path>
+                </svg>
+                <span style="height: 15px; width: 15px;position: absolute"
+                      class="badge rounded-pill badge-notification bg-danger"></span>Giỏ hàng
             </a>
         </li>
-        <li (click)="checkProfile()"><a>
+        <li (click)="checkProfile()"><a href="/">
             <svg class="iconm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path>
             </svg>
-            <%=((Customer)session.getAttribute("userSession")).getName()%>
+            <%=((Customer) session.getAttribute("userSession")).getName()%>
         </a></li>
-        <li style="cursor: pointer"><a>
-            Đăng xuất</a></li>
+        <li style="cursor: pointer">
+            <a href="/index.jsp">
+            Đăng xuất</a>
+        </li>
     </ul>
     <div class="menu">
         <label for="chk1">
@@ -825,19 +811,38 @@
                             <a href="" class="product-thumb">
                                 <img style="margin-top: 1vw" src="${product.getProductImage()}">
                             </a>
-                            <a href="/order-servlet?action=buy&productId=${product.getId()}&customerId=${customerId}" class="buy-now" data-toggle="modal"
+                            <a href="/order-servlet?action=buy&productId=${product.getId()}&customerId=${customerId}"
+                               class="buy-now" data-toggle="modal"
                                data-target="#detail">Mua ngay</a>
                         </div>
                     </div>
                     <div class="product-info">
                         <a href="" class="product-cart"></a>
-                        <a href="" class="product-name">${product.getName()}</a>
+                        <a href="/order-servlet?action=buy&productId=${product.getId()}&customerId=${customerId}" class="product-name">${product.getName()}</a>
                         <div class="product-price">${product.getPrice()}</div>
                     </div>
                 </li>
             </c:forEach>
         </ul>
     </div>
+</div>
+
+<div id="pagination" class="row col-lg-12">
+    <nav aria-label="Page navigation example" style="height: 100%; width: 100%">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#">Previous</a>
+            </li>
+            <c:forEach varStatus="i" begin="1" end="${Math.ceil(productListSize/15)}">
+                <li class="page-item"><a class="page-link"
+                                         href="/product-servlet?action=displayPageUser&page=${i.count}">${i.count}</a>
+                </li>
+            </c:forEach>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 
 <div class="container-fluid mt-5 pt-5 " style="background-color: orange">
@@ -898,14 +903,14 @@
         </div>
     </footer>
 </div>
-<c:set var="status" value="${statusOrderDetail}"></c:set>
 <script>
-    let status = ${status};
-    if(!status){
-        alert("Unsuccessful purchase");
+    let status = ${statusOrderDetail};
+    if (!status) {
+        alert("Mua hàng thất bại");
     } else {
-        alert("Successful purchase")
+        alert("Mua hàng thành công")
     }
 </script>
+
 </body>
 </html>

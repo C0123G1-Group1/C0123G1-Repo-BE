@@ -12,5 +12,6 @@ public interface IProductRepostory {
     boolean remove(int id);
     boolean edit(Product product);
 List<Product> search(String name,int startPrice, int endPrice);
+    List<Product> searchUser(String productName);
 
 }

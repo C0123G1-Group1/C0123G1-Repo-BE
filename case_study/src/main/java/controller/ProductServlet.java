@@ -20,6 +20,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String action=request.getParameter("action");
+    List<Product> productList;
     if (action==null){
         action="";
     }
@@ -30,11 +31,29 @@ public class ProductServlet extends HttpServlet {
         case "edit":
             showEditForm(request,response);
             break;
+        case "displayPageUser":
+            int pageUser = Integer.parseInt(request.getParameter("page"));
+            productList = productService.getList();
+            for (int i = 1; i <= Math.ceil((double) productList.size() / 15); i++) {
+                if (pageUser == i) {
+                    displayPageUser(request, response, productList, pageUser);
+                    break;
+                }
+            }
+            break;
         default:
             showList(request,response);
     }
     }
-
+    private static void displayPageUser(HttpServletRequest request, HttpServletResponse response, List<Product> productsList, int page) throws ServletException, IOException {
+        int max = page * 15;
+        int start = max - 15;
+        int end = Math.min(max, productsList.size());
+        List<Product> limitList = productsList.subList(start, end);
+        request.setAttribute("productList", limitList);
+        request.setAttribute("productListSize", productsList.size());
+        request.getRequestDispatcher("/users/home.jsp").forward(request, response);
+    }
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
         int id= Integer.parseInt(request.getParameter("id"));
         Product product=productService.findById(id);
@@ -89,7 +108,19 @@ public class ProductServlet extends HttpServlet {
         case "search":
             seachProduct(request,response);
             break;
-
+        case "searchUser":
+            String productName = request.getParameter("productName");
+            if(productName.equals("")){
+                List<Product> productList = productService.getList();
+                List<Product> limitList = productList.subList(0, Math.min(15,productList.size()));
+                request.setAttribute("productList", limitList);
+                request.setAttribute("productListSize",productList.size());
+            }else{
+                List<Product> productList =  productService.searchUser(productName);
+                request.setAttribute("productList",productList);
+            }
+            request.getRequestDispatcher("/users/home.jsp").forward(request,response);
+            break;
     }
     }
 

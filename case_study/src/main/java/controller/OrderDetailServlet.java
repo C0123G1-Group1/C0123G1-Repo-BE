@@ -24,6 +24,13 @@ public class OrderDetailServlet extends HttpServlet {
             case "orderDetail":
                 orderDetail(request, response);
                 break;
+            case "search":
+                String productName = request.getParameter("productName");
+                int customerId = Integer.parseInt(request.getParameter("customerId"));
+                List<ProductDAO> productDAOList = orderDetailSevice.searchOrderDetailProduct(customerId,productName);
+                request.setAttribute("productDAOList", productDAOList);
+                request.getRequestDispatcher("/users/order_detail.jsp").forward(request, response);
+                break;
             case "delete":
                 deleteOrderDetail(request, response);
                 break;

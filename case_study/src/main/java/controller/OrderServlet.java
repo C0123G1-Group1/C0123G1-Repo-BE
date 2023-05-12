@@ -80,6 +80,7 @@ public class OrderServlet extends HttpServlet {
         int customerId;
         int productId = Integer.parseInt(request.getParameter("productId"));
         customerId = Integer.parseInt(request.getParameter("customerId"));
+        orderService.addOrder(customerId);
         int orderId = orderService.getOrderId(customerId);
         Product product = productService.findById(productId);
         request.setAttribute("orderId", orderId);
@@ -87,6 +88,8 @@ public class OrderServlet extends HttpServlet {
         request.setAttribute("productId", productId);
         request.setAttribute("productName", product.getName());
         request.setAttribute("productType", product.getProductType());
+        request.setAttribute("productImage", product.getProductImage());
+        request.setAttribute("productDescribe", product.getDescribe());
         request.setAttribute("price", product.getPrice());
         request.getRequestDispatcher("/users/create.jsp").forward(request, response);
     }
@@ -111,7 +114,7 @@ public class OrderServlet extends HttpServlet {
                 List<Product> productList = productService.getList();
                 request.setAttribute("productList", productList);
                 request.setAttribute("statusOrderDetail", statusOrderDetail);
-                request.getRequestDispatcher("/users/test.jsp").forward(request, response);
+                request.getRequestDispatcher("/users/home.jsp").forward(request, response);
                 break;
         }
     }

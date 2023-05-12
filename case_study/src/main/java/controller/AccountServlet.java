@@ -7,7 +7,7 @@ import models.model.Product;
 import models.service.IAccountService;
 import models.service.ICustomerService;
 import models.service.IProductService;
-import models.service.impl.AccountReposiroryImpl;
+import models.service.impl.AccountServiceImpl;
 import models.service.impl.CustomerServiceImpl;
 import models.service.impl.ProductServiceImpl;
 
@@ -24,12 +24,26 @@ import java.util.List;
 @WebServlet(name = "AccountServlet", value = "/account-servlet")
 public class AccountServlet extends HttpServlet {
     ICustomerService customerService = new CustomerServiceImpl();
-    IAccountService accountService = new AccountReposiroryImpl();
+    IAccountService accountService = new AccountServiceImpl();
     IProductService productService = new ProductServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "homeUser":
+                List<Product> productList = productService.getList();
+                List<Product> limitList = productList.subList(0, Math.min(15,productList.size()));
+                request.setAttribute("productList", limitList);
+                request.setAttribute("productListSize",productList.size());
+                request.getRequestDispatcher("/users/home.jsp").forward(request, response);
+                break;
+            default:
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+        }
     }
 
     @Override
@@ -58,8 +72,10 @@ public class AccountServlet extends HttpServlet {
                     String role = accountService.checkRole(account.getId());
                     if (role.equals("users")) {
                         List<Product> productList = productService.getList();
-                        request.setAttribute("productList", productList);
-                        request.getRequestDispatcher("/users/test.jsp").forward(request, response);
+                        List<Product> limitList = productList.subList(0, Math.min(15,productList.size()));
+                        request.setAttribute("productList", limitList);
+                        request.setAttribute("productListSize",productList.size());
+                        request.getRequestDispatcher("/users/home.jsp").forward(request, response);
                     } else if (role.equals("admin")) {
                         request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);
                     }
@@ -77,8 +93,8 @@ public class AccountServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         String address = request.getParameter("address");
         String password = request.getParameter("password");
-        Account account = new Account(customerName,password);
-        Customer customer = new Customer(customerName,email,phoneNumber,address,account);
+        Account account = new Account(customerName, password);
+        Customer customer = new Customer(customerName, email, phoneNumber, address, account);
         boolean statusRegister = customerService.saveCustomer(customer);
         request.setAttribute("statusRegister", statusRegister);
         request.getRequestDispatcher("/account/register_form.jsp").forward(request, response);

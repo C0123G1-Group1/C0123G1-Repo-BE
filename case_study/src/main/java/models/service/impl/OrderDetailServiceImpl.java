@@ -28,6 +28,11 @@ public class OrderDetailServiceImpl implements IOrderDetailSevice {
     }
 
     @Override
+    public List<ProductDAO> searchOrderDetailProduct(int customerId, String customerName) {
+        return orderDetailRepository.searchOrderDetailProduct(customerId,customerName);
+    }
+
+    @Override
     public List<OrderDetail> getOrderDetail( int customerId) {
         return orderDetailRepository.getOrderDetail(customerId);
     }

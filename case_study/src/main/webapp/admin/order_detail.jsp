@@ -12,6 +12,21 @@
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        #ig1-user-page{
+            color: black;
+        }
+        #ig1-user-page:hover{
+            color: white;
+        }
+        #navbarSupportedContent ul li:hover a{
+            color: white;
+        }
+
+        #navbarSupportedContent ul li a {
+            color: black;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">

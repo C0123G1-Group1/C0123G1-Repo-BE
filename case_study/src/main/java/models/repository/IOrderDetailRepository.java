@@ -11,6 +11,8 @@ public interface IOrderDetailRepository {
     boolean addOrderDetail(OrderDetail orderDetail);
     boolean deleteOrderDetail(int productId);
     List<ProductDAO> getOrderDetailProduct(int customerId);
+    List<ProductDAO> searchOrderDetailProduct(int customerId, String customerName);
+
     List<OrderDetail> getOrderDetail( int customerId);
     List<CustomerDAO> getCustomerOrder();
 

@@ -22,6 +22,8 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             "INNER JOIN account_users AS ac ON c.account_id = ac.account_id\n" +
             "WHERE customer_id = ?;";
     private final String DELETE_CUSTOMER = "DELETE FROM customers WHERE customer_id = ?;";
+    private final  String USER_ROLE = "INSERT INTO users_role (role_id, account_id) \n" +
+            "VALUES  ('1', ?)";
 
 
     @Override
@@ -65,9 +67,13 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             if (transaction > 0) {
                 preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);
                 ResultSet resultSet = preparedStatement.executeQuery();
+
                 while (resultSet.next()) {
                     if (resultSet.getString("user_name").equals(customer.getAccount().getUserName())) {
+                        preparedStatement = connection.prepareStatement(USER_ROLE);
                         int accountId = resultSet.getInt("account_id");
+                        preparedStatement.setInt(1,accountId);
+                        transaction += preparedStatement.executeUpdate();
                         preparedStatement = connection.prepareStatement(INSERT_CUSTOMER);
                         preparedStatement.setString(1, customer.getName());
                         preparedStatement.setString(2, customer.getEmail());
@@ -79,7 +85,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                     }
                 }
             }
-            if (transaction == 2) {
+            if (transaction == 3) {
                 connection.commit();
                 return true;
             } else {
