@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted" style=" position: fixed; bottom: 0;right: 0;left: 0">
+<footer class="text-center text-lg-start bg-light text-muted" style=" bottom: 0;right: 0;left: 0">
   <!-- Section: Social media -->
 
   <!-- Section: Links  -->

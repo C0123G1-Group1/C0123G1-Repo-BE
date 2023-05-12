@@ -2,24 +2,28 @@ package controller;
 
 
 
+import models.model.Account;
+import models.model.Customer;
+import models.model.Product;
+import models.service.IAccountService;
 import models.service.ICustomerService;
 import models.service.IProductService;
 import models.service.impl.AccountServiceImpl;
 import models.service.impl.CustomerServiceImpl;
-import models.service.impl.ProductServiceImpl;
+import models.service.impl.ProductService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-
+import java.util.List;
 
 
 @WebServlet(name = "AccountServlet", value = "/account-servlet")
 public class AccountServlet extends HttpServlet {
     ICustomerService customerService = new CustomerServiceImpl();
     IAccountService accountService = new AccountServiceImpl();
-    IProductService productService = new ProductServiceImpl();
+    IProductService productService = new ProductService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

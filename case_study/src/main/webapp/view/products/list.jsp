@@ -42,6 +42,34 @@
         </form>
     </div>
 </nav>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">
+    <div class="container-fluid">
+        <a id="ig1-user-page" href="/products-servlet?action=displayUser" class="navbar-brand">IG1 Store</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Manager
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" style="color: black" href="/product">Products</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Customers</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Order</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex m-0" role="search" action="/products-servlet" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="productName">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
 <div class="container-fluid my-lg-2">
     <div class="row">
         <div class="col-1"></div>
@@ -112,7 +140,7 @@
             <form action="/product" method="post">
                 <div class="modal-body">
                     <input type="text" name="action" value="delete" hidden>
-                    <input type="text" id="id" name="id" hidden>
+                    <input type="text" id="id" name="customerId" hidden>
                     Do you want to delete the product <span id="name"></span> ?
                 </div>
                 <div class="modal-footer">

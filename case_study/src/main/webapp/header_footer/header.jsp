@@ -11,9 +11,10 @@
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/customer" class="nav-link px-2 link-dark">Customers</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Orders</a></li>
+        <li><a href="/customer-servlet" class="nav-link px-2 link-dark">Customers</a></li>
+        <li><a href="/product" class="nav-link px-2 link-dark">Products</a></li>
+        <li><a href="/accessory" class="nav-link px-2 link-dark">Accessory</a></li>
+        <li><a href="/order-servlet" class="nav-link px-2 link-dark">Orders</a></li>
       </ul>
       <div class="dropdown text-end">
         <a href="#" class="dropdown__login d-block link-dark text-decoration-none dropdown-toggle d-flex" id="dropdownUser"data-bs-toggle="dropdown" aria-expanded="false">

@@ -8,7 +8,7 @@ import models.service.IProductService;
 import models.service.impl.CustomerServiceImpl;
 import models.service.impl.OrderDetailServiceImpl;
 import models.service.impl.OrderServiceImpl;
-import models.service.impl.ProductServiceImpl;
+import models.service.impl.ProductService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -20,7 +20,7 @@ import java.util.List;
 public class OrderServlet extends HttpServlet {
     IOrderService orderService = new OrderServiceImpl();
     ICustomerService customerService = new CustomerServiceImpl();
-    IProductService productService = new ProductServiceImpl();
+    IProductService productService = new ProductService();
     IOrderDetailSevice orderDetailSevice = new OrderDetailServiceImpl();
 
     @Override

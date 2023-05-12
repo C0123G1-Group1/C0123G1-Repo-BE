@@ -42,4 +42,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public boolean editCustomer(Customer customer) {
         return customerRepository.editCustomer(customer);
     }
+
+    @Override
+    public Customer getCustomerById(int id) {
+        return customerRepository.getCustomerById(id);
+    }
 }

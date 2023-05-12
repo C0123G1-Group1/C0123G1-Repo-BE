@@ -42,6 +42,9 @@
         </form>
     </div>
 </nav>
+
+
+
 <div class="container-fluid my-lg-2">
     <div class="row">
         <div class="col-1"></div>
@@ -99,7 +102,6 @@
         <div class="col-1"></div>
     </div>
 </div>
-Modal delete
 <div class="modal fade" id="exampleModal" tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

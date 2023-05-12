@@ -33,7 +33,7 @@
         <div class="col-3">
         </div>
         <div class="col-6">
-            <form method="post" action="/customer?action=edit">
+            <form method="post" action="/customer-servlet?action=edit">
                 <input hidden type="text" name="id" value="${customer.getId()}"><br>
                 <label>First And Last Name</label>
                 <input class="form-control" type="text" name="fullName" value="${customer.getName()}"><br>

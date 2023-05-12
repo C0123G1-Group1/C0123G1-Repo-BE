@@ -731,7 +731,7 @@
     <img src="../coollogo_com-32663401.png">
     <div class="logo">
         <div class="search-box">
-            <form action="/product-servlet?action=searchUser" method="post">
+            <form action="/product?action=searchUser" method="post">
                 <input style="margin-top: 30px" type="text" id="search" name="productName"
                        placeholder="Tìm kiếm theo tên điện thoại: Iphone...">
                 <button style="margin-top: 30px">

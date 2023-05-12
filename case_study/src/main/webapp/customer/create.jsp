@@ -33,7 +33,7 @@
             </c:if>
 <%--            <h4 style="color: blue; font-weight: bold">${mess}</h4>--%>
             <div class="content-box">
-                <form method="post" action="/customer?action=create" >
+                <form method="post" action="/customer-servlet?action=create" >
                     <div class="fom-control">
                         <label>Username</label>
                         <input required oninput="checkUser()" class="form-control" id="user" placeholder="Enter username" type="text" name="userName">
