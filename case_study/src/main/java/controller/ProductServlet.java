@@ -5,7 +5,6 @@ import models.model.Product;
 import models.service.products.IProductService;
 import models.service.products.impl.ProductService;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -100,19 +99,21 @@ public class ProductServlet extends HttpServlet {
         List<Product> searchProductList = null;
         switch (price) {
             case 1:
-                searchProductList = productService.search(name, 0, 5000000);
+                searchProductList=productService.search(name,0,100000);
                 break;
             case 2:
-                searchProductList = productService.search(name, 5000000, 10000000);
+                searchProductList = productService.search(name, 0, 1000);
                 break;
             case 3:
-                searchProductList = productService.search(name, 10000000, 15000000);
+                searchProductList = productService.search(name, 1001, 8000);
                 break;
             case 4:
-                searchProductList = productService.search(name, 15000000, 1000000000);
+                searchProductList = productService.search(name, 8001, 15000);
+                break;
+            case 5:
+                searchProductList = productService.search(name, 15001, 100000);
                 break;
         }
-//        List<Product> searchProductList=productService.search(name,);
         request.setAttribute("productList", searchProductList);
         try {
             request.getRequestDispatcher("view/products/list.jsp").forward(request, response);
@@ -128,15 +129,15 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         int productType = Integer.parseInt(request.getParameter("productType"));
         String describe = request.getParameter("describe");
-        double price = Double.parseDouble(request.getParameter("price"));
+        double price = Double.parseDouble(((request.getParameter("price"))));
         String productImage = request.getParameter("productImage");
         Product product = new Product(id, name, productType, describe, price, productImage);
         boolean checkEdit = productService.edit(product);
         String mess;
         if (checkEdit) {
-            mess = "Chỉnh sửa thành công";
+            mess = "Editing is successful";
         } else {
-            mess = "Chỉnh sửa không thành công";
+            mess = "Edit failed";
         }
         request.setAttribute("mess", mess);
         showList(request, response);
@@ -145,27 +146,24 @@ public class ProductServlet extends HttpServlet {
     private void removeProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         boolean checkRemove = productService.remove(id);
-        if (checkRemove) {
-            checkRemove = productService.remove(id);
-        }
         String mess;
         if (checkRemove) {
-            mess = "Xóa thành công";
+            mess = "Delete successfully";
         } else {
-            mess = "Xóa không thành công";
+            mess = "Delete failed";
         }
         request.setAttribute("mess", mess);
-        showList(request, response);
+  showList(request,response);
     }
 
     private void createProduct(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
         int productType = Integer.parseInt(request.getParameter("productType"));
         String describe = request.getParameter("describe");
-        double price = Double.parseDouble(request.getParameter("price"));
+        double price = Double.parseDouble(((request.getParameter("price"))));
         String productImage = request.getParameter("productImage");
         Product product = new Product(name, productType, describe, price, productImage);
         productService.createAt(product);
-        showList(request, response);
+showList(request,response);
     }
 }

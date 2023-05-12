@@ -1,9 +1,6 @@
 package controller;
 
 
-import models.service.IAdminService;
-import models.service.ICustomerService;
-
 import models.service.impl.AdminServiceImpl;
 import models.service.impl.CustomerServiceImpl;
 
