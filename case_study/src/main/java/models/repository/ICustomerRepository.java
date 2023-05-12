@@ -15,4 +15,5 @@ public interface ICustomerRepository {
     Customer getCustomer(int id);
 
     boolean editCustomer(Customer customer);
+    Customer getCustomerById(int id);
 }

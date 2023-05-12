@@ -1,6 +1,7 @@
 package models.model;
 
 public class OrderDetail {
+    private  int orderDetailId;
     private int orderId;
     private int customerId;
     private int productId;
@@ -11,6 +12,16 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
+    public OrderDetail(int orderDetailId, int orderId, int customerId, int productId, int productTypeId, double price, int quantity) {
+        this.orderDetailId = orderDetailId;
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.productId = productId;
+        this.productTypeId = productTypeId;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     public OrderDetail(int orderId, int customerId, int productId, int productTypeId, double price, int quantity) {
         this.orderId = orderId;
         this.customerId = customerId;
@@ -18,6 +29,14 @@ public class OrderDetail {
         this.productTypeId = productTypeId;
         this.price = price;
         this.quantity = quantity;
+    }
+
+    public int getOrderDetailId() {
+        return orderDetailId;
+    }
+
+    public void setOrderDetailId(int orderDetailId) {
+        this.orderDetailId = orderDetailId;
     }
 
     public int getCustomerId() {

@@ -29,9 +29,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f656102-5da8-4523-8e54-f4cbce5e1009" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/repository/IAdminRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/products/create.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/products/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/repository/BaseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/repository/BaseRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/BaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/BaseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/customer/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/customer/create.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/customer/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/customer/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/customer/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/customer/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/header_footer/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header_footer/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/header_footer/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header_footer/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/users/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/users/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/accessorys/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/accessorys/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/accessorys/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/accessorys/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/products/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/products/list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +76,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -54,6 +89,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RESET_MODE" value="SOFT" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/models/model/Customer.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -65,27 +103,29 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Pa2H6HLMZaryRkGjW3TGEXHiKl" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "D:/case_study_module3/C0123G1-Repo-BE/case_study/src/main/webapp/view/products",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\case_study_module3\C0123G1-Repo-BE\case_study\src\main\webapp\view\products" />
+      <recent name="D:\case_study_module3\C0123G1-Repo-BE\case_study\src\main\webapp" />
       <recent name="D:\case_study_2\C0123G1-Repo-BE\case_study\src\main\java\models\repository" />
       <recent name="D:\CodeGym\Group1\C0123G1-Repo-BE\case_study\src\main\webapp" />
       <recent name="D:\CodeGym\Group1\C0123G1-Repo-BE\case_study\src\main\webapp\view" />
-      <recent name="D:\CodeGym\Group1\C0123G1-Repo-BE\case_study\src\main\java\models\service" />
-      <recent name="D:\CodeGym\Group1\C0123G1-Repo-BE\case_study\src\main\java\models\repository" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\case_study_module3\C0123G1-Repo-BE\case_study\src\main\webapp\view\products" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="models.model" />
@@ -93,7 +133,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 9.0.74" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.74" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 9.0.745" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.745" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Gradle : com.example : case_study-1.0-SNAPSHOT.war">
@@ -103,7 +143,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="cebfe3af-cf99-489b-aef3-b9bb1f0cc754" />
+        <option name="BASE_DIRECTORY_NAME" value="7e29b64a-9dac-4f46-8286-5ef6f9423370" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -111,7 +151,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="51525" />
+        <option name="DEBUG_PORT" value="62674" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -181,7 +221,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -229,68 +269,21 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1683875924467">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1683875924467" />
-    <state width="1024" height="2" key="GridCell.Tab.0.bottom" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.0.center" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.0.left" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.0.right" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.1.bottom" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.1.bottom/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.1.center" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.1.center/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.1.left" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.1.left/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.1.right" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.1.right/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.2.bottom" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.2.bottom/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.2.center" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.2.center/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.2.left" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.2.left/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state width="1024" height="2" key="GridCell.Tab.2.right" timestamp="1683875925413">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state width="1024" height="2" key="GridCell.Tab.2.right/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
-    <state x="501" y="140" key="Vcs.Push.Dialog.v2" timestamp="1683875686634">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="501" y="140" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1683875686634" />
-    <state x="452" y="197" key="git4idea.merge.GitPullDialog" timestamp="1683875297275">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="452" y="197" key="git4idea.merge.GitPullDialog/0.0.1536.816@0.0.1536.816" timestamp="1683875297275" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/CustomerServlet.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/customer/edit.jsp</url>
+          <line>35</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

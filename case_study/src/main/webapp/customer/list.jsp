@@ -25,7 +25,7 @@
         <div style="display: flex; margin: 8px;position: relative">
             <div>
                 <button type="button" class="btn btn-success btn-rounded"
-                        onclick="window.location.href='/customer?action=create'">New customer
+                        onclick="window.location.href='/customer-servlet?action=create'">New customer
                 </button>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <c:if test="${check == false}">
             <h5 style="color: red">Delete fail</h5>
         </c:if>
-        <form action="/customer" class="d-flex my-0">
+        <form action="/customer-servlet" class="d-flex my-0">
             <input type="hidden" name="action" value="search">
             <input class="form-control me-2" type="text" placeholder="Enter name customer" aria-label="Search"
                    name="nameCustomer" value="${nameCustomer}">
@@ -47,8 +47,8 @@
 </nav>
 <div class="container-fluid my-lg-2">
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
+        <div class="col-1"></div>
+        <div class="col-10">
             <div>
                 <h3>List customer</h3>
             </div>
@@ -73,7 +73,7 @@
                         <td>${customer.getAddress()}</td>
                         <td>
                             <button class="btn btn-warning"
-                                    onclick="window.location.href='/customer?action=edit&customerId=${customer.getId()}'">
+                                    onclick="window.location.href='/customer-servlet?action=edit&customerId=${customer.getId()}'">
                                 Edit
                             </button>
                             <button class="btn btn-danger" type="button" data-bs-toggle="modal"
@@ -92,7 +92,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-2"></div>
+        <div class="col-1"></div>
     </div>
 </div>
 <%--Modal delete--%>
@@ -106,7 +106,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
-            <form action="/customer?action=delete" method="post">
+            <form action="/customer-servlet?action=delete" method="post">
                 <div class="modal-body">
                     <input hidden id="customerId" name="customerId">
                     <input hidden id="nameAccount" name="nameAccount">
@@ -135,7 +135,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
-            <form action="/customer?action=delete" method="post">
+            <form action="/customer-servlet?action=delete" method="post">
                 <div class="modal-body">
                     <p>ID customer: <span id="customerIdDetail"></span></p>
                     <p>Name customer: <span id="customerNameDetail"></span></p>
@@ -147,7 +147,7 @@
     </div>
 </div>
 <footer style="margin-top: 50px">
-    <jsp:include page="/header_footer/footer.jsp"></jsp:include>
+<%--    <jsp:include page="/header_footer/footer.jsp"></jsp:include>--%>
 </footer>
 <script>
     function infoDelete(id, name, account) {

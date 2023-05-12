@@ -58,20 +58,20 @@ public class CustomerServlet extends HttpServlet {
             case "edit":
                 editCustomer(request, response);
                 break;
-            case "delete":
-                int id = Integer.parseInt(request.getParameter("id"));
-                boolean statusDelete = customerService.deleteCustomer(id);
-                request.setAttribute("statusDelete",statusDelete);
-                try {
-                    List<Customer> customerList = customerService.getAllCustomer();
-                    request.setAttribute("customerList",customerList);
-                    request.getRequestDispatcher("/customer/list.jsp").forward(request,response);
-                } catch (ServletException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                break;
+//            case "delete":
+//                int id = Integer.parseInt(request.getParameter("id"));
+//                boolean statusDelete = customerService.deleteCustomer(id);
+//                request.setAttribute("statusDelete",statusDelete);
+//                try {
+//                    List<Customer> customerList = customerService.getAllCustomer();
+//                    request.setAttribute("customerList",customerList);
+//                    request.getRequestDispatcher("/customer/list.jsp").forward(request,response);
+//                } catch (ServletException e) {
+//                    throw new RuntimeException(e);
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                break;
         }
     }
 
@@ -95,13 +95,6 @@ public class CustomerServlet extends HttpServlet {
         Account account = new Account(userName, password);
         Customer customer = new Customer(fullName, email, phoneNumber, address, account);
         boolean check = customerService.saveCustomer(customer);
-//        String mess = "";
-//        if (check) {
-//            mess = "Add success";
-//        } else {
-//            mess = "Add fail";
-//        }
-//        request.setAttribute("mess", mess);
         request.setAttribute("check",check);
         try {
             request.getRequestDispatcher("/customer/create.jsp").forward(request, response);

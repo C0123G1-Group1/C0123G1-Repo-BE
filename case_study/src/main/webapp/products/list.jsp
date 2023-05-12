@@ -105,7 +105,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -126,7 +126,7 @@
                     <option value="1">Dưới 5 triệu</option>
                     <option value="2">5-10 triệu</option>
                     <option value="3">10-15 triệu</option>
-                    <option value="3">Trên 15 triệu</option>
+                    <option value="4">Trên 15 triệu</option>
                 </select>
                 <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
@@ -167,9 +167,7 @@
                         Accessory
                     </c:if>
                 </td>
-                <td>${product.getDescribe()}</td>
                 <td>${product.getPrice()}</td>
-<%--                <td>${product.getProductImage()}</td>--%>
                 <td>${product.getCreatAt()}</td>
                 <td>${product.getUpdateAt()}</td>
                 <td>
@@ -217,21 +215,6 @@
         </div>
     </div>
 </div>
-<%--<nav aria-label="Page navigation example">--%>
-<%--    <ul class="pagination justify-content-end">--%>
-<%--        <li class="page-item">--%>
-<%--            <a class="page-link" href="#">Previous</a>--%>
-<%--        </li>--%>
-<%--        <c:forEach varStatus="i" begin="1" end="${Math.ceil(productListSize/10.0)}">--%>
-<%--            <li class="page-item"><a class="page-link"--%>
-<%--                                     href="/products-servlet?action=displayPageAdmin&page=${i.count}">${i.count}</a>--%>
-<%--            </li>--%>
-<%--        </c:forEach>--%>
-<%--        <li class="page-item">--%>
-<%--            <a class="page-link" href="#">Next</a>--%>
-<%--        </li>--%>
-<%--    </ul>--%>
-<%--</nav>--%>
 <script>
     function deleteProduct(id, name) {
         document.getElementById("productId").value = id;

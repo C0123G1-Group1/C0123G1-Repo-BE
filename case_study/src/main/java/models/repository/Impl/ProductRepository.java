@@ -20,6 +20,7 @@ public class ProductRepository implements IProductRepostory {
     private static final String DELETE_BY_ID = "DELETE FROM products WHERE product_id=?;";
     private static final String UPDATE_BY_ID = "UPDATE products SET product_name=?, product_type_id=?, `describe`=?,price=?,product_image_url=?,updateAt=current_timestamp() Where product_id=?;";
     private static final String SEARCH_PRODUCT = "SELECT * FROM products  WHERE product_type_id LIKE 1 AND product_name LIKE ? AND price BETWEEN ? and ?;";
+    private static final String SEARCH_PRODUCT_USER = "SELECT * FROM products WHERE product_name LIKE ?;";
 
     @Override
     public List<Product> getList() {
@@ -143,5 +144,32 @@ public class ProductRepository implements IProductRepostory {
             e.printStackTrace();
         }
         return productList;
+    }
+
+    @Override
+    public List<Product> searchUser(String productName) {
+        List<Product> productList = new ArrayList<>();
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_PRODUCT_USER);
+            preparedStatement.setString(1, '%' + productName + '%');
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("product_id");
+                String nameProduct = resultSet.getString("product_name");
+                int productType = resultSet.getInt("product_type_id");
+                String describe = resultSet.getString("describe");
+                double price = resultSet.getDouble("price");
+                String productImage = resultSet.getString("product_image_url");
+                String createAt = resultSet.getString("createAt");
+                String updateAt = resultSet.getString("updateAt");
+                Product product = new Product(id, nameProduct, productType, describe, price, productImage, createAt, updateAt);
+                productList.add(product);
+            }
+            return productList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
