@@ -808,7 +808,7 @@
                 <li>
                     <div class="product-item">
                         <div class="product-top">
-                            <a href="" class="product-thumb">
+                            <a href="/order-servlet?action=buy&productId=${product.getId()}&customerId=${customerId}" class="product-thumb">
                                 <img style="margin-top: 1vw" src="${product.getProductImage()}">
                             </a>
                             <a href="/order-servlet?action=buy&productId=${product.getId()}&customerId=${customerId}"

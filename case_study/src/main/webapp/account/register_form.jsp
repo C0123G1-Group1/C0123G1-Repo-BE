@@ -74,6 +74,10 @@
                                            name="phoneNumber" />
                                     <small id="3" style="color: red;font-weight: bolder "></small>
                                     <span></span>
+                                    <div class="form-outline mb-2">--%>
+                                                                                <label class="form-label" for="form3Example4cg">Địa chỉ</label>
+                                                                                <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="address"/>
+                                                                            </div>
                                     <div class="form-outline mb-2">
                                         <label class="form-label" for="form3Example5cg">Password</label>
                                         <input oninput="checkPassword()" type="password" id="form3Example5cg"
@@ -145,8 +149,6 @@
 </body>
 <script src="/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js"></script>
 </html>
-
-
 
 <%--<body>--%>
 <%--    <section class="vh-100 bg-image"--%>
