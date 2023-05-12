@@ -1,9 +1,8 @@
 package controller;
 
-
-import models.model.Product;
-import models.service.IAccessoryService;
-import models.service.impl.AccessoryService;
+import model.Product;
+import service.accessory.IAccessoryService;
+import service.accessory.impl.AccessoryService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,6 +38,7 @@ public class AccessoryServlet extends HttpServlet {
         request.setAttribute("product", product);
         try {
             request.getRequestDispatcher("view/accessorys/edit.jsp").forward(request, response);
+
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -134,16 +134,10 @@ public class AccessoryServlet extends HttpServlet {
         if (checkEdit) {
             mess = "Editing is successful";
         } else {
-            mess = "Edit failed";
+            mess = "Deletion failed";
         }
         request.setAttribute("mess", mess);
-        try {
-            request.getRequestDispatcher("view/accessorys/list.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        showList(request, response);
     }
 
     private void removeProduct(HttpServletRequest request, HttpServletResponse response) {
@@ -154,18 +148,13 @@ public class AccessoryServlet extends HttpServlet {
         }
         String mess;
         if (checkRemove) {
-            mess = "Delete successfully";
-        } else {
             mess = "Deletion failed";
+        } else {
+            mess = "Delete successfully";
+
         }
         request.setAttribute("mess", mess);
-        try {
-            request.getRequestDispatcher("view/accessorys/list.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        showList(request, response);
     }
 
     private void createProduct(HttpServletRequest request, HttpServletResponse response) {
@@ -176,13 +165,7 @@ public class AccessoryServlet extends HttpServlet {
         String productImage = request.getParameter("productImage");
         Product product = new Product(name, productType, describe, price, productImage);
         accessoryService.createAt(product);
-        try {
-            request.getRequestDispatcher("view/accessorys/list.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        showList(request, response);
     }
 
 }

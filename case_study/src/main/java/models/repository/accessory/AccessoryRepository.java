@@ -1,9 +1,8 @@
-package models.repository.Impl;
+package models.repository.accessory;
 
-
-import models.model.Product;
-import models.repository.BaseRepository;
-import models.repository.IAccessoryRepository;
+import model.Product;
+import repository.BaseRepository;
+import repository.IAccessoryRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,7 +44,7 @@ public class AccessoryRepository implements IAccessoryRepository {
     }
 
     @Override
-    public Product findByID(int id) {
+    public Product findById(int id) {
         Product product = null;
         Connection connection = BaseRepository.getConnectDB();
         try {

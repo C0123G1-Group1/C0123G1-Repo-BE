@@ -22,7 +22,7 @@
         <div style="display: flex; margin: 8px;position: relative">
             <div>
                 <button type="button" class="btn btn-success btn-rounded"
-                        onclick="window.location.href='/accessory?action=create'">New customer
+                        onclick="window.location.href='/accessory?action=create'">New accessory
                 </button>
             </div>
         </div>
@@ -30,13 +30,13 @@
         <form action="/accessory?action=search" method="post" class="d-flex my-0">
             <input type="hidden" name="action" value="search">
             <input class="form-control me-2" type="text" placeholder="Enter name customer" aria-label="Search"
-                   name="nameCustomer" value="${nameCustomer}">
-            <select name="price" id="" class="form-select" aria-label="Default select example">--%>
+                   name="name">
+            <select name="price" id="" class="form-select" aria-label="Default select example">
                 <option value="1">choose price</option>
-                <option value="2">Less than 1 million</option>
-                <option value="3">From 1-3 million</option>
-                <option value="4">From 3-5 million</option>
-                <option value="5">Over 5 million</option>
+                <option value="2">Less than 100.000</option>
+                <option value="3">From 100.000-500.000</option>
+                <option value="4">From 500.000-1.000.000</option>
+                <option value="5">Over 10.000.000</option>
             </select>
             <button class="btn btn-outline-primary" type="submit">Find</button>
         </form>

@@ -1,11 +1,9 @@
-package models.service.impl;
+package models.service.impl.accessory.impl;
 
-
-
-import models.model.Product;
-import models.repository.IAccessoryRepository;
-import models.repository.Impl.AccessoryRepository;
-import models.service.IAccessoryService;
+import model.Product;
+import repository.IAccessoryRepository;
+import repository.accessory.AccessoryRepository;
+import service.accessory.IAccessoryService;
 
 import java.util.List;
 
@@ -19,7 +17,7 @@ public class AccessoryService implements IAccessoryService {
 
     @Override
     public Product findById(int id) {
-        return accessoryRepository.findByID(id);
+        return accessoryRepository.findById(id);
     }
 
     @Override

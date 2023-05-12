@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93ac5348-f918-4231-bd43-0d7ea00c7205" name="Default Changelist" comment="" />
+    <list default="true" id="93ac5348-f918-4231-bd43-0d7ea00c7205" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/controller/AccessoryServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/controller/AccountServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/model/Accessory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/model/Admin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/model/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/BaseRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/IAdminRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/ICustomerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/Impl/AdminRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/accessory/IAccessoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/accessory/impl/AccessoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/IAdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/ICustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/accessory/IAccessoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/accessory/impl/AccessoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/impl/AdminServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/impl/CustomerServiceImpl.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +39,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/case_study" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -33,6 +52,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683626429229</updated>
       <workItem from="1683626430775" duration="10000" />
+      <workItem from="1683830683369" duration="3000" />
     </task>
     <servers />
   </component>

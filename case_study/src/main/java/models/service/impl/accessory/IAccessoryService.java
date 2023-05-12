@@ -1,8 +1,6 @@
-package models.service;
+package models.service.impl.accessory;
 
-
-
-import models.model.Product;
+import model.Product;
 
 import java.util.List;
 
