@@ -7,7 +7,7 @@ import models.service.IAccountService;
 
 import java.util.List;
 
-public class AccountReposiroryImpl implements IAccountService {
+public class AccountServiceImpl implements IAccountService {
     IAccountRepository accountRepository = new AccountRepositoryImpl();
     @Override
     public String checkRole(int id) {

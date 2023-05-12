@@ -23,12 +23,23 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public boolean deleteCustomer(int id) {
-        return customerRepository.deleteCustomer(id);
+    public boolean deleteCustomer(int id, String account) {
+        return customerRepository.deleteCustomer(id,account);
     }
 
     @Override
-    public Customer getCustomerById(int id) {
-        return customerRepository.getCustomerById(id);
+    public List<Customer> searchCustomer(String nameCustomer,String addressCustomer) {
+        List<Customer>customerList=customerRepository.searchCustomer(nameCustomer,addressCustomer);
+        return customerList;
+    }
+
+    @Override
+    public Customer getCustomer(int id) {
+        return customerRepository.getCustomer(id);
+    }
+
+    @Override
+    public boolean editCustomer(Customer customer) {
+        return customerRepository.editCustomer(customer);
     }
 }

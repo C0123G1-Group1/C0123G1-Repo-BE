@@ -39,6 +39,15 @@ public class Customer {
         this.updateAt = updateAt;
     }
 
+    public Customer(int id, String name, String email, String phoneNumber, String address) {
+        this.id =id;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
+
+
     public int getId() {
         return id;
     }

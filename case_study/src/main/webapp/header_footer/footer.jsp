@@ -1,13 +1,5 @@
 <%--
   Created by IntelliJ IDEA.
-  User: lapto
-  Date: 5/11/2023
-  Time: 11:33 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
   User: TRUNG THIEN
   Date: 5/10/2023
   Time: 20:10
@@ -15,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted">
+<footer class="text-center text-lg-start bg-light text-muted" style=" position: fixed; bottom: 0;right: 0;left: 0">
   <!-- Section: Social media -->
 
   <!-- Section: Links  -->
@@ -28,4 +20,3 @@
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-
