@@ -9,52 +9,62 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Danh sách khách hàng</title>
+    <title>List customer</title>
     <link rel="stylesheet" href="/bootstrap520/css/bootstrap.css"/>
     <link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/customer/regex.css">
 </head>
 <body>
 <jsp:include page="/header_footer/header.jsp"></jsp:include>
-<nav class="navbar navbar-expand-lg navbar-light " style="position: sticky;top:0;left: 0;right: 0;background-color:
-#e8e8e8">
-    <div class="container-fluid py-3">
-        <div>
-            <button class="btn btn-outline-success" onclick="window.location.href='/customer?action=create'">Thêm mới
-            </button>
+<nav class="navbar navbar-light bg-light" style="position: sticky;top:0;left: 0;right: 0">
+    <div class="container-fluid">
+        <div style="display: flex; margin: 8px;position: relative">
+            <div>
+                <button type="button" class="btn btn-success btn-rounded"
+                        onclick="window.location.href='/customer?action=create'">New customer
+                </button>
+            </div>
         </div>
-        <h4 style="color: red; font-weight: bold">${mess}</h4>
+        <c:if test="${check}">
+            <h5 style="color: darkgreen">Delete success</h5>
+        </c:if>
+        <c:if test="${check == false}">
+            <h5 style="color: red">Delete fail</h5>
+        </c:if>
         <form action="/customer" class="d-flex my-0">
             <input type="hidden" name="action" value="search">
-            <input class="form-control me-2" type="text" placeholder="Nhập tên khách hàng" aria-label="Search"
+            <input class="form-control me-2" type="text" placeholder="Enter name customer" aria-label="Search"
                    name="nameCustomer" value="${nameCustomer}">
-            <input class="form-control me-2" type="text" placeholder="Nhập địa chỉ" aria-label="Search"
+            <input class="form-control me-2" type="text" placeholder="Enter address" aria-label="Search"
                    name="addressCustomer" value="${addressCustomer}">
-            <button class="btn btn-outline-primary" type="submit">Tìm kiếm</button>
+            <button class="btn btn-info btn-rounded" type="submit">Find</button>
         </form>
     </div>
 </nav>
-<div class="container-fluid ">
+<div class="container-fluid my-lg-2">
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
             <div>
-                <h3>Danh sách khách hàng</h3>
+                <h3>List customer</h3>
             </div>
             <table id="tableCustomer" class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Tên</th>
+                    <th>ID</th>
+                    <th>Name</th>
                     <th>Email</th>
-                    <th>SĐT</th>
-                    <th>Địa chỉ</th>
-                    <th>Thao tác</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="customer" items="${customerList}">
                     <tr>
+                        <td>${customer.getId()}</td>
                         <td>${customer.getName()}</td>
                         <td>${customer.getEmail()}</td>
                         <td>${customer.getPhoneNumber()}</td>
@@ -62,17 +72,17 @@
                         <td>
                             <button class="btn btn-warning"
                                     onclick="window.location.href='/customer?action=edit&customerId=${customer.getId()}'">
-                                Sửa
+                                Edit
                             </button>
                             <button class="btn btn-danger" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal"
                                     onclick="infoDelete('${customer.getId()}','${customer.getName()}','${customer.getAccount().getUserName()}')">
-                                Xóa
+                                Delete
                             </button>
                             <button class="btn btn-info" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal1"
                                     onclick="infoDetail('${customer.getId()}','${customer.getName()}','${customer.getCreateAt()}','${customer.getUpdateAt()}')">
-                                Chi tiết
+                                Detail
                             </button>
                         </td>
                     </tr>
@@ -90,7 +100,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Xóa khách hàng</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete customer</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
@@ -98,13 +108,14 @@
                 <div class="modal-body">
                     <input hidden id="customerId" name="customerId">
                     <input hidden id="nameAccount" name="nameAccount">
-                    <span>Bạn có muốn xóa khách hàng </span><span id="deleteName" style="color: red"></span><span> không?</span>
+                    <span>Do you want to delete the customer named</span><span id="deleteName"
+                                                                               style="color: red"></span><span> ?</span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No
                     </button>
                     <button type="submit" class="btn btn-primary">
-                        Có
+                        Yes
                     </button>
                 </div>
             </form>
@@ -118,16 +129,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">Chi tiết khách hàng</h5>
+                <h5 class="modal-title" id="exampleModalLabel1">Customer details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
             <form action="/customer?action=delete" method="post">
                 <div class="modal-body">
-                    <p>ID khách hàng:  <span id="customerIdDetail"></span></p>
-                    <p>Tên Khách hàng: <span id="customerNameDetail"></span></p>
-                    <p>Ngày thêm:      <span id="customerCreateAtDetail"></span></p>
-                    <p>Ngày Sửa:       <span id="customerUpdateAtDetail"></span></p>
+                    <p>ID customer: <span id="customerIdDetail"></span></p>
+                    <p>Name customer: <span id="customerNameDetail"></span></p>
+                    <p>Create Datetime: <span id="customerCreateAtDetail"></span></p>
+                    <p>Update Datetime: <span id="customerUpdateAtDetail"></span></p>
                 </div>
             </form>
         </div>
