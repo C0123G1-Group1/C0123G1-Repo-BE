@@ -7,10 +7,14 @@ import java.util.List;
 
 public interface IProductRepostory {
     List<Product> getList();
-    Product findByID(int id);
-    boolean createAt(Product product);
-    boolean remove(int id);
-    boolean edit(Product product);
-List<Product> search(String name,int startPrice, int endPrice);
 
+    Product findByID(int id);
+
+    boolean createAt(Product product);
+
+    boolean remove(int id);
+
+    boolean edit(Product product);
+
+    List<Product> search(String name, int startPrice, int endPrice);
 }

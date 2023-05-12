@@ -1,15 +1,13 @@
 package models.service.impl;
 
-
 import models.model.Product;
 import models.repository.IProductRepostory;
 import models.repository.Impl.ProductRepository;
 import models.service.IProductService;
 
-
 import java.util.List;
 
-public class ProductServiceImpl implements IProductService {
+public class ProductService implements IProductService {
     private IProductRepostory productRepostory=new ProductRepository();
     @Override
     public List<Product> getList() {
@@ -37,7 +35,7 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public List<Product> search(String name,int startPrice, int endPrice) {
-        return productRepostory.search(name,startPrice,endPrice);
+    public List<Product> search(String name, int startPrice, int endPrice) {
+        return productRepostory.search(name, startPrice, endPrice);
     }
 }
