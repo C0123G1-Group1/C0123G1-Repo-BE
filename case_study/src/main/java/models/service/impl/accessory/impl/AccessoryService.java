@@ -1,9 +1,10 @@
 package models.service.impl.accessory.impl;
 
-import model.Product;
-import repository.IAccessoryRepository;
-import repository.accessory.AccessoryRepository;
-import service.accessory.IAccessoryService;
+import models.model.Product;
+import models.repository.IAccessoryRepository;
+import models.repository.accessory.AccessoryRepository;
+import models.service.impl.accessory.IAccessoryService;
+
 
 import java.util.List;
 

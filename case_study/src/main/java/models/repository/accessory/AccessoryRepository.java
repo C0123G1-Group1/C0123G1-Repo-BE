@@ -1,8 +1,9 @@
 package models.repository.accessory;
 
-import model.Product;
-import repository.BaseRepository;
-import repository.IAccessoryRepository;
+
+import models.model.Product;
+import models.repository.BaseRepository;
+import models.repository.IAccessoryRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

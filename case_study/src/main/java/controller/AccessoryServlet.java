@@ -1,8 +1,8 @@
 package controller;
+import models.model.Product;
+import models.service.impl.accessory.IAccessoryService;
+import models.service.impl.accessory.impl.AccessoryService;
 
-import model.Product;
-import service.accessory.IAccessoryService;
-import service.accessory.impl.AccessoryService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
