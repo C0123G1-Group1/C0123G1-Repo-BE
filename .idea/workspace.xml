@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93ac5348-f918-4231-bd43-0d7ea00c7205" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/controller/AccessoryServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/controller/AccountServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/model/Accessory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/model/Admin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/model/Customer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/BaseRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/IAdminRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/ICustomerRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/Impl/AdminRepositoryImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/accessory/IAccessoryRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/repository/accessory/impl/AccessoryRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/IAdminService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/ICustomerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/accessory/IAccessoryService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/accessory/impl/AccessoryService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/impl/AdminServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/case_study/src/main/java/models/service/impl/CustomerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_study/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/case_study/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +24,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/case_study" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -53,13 +38,17 @@
       <updated>1683626429229</updated>
       <workItem from="1683626430775" duration="10000" />
       <workItem from="1683830683369" duration="3000" />
+      <workItem from="1683875926788" duration="25000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1683626439004">
+    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1683875950661">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1683626439004" />
+    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1683875950661" />
   </component>
 </project>
