@@ -3,17 +3,35 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:haidoan" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3f656102-5da8-4523-8e54-f4cbce5e1009" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_05_2023_3_50_CH__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_05_2023_3_50_CH__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_11_25_SA__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_11_25_SA__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_03_SA__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_03_SA__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_04_SA__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_04_SA__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/impl/AccountReposiroryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/impl/AccountServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +48,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="haidoan" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RESET_MODE" value="SOFT" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -51,14 +70,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/case_study_2/C0123G1-Repo-BE/case_study/src/main/java/models/repository"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\case_study_2\C0123G1-Repo-BE\case_study\src\main\java\models\repository" />
@@ -161,7 +181,10 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3f656102-5da8-4523-8e54-f4cbce5e1009" name="Changes" comment="" />
@@ -195,7 +218,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="haidoan" />
                       </list>
                     </value>
                   </entry>
@@ -206,5 +229,68 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1683875924467">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1683875924467" />
+    <state width="1024" height="2" key="GridCell.Tab.0.bottom" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.0.center" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.0.left" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.0.right" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.1.bottom" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.1.bottom/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.1.center" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.1.center/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.1.left" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.1.left/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.1.right" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.1.right/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.2.bottom" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.2.bottom/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.2.center" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.2.center/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.2.left" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.2.left/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state width="1024" height="2" key="GridCell.Tab.2.right" timestamp="1683875925413">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1024" height="2" key="GridCell.Tab.2.right/0.0.1536.816@0.0.1536.816" timestamp="1683875925413" />
+    <state x="501" y="140" key="Vcs.Push.Dialog.v2" timestamp="1683875686634">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="501" y="140" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1683875686634" />
+    <state x="452" y="197" key="git4idea.merge.GitPullDialog" timestamp="1683875297275">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="452" y="197" key="git4idea.merge.GitPullDialog/0.0.1536.816@0.0.1536.816" timestamp="1683875297275" />
   </component>
 </project>
