@@ -1,8 +1,8 @@
 package controller;
-import models.model.Product;
-import models.service.impl.accessory.IAccessoryService;
-import models.service.impl.accessory.impl.AccessoryService;
 
+import models.model.Product;
+import models.service.IAccessoryService;
+import models.service.impl.AccessoryService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +17,7 @@ public class AccessoryServlet extends HttpServlet {
     private IAccessoryService accessoryService = new AccessoryService();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        List<Product> productList;
         if (action == null) {
             action = "";
         }
@@ -27,9 +28,28 @@ public class AccessoryServlet extends HttpServlet {
             case "edit":
                 showEditForm(request, response);
                 break;
+            case "displayPageUser":
+                int pageUser = Integer.parseInt(request.getParameter("page"));
+                productList = accessoryService.getList();
+                for (int i = 1; i <= Math.ceil((double) productList.size() / 15); i++) {
+                    if (pageUser == i) {
+                        displayPageUser(request, response, productList, pageUser);
+                        break;
+                    }
+                }
             default:
                 showList(request, response);
         }
+    }
+
+    private static void displayPageUser(HttpServletRequest request, HttpServletResponse response, List<Product> productsList, int page) throws ServletException, IOException {
+        int max = page * 15;
+        int start = max - 15;
+        int end = Math.min(max, productsList.size());
+        List<Product> limitList = productsList.subList(start, end);
+        request.setAttribute("productList", limitList);
+        request.setAttribute("productListSize", productsList.size());
+        request.getRequestDispatcher("/users/home.jsp").forward(request, response);
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
@@ -86,7 +106,19 @@ public class AccessoryServlet extends HttpServlet {
             case "search":
                 seachProduct(request, response);
                 break;
-
+            case "searchUser":
+                String productName = request.getParameter("productName");
+                if (productName.equals("")) {
+                    List<Product> productList = accessoryService.getList();
+                    List<Product> limitList = productList.subList(0, Math.min(15, productList.size()));
+                    request.setAttribute("productList", limitList);
+                    request.setAttribute("productListSize", productList.size());
+                } else {
+                    List<Product> productList = accessoryService.searchUser(productName);
+                    request.setAttribute("productList", productList);
+                }
+                request.getRequestDispatcher("/users/home.jsp").forward(request, response);
+                break;
         }
     }
 
@@ -132,9 +164,9 @@ public class AccessoryServlet extends HttpServlet {
         boolean checkEdit = accessoryService.edit(product);
         String mess;
         if (checkEdit) {
-            mess = "Editing is successful";
+            mess = "Chỉnh sửa thành công!";
         } else {
-            mess = "Deletion failed";
+            mess = "Chỉnh sửa thất bại!";
         }
         request.setAttribute("mess", mess);
         showList(request, response);
@@ -143,14 +175,11 @@ public class AccessoryServlet extends HttpServlet {
     private void removeProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         boolean checkRemove = accessoryService.remove(id);
-        if (checkRemove) {
-            checkRemove = accessoryService.remove(id);
-        }
         String mess;
         if (checkRemove) {
-            mess = "Deletion failed";
+            mess = "Xóa thành công";
         } else {
-            mess = "Delete successfully";
+            mess = "Xóa thất bại";
 
         }
         request.setAttribute("mess", mess);
@@ -166,6 +195,21 @@ public class AccessoryServlet extends HttpServlet {
         Product product = new Product(name, productType, describe, price, productImage);
         accessoryService.createAt(product);
         showList(request, response);
-    }
+        boolean checkCreate = accessoryService.createAt(product);
+        String mess;
+        if (checkCreate) {
+            mess = "Thêm mới thành công!";
+        } else {
+            mess = "Thêm mới thất bại!";
+        }
+        request.setAttribute("mess", mess);
+        try {
+            request.getRequestDispatcher("view/accessorys/create.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+    }
 }
