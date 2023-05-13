@@ -29,7 +29,6 @@
     </style>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">
     <div class="container-fluid">
         <a id="ig1-user-page" href="/products-servlet?action=displayUser" class="navbar-brand">IG1 Store</a>

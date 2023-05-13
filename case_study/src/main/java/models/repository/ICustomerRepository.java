@@ -11,7 +11,7 @@ public interface ICustomerRepository {
 
     boolean deleteCustomer(int id, int accountId);
 
-    List<Customer> searchCustomer(String nameCustomer, String addressCustomer);
+    List<Customer> searchCustomer(String nameCustomer, String addressCustomer,String phoneNumber);
 
     Customer getCustomer(int id);
 

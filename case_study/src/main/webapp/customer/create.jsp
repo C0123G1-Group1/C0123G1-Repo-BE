@@ -16,69 +16,80 @@
 <body>
 <jsp:include page="/header_footer/header.jsp"></jsp:include>
 <div class="container-fluid">
-    <div class="row justify-content-center" >
+    <div class="row justify-content-center">
         <div class="col-auto">
-            <h2>Create customer</h2>
+            <h2>Thêm mới khách hàng</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-3">
         </div>
-        <div class="col-6"style="height: 100vh">
-            <c:if test="${check}">
-                <h5 style="color: darkgreen">Add success</h5>
-            </c:if>
-            <c:if test="${check == false}">
-                <h5 style="color: red">Add fail</h5>
-            </c:if>
-<%--            <h4 style="color: blue; font-weight: bold">${mess}</h4>--%>
+        <div class="col-6" style="height: 100vh">
+<%--            <c:if test="${check}">--%>
+<%--                <h5 style="color: darkgreen">Thêm mới thành công</h5>--%>
+<%--            </c:if>--%>
+<%--            <c:if test="${check == false}">--%>
+<%--                <h5 style="color: red">Thêm mới thất bại</h5>--%>
+<%--            </c:if>--%>
             <div class="content-box">
-                <form method="post" action="/customer-servlet?action=create" >
+                <form method="post" action="/customer-servlet?action=create" class="content">
                     <div class="fom-control">
-                        <label>Username</label>
-                        <input required oninput="checkUser()" class="form-control" id="user" placeholder="Enter username" type="text" name="userName">
-                        <small id="1"  style="color: red;font-weight: bolder "></small>
+                        <label>Tên đăng nhập</label>
+                        <input required oninput="checkUser()" class="form-control" id="user"
+                               placeholder="Nhập tên đăng nhập" type="text" name="userName">
+                        <small id="1" style="color: red;font-weight: bolder "></small>
                         <span></span>
                     </div>
                     <div class="fom-control">
-                        <label>Password</label>
-                        <input required oninput="checkPassword()" class="form-control" id="password" placeholder="Enter password" type="password" name="password">
+                        <label>Mật khẩu</label>
+                        <input required oninput="checkPassword()" class="form-control" id="password"
+                               placeholder="Nhập mật khẩu" type="password" name="password">
                         <small id="2" style="color: red;font-weight: bolder ;font-weight: bolder"></small>
                         <span></span>
                     </div>
                     <div class="fom-control">
-                        <label>Confirm Password</label>
-                        <input required oninput="checkPassword()" class="form-control" id="confirm-password" placeholder="Enter confirm password" type="password" name="password">
+                        <label>Xác nhận lại mật khẩu</label>
+                        <input required oninput="checkPassword()" class="form-control" id="confirm-password"
+                               placeholder="Nhập lại mật khẩu" type="password" name="password">
                         <small id="3" style="color: red;font-weight: bolder "></small>
                         <span></span>
                     </div>
                     <div class="fom-control">
-                        <label>First And Last Name</label>
-                        <input required oninput="checkName()" class="form-control" id="fullName" placeholder="Enter first and last name" type="text" name="fullName">
+                        <label>Họ và tên</label>
+                        <input required oninput="checkName()" class="form-control" id="fullName"
+                               placeholder="Nhập họ và tên" type="text" name="fullName">
                         <small id="4" style="color: red;font-weight: bolder "></small>
                         <span></span>
                     </div>
                     <div class="fom-control">
                         <label>Email</label>
-                        <input required oninput="checkEmail()" class="form-control" id="email" placeholder="Enter password" type="email" name="email">
+                        <input required oninput="checkEmail()" class="form-control" id="email"
+                               placeholder="Vui lòng nhập email" type="email" name="email">
                         <small id="5" style="color: red;font-weight: bolder"></small>
                         <span></span>
                     </div>
                     <div class="fom-control">
-                        <label>Phone Number</label>
-                        <input required oninput="checkPhoneNumber()" class="form-control" id="phoneNumber" placeholder="Enter phonenumber" type="text" name="phoneNumber">
+                        <label>Số điện thoại</label>
+                        <input required oninput="checkPhoneNumber()" class="form-control" id="phoneNumber"
+                               placeholder="Vui lòng nhập số điện thoại" type="text" name="phoneNumber">
                         <small id="6" style="color: red;font-weight: bolder "></small>
                         <span></span>
                     </div>
                     <div class="fom-control">
-                        <label>Address</label>
-                        <input required class="form-control" id="address" placeholder="Enter address" type="text" name="address">
+                        <label>Địa chỉ</label>
+                        <input required class="form-control" id="address" placeholder="Vui lòng nhập email" type="text"
+                               name="address">
                         <small id="7" style="color: red;font-weight: bolder "></small>
                         <span></span>
                     </div>
-                    <div style="margin-top: 30px">
-                        <button  class="btn btn-success">Add</button>
-                    </div>
+                    <ul class="d-flex justify-content-between list-unstyled">
+                        <li>
+                            <button class="btn btn-success">Thêm mới</button>
+                        </li>
+                        <li>
+                            <button type="button" onclick="window.location.href='/customer-servlet'" class="btn btn-primary">Trở lại</button>
+                        </li>
+                    </ul>
                 </form>
             </div>
         </div>
@@ -86,6 +97,37 @@
         </div>
     </div>
 </div>
+<%--Modal create --%>
+<div class="modal fade" id="deleteResultModal4" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${check}">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="color: darkgreen">Thêm mới thành công!</h5>
+                    </div>
+                </c:if>
+                <c:if test="${check == false}">
+                    <div>
+                        <h5 style="color: red" class="d-flex justify-content-center">Thêm mới thất bại!</h5>
+                    </div>
+                </c:if>
+            </div>
+            <div class="modal-footer" style="height: 49px">
+            </div>
+        </div>
+    </div>
+</div>
+<c:if test="${check || check == false}">
+    <script>
+        let deleteResultModal = new bootstrap.Modal(document.getElementById('deleteResultModal4'));
+        deleteResultModal.show();
+    </script>
+</c:if>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
