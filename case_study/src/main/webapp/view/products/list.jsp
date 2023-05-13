@@ -80,6 +80,7 @@
                     <button type="button" class="btn btn-success btn-rounded"
                             onclick="window.location.href='/product?action=create'">Thêm sản phẩm
                     </button>
+                    <div style="text-align: center; color: green ;font-size: 30px" >${mess}</div>
                 </div>
                 <div class="container text-left">
                     <table id="tableProduct" class="table table-striped table-bordered"

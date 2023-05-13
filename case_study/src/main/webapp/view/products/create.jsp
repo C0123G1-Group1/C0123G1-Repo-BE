@@ -69,6 +69,7 @@
                     <h2 style="text-align: center">
                         THÊM MỚI SẢN PHẨM
                     </h2>
+                    <div style="text-align: center; color: green ;font-size: 30px" >${mess}</div>
                 </caption>
                 <fieldset class="form-group">
                     <label>Tên sản phẩm :</label> <input class="form-control" type="text" name="name" required><br>
@@ -99,7 +100,7 @@
                 </fieldset>
                 <div>
                 <button type="submit" class="btn btn-outline-primary " onclick="window.location.href='/product'">Quay lại</button>
-                <button type="submit" class="btn btn-success" style="margin-left: 26vw">Thêm</button>
+                <button type="submit" class="btn btn-success" style="margin-left: 25vw">Thêm</button>
                 </div>
             </form>
         </div>
