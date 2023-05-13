@@ -29,38 +29,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f656102-5da8-4523-8e54-f4cbce5e1009" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_05_2023_3_50_CH__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_05_2023_3_50_CH__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_11_25_SA__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_11_25_SA__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_03_SA__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_03_SA__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_04_SA__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_04_SA__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2023_2_37_CH__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2023_2_37_CH__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_10_51_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_10_51_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/AccessoryServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/AccessoryServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/repository/BaseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/repository/BaseRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/repository/IAccessoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/repository/IAccessoryRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/repository/accessory/AccessoryRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/service/impl/accessory/IAccessoryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/service/impl/accessory/impl/AccessoryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccessoryServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccessoryServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/BaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/BaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/IAccessoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/IAccessoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/accessory/AccessoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/Impl/AccessoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/impl/accessory/IAccessoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/IAccessoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/impl/accessory/impl/AccessoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/impl/AccessoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/accessorys/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/accessorys/create.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/accessorys/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/accessorys/edit.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/accessorys/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/accessorys/list.jsp" afterDir="false" />
     </list>
@@ -258,6 +228,7 @@
       <workItem from="1684001650369" duration="122000" />
       <workItem from="1684001787902" duration="22000" />
       <workItem from="1684001903100" duration="3070000" />
+      <workItem from="1684005176251" duration="815000" />
     </task>
     <servers />
   </component>
@@ -293,54 +264,54 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1684001808656" />
-    <state width="1024" height="85" key="GridCell.Tab.0.bottom" timestamp="1684005002744">
+    <state width="1024" height="236" key="GridCell.Tab.0.bottom" timestamp="1684005997930">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684005002744" />
-    <state width="1024" height="85" key="GridCell.Tab.0.center" timestamp="1684005002744">
+    <state width="1024" height="236" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+    <state width="1024" height="236" key="GridCell.Tab.0.center" timestamp="1684005997930">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1684005002744" />
-    <state width="1024" height="85" key="GridCell.Tab.0.left" timestamp="1684005002744">
+    <state width="1024" height="236" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+    <state width="1024" height="236" key="GridCell.Tab.0.left" timestamp="1684005997930">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1684005002744" />
-    <state width="1024" height="85" key="GridCell.Tab.0.right" timestamp="1684005002744">
+    <state width="1024" height="236" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+    <state width="1024" height="236" key="GridCell.Tab.0.right" timestamp="1684005997930">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1684005002744" />
-    <state width="1024" height="85" key="GridCell.Tab.1.bottom" timestamp="1684005002744">
+    <state width="1024" height="236" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+    <state width="1024" height="236" key="GridCell.Tab.1.bottom" timestamp="1684005997931">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.1.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684005002744" />
-    <state width="1024" height="85" key="GridCell.Tab.1.center" timestamp="1684005002744">
+    <state width="1024" height="236" key="GridCell.Tab.1.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
+    <state width="1024" height="236" key="GridCell.Tab.1.center" timestamp="1684005997930">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.1.center/0.0.1536.816@0.0.1536.816" timestamp="1684005002744" />
-    <state width="1024" height="85" key="GridCell.Tab.1.left" timestamp="1684005002744">
+    <state width="1024" height="236" key="GridCell.Tab.1.center/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+    <state width="1024" height="236" key="GridCell.Tab.1.left" timestamp="1684005997930">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.1.left/0.0.1536.816@0.0.1536.816" timestamp="1684005002744" />
-    <state width="1024" height="85" key="GridCell.Tab.1.right" timestamp="1684005002744">
+    <state width="1024" height="236" key="GridCell.Tab.1.left/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+    <state width="1024" height="236" key="GridCell.Tab.1.right" timestamp="1684005997931">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.1.right/0.0.1536.816@0.0.1536.816" timestamp="1684005002744" />
-    <state width="1024" height="85" key="GridCell.Tab.2.bottom" timestamp="1684005002745">
+    <state width="1024" height="236" key="GridCell.Tab.1.right/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
+    <state width="1024" height="236" key="GridCell.Tab.2.bottom" timestamp="1684005997931">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.2.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684005002745" />
-    <state width="1024" height="85" key="GridCell.Tab.2.center" timestamp="1684005002745">
+    <state width="1024" height="236" key="GridCell.Tab.2.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
+    <state width="1024" height="236" key="GridCell.Tab.2.center" timestamp="1684005997931">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.2.center/0.0.1536.816@0.0.1536.816" timestamp="1684005002745" />
-    <state width="1024" height="85" key="GridCell.Tab.2.left" timestamp="1684005002744">
+    <state width="1024" height="236" key="GridCell.Tab.2.center/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
+    <state width="1024" height="236" key="GridCell.Tab.2.left" timestamp="1684005997931">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.2.left/0.0.1536.816@0.0.1536.816" timestamp="1684005002744" />
-    <state width="1024" height="85" key="GridCell.Tab.2.right" timestamp="1684005002745">
+    <state width="1024" height="236" key="GridCell.Tab.2.left/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
+    <state width="1024" height="236" key="GridCell.Tab.2.right" timestamp="1684005997931">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state width="1024" height="85" key="GridCell.Tab.2.right/0.0.1536.816@0.0.1536.816" timestamp="1684005002745" />
+    <state width="1024" height="236" key="GridCell.Tab.2.right/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
     <state x="142" y="110" width="1339" height="687" key="MergeDialog" timestamp="1683998880194">
       <screen x="0" y="0" width="1536" height="816" />
     </state>

@@ -108,7 +108,7 @@
                     </div>
                     <div id="imageContainer"></div>
                 </fieldset>
-                <button type="submit" class="btn btn-outline-primary " onclick="window.location.href='/product'">Quay
+                <button type="submit" class="btn btn-outline-primary " onclick="window.location.href='/accessory'">Quay
                     lại
                 </button>
                 <button type="submit" class="btn btn-success" style="margin-left: 26vw" value="Save">Lưu</button>

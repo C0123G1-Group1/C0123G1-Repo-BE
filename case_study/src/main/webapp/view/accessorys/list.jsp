@@ -64,7 +64,6 @@
                     <option value="2">Từ 100.000-500.000</option>
                     <option value="3">500.000-1 triệu</option>
                     <option value="4">Trên 1 triệu</option>
-                    <option value="1">choose price</option>
 
                 </select>
                 <button type="submit" class="btn btn-outline-primary"
@@ -83,7 +82,7 @@
         <div class="row">
             <div class="col-1"></div>
             <div class="col-10">
-                <h3 class="text-center">DANH SÁCH SẢN PHẨM</h3>
+                <h3 class="text-center">DANH SÁCH PHỤ KIỆN</h3>
                 <hr>
                 <div class="container text-left">
 
@@ -113,8 +112,8 @@
                             <td>${product.getId()}</td>
                             <td>${product.getName()}</td>
                             <td>
-                                <c:if test="${product.getProductType() == 1}">
-                                    Phone
+                                <c:if test="${product.getProductType() == 2}">
+                                    Accessory
                                 </c:if>
                             </td>
                             <td hidden>${product.getDescribe()}</td>
@@ -182,7 +181,7 @@
         // Thực hiện xóa sản phẩm thành công ở đây
 
         // Hiển thị thông báo thành công
-        alert("Sản phẩm đã được xóa thành công!");
+        alert("Phụ kiện đã được xóa thành công!");
     }
 </script>
 <script>
