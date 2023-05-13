@@ -17,9 +17,9 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     private final String INSERT_CUSTOMER = "INSERT INTO customers(customer_name, email, phone_number, address, account_id) VALUES (?,?,?,?,?);";
     private final String INSERT_ACCOUNT = "INSERT INTO account_users (user_name,password) VALUE(?,?);";
     private final String SELECT_ACCOUNT = "SELECT*FROM account_users;";
-    private final String DELETE_CUSTOMER = "SET SQL_SAFE_UPDATES =0;\n" +
-            "DELETE FROM customers WHERE customer_id = ?;";
-    private final String DELETE_ACCOUNT = "DELETE FROM account_users WHERE user_name=?;";
+    private final String DELETE_CUSTOMER = "DELETE FROM customers WHERE customer_id = ?;";
+    private final String DELETE_ACCOUNT_ROLE = "DELETE FROM users_role WHERE account_id = (SELECT account_id FROM account_users WHERE account_id = (SELECT customer_id FROM customers WHERE account_id = ?));";
+    private final String DELETE_ACCOUNT = "DELETE FROM account_users WHERE account_id =?;";
     private final String SEARCH_CUSTOMER = "SELECT c.*,ac.user_name,ac.password FROM customers AS c INNER JOIN account_users AS ac ON c.account_id=ac.account_id WHERE c.customer_name LIKE ? AND c.address LIKE ?;";
     private final String SELECT_CUSTOMER = "SELECT c.*,ac.user_name,ac.password FROM customers AS c INNER JOIN account_users AS ac ON c.account_id=ac.account_id WHERE c.customer_id= ?;";
     private final String EDIT_ACCOUNT = "UPDATE account_users SET password = ? WHERE  account_id=?;";
@@ -28,7 +28,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             "FROM customers AS c\n" +
             "INNER JOIN account_users AS ac ON c.account_id = ac.account_id\n" +
             "WHERE customer_id = ?;";
-    private final  String USER_ROLE = "INSERT INTO users_role (role_id, account_id) \n" +
+    private final String USER_ROLE = "INSERT INTO users_role (role_id, account_id) \n" +
             "VALUES  ('1', ?)";
 
 
@@ -78,7 +78,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                     if (resultSet.getString("user_name").equals(customer.getAccount().getUserName())) {
                         preparedStatement = connection.prepareStatement(USER_ROLE);
                         int accountId = resultSet.getInt("account_id");
-                        preparedStatement.setInt(1,accountId);
+                        preparedStatement.setInt(1, accountId);
                         transaction += preparedStatement.executeUpdate();
                         preparedStatement = connection.prepareStatement(INSERT_CUSTOMER);
                         preparedStatement.setString(1, customer.getName());
@@ -104,25 +104,33 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     }
 
     @Override
-    public boolean deleteCustomer(int id, String account) {
+    public boolean deleteCustomer(int id, int accountId) {
         Connection connection = BaseRepository.getConnectDB();
+        boolean check = true;
         try {
             connection.setAutoCommit(false);
-            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER);
-            preparedStatement.setInt(1, id);
-//            int transaction = preparedStatement.executeUpdate();
-            return preparedStatement.executeUpdate() >0;
-//            if (transaction > 0) {
-//                preparedStatement = connection.prepareStatement(DELETE_ACCOUNT);
-//                preparedStatement.setString(1, account);
-//                transaction += preparedStatement.executeUpdate();
-//            }
-//            if (transaction == 2) {
-//                connection.commit();
-//                return true;
-//            } else {
-//                connection.rollback();
-//            }
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_ACCOUNT_ROLE);
+            preparedStatement.setInt(1, accountId);
+            check = preparedStatement.executeUpdate() > 0;
+            if (check) {
+                preparedStatement = connection.prepareStatement(DELETE_CUSTOMER);
+                preparedStatement.setInt(1, id);
+                check = preparedStatement.executeUpdate() > 0;
+            } else {
+                check = false;
+                connection.rollback();
+                connection.commit();
+            }
+            if (check) {
+                preparedStatement = connection.prepareStatement(DELETE_ACCOUNT);
+                preparedStatement.setInt(1, accountId);
+                check = preparedStatement.executeUpdate() > 0;
+                connection.commit();
+            } else {
+                check = false;
+                connection.rollback();
+                connection.commit();
+            }
         } catch (SQLException e) {
             try {
                 connection.rollback();
@@ -130,9 +138,8 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             } catch (SQLException ex) {
                 e.printStackTrace();
             }
-            e.printStackTrace();
         }
-        return false;
+        return check;
     }
 
     @Override
@@ -216,7 +223,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_ID);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int customerId = resultSet.getInt("customer_id");
@@ -224,8 +231,8 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                 int accountId = resultSet.getInt("account_id");
                 String userName = resultSet.getString("user_name");
                 String password = resultSet.getString("password");
-                Account account = new Account(accountId,userName,password);
-                Customer customer = new Customer(customerId, cuatomerName,account);
+                Account account = new Account(accountId, userName, password);
+                Customer customer = new Customer(customerId, cuatomerName, account);
                 return customer;
             }
         } catch (SQLException e) {

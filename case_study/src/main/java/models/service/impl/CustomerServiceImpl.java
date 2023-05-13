@@ -23,8 +23,8 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public boolean deleteCustomer(int id, String account) {
-        return customerRepository.deleteCustomer(id,account);
+    public boolean deleteCustomer(int id, int accountId) {
+        return customerRepository.deleteCustomer(id,accountId);
     }
 
     @Override

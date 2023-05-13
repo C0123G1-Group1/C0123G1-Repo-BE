@@ -1,6 +1,7 @@
 package models.repository;
 
 import models.model.Customer;
+
 import java.util.List;
 
 public interface ICustomerRepository {
@@ -8,12 +9,13 @@ public interface ICustomerRepository {
 
     boolean saveCustomer(Customer customer);
 
-    boolean deleteCustomer(int id, String account);
+    boolean deleteCustomer(int id, int accountId);
 
-    List<Customer> searchCustomer(String nameCustomer,String addressCustomer);
+    List<Customer> searchCustomer(String nameCustomer, String addressCustomer);
 
     Customer getCustomer(int id);
 
     boolean editCustomer(Customer customer);
+
     Customer getCustomerById(int id);
 }

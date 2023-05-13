@@ -29,12 +29,12 @@
                 </button>
             </div>
         </div>
-        <c:if test="${check}">
-            <h5 style="color: darkgreen">Delete success</h5>
-        </c:if>
-        <c:if test="${check == false}">
-            <h5 style="color: red">Delete fail</h5>
-        </c:if>
+                <c:if test="${check}">
+                    <h5 style="color: darkgreen">Delete success</h5>
+                </c:if>
+                <c:if test="${check == false}">
+                    <h5 style="color: red">Delete fail</h5>
+                </c:if>
         <form action="/customer-servlet" class="d-flex my-0">
             <input type="hidden" name="action" value="search">
             <input class="form-control me-2" type="text" placeholder="Enter name customer" aria-label="Search"
@@ -72,13 +72,13 @@
                         <td>${customer.getPhoneNumber()}</td>
                         <td>${customer.getAddress()}</td>
                         <td>
-                            <button class="btn btn-warning"
+                            <button type="submit" class="btn btn-warning"
                                     onclick="window.location.href='/customer-servlet?action=edit&customerId=${customer.getId()}'">
                                 Edit
                             </button>
                             <button class="btn btn-danger" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal"
-                                    onclick="infoDelete('${customer.getId()}','${customer.getName()}','${customer.getAccount().getUserName()}')">
+                                    onclick="infoDelete('${customer.getId()}','${customer.getName()}','${customer.getAccount().getId()}')">
                                 Delete
                             </button>
                             <button class="btn btn-info" type="button" data-bs-toggle="modal"
@@ -109,8 +109,8 @@
             <form action="/customer-servlet?action=delete" method="post">
                 <div class="modal-body">
                     <input hidden id="customerId" name="customerId">
-                    <input hidden id="nameAccount" name="nameAccount">
-                    <span>Do you want to delete the customer named</span><span id="deleteName"
+                    <input hidden id="accountUserID" name="accountUserID">
+                    <span>Do you want to delete the customer whose name is </span><span id="deleteName"
                                                                                style="color: red"></span><span> ?</span>
                 </div>
                 <div class="modal-footer">
@@ -146,13 +146,46 @@
         </div>
     </div>
 </div>
-<footer style="margin-top: 50px">
 <%--    <jsp:include page="/header_footer/footer.jsp"></jsp:include>--%>
-</footer>
+<!-- Modal thông báo -->
+<div class="modal fade" id="deleteResultModal3" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteResultModalLabel">Thông báo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${check}">
+                    Xóa thành công!
+                </c:if>
+                <c:if test="${check == false}">
+                    Xóa thất bại!
+                </c:if>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<c:if test="${check}">
+    <script>
+        var deleteResultModal = new bootstrap.Modal(document.getElementById('deleteResultModal3'));
+        deleteResultModal.show();
+    </script>
+</c:if>
+<c:if test="${check == false}">
+    <script>
+        var deleteResultModal = new bootstrap.Modal(document.getElementById('deleteResultModal3'));
+        deleteResultModal.show();
+    </script>
+</c:if>
 <script>
-    function infoDelete(id, name, account) {
+    function infoDelete(id, name,accountID ) {
         document.getElementById("customerId").value = id;
-        document.getElementById("nameAccount").value = account;
+        document.getElementById("accountUserID").value = accountID;
         document.getElementById("deleteName").innerText = name;
     }
 
@@ -162,6 +195,7 @@
         document.getElementById("customerCreateAtDetail").innerText = createAt;
         document.getElementById("customerUpdateAtDetail").innerText = updateAt;
     }
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
