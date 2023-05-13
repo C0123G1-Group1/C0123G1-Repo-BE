@@ -12,6 +12,7 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
     <style>
+        <style>
         .carousel {
             width: 100%;
             position: relative;
@@ -389,7 +390,6 @@
         }
 
         header ul li a:hover {
-            border-bottom: 2px solid black;
             cursor: pointer;
         }
 
@@ -719,8 +719,7 @@
         }
 
         li a:hover {
-            color: #ea2e2e;
-            /*list-style: lower-alpha;*/
+            color: white;
         }
     </style>
 </head>
@@ -728,7 +727,7 @@
 <c:set var="customerId" value="<%= ((Customer)session.getAttribute(\"userSession\")).getId() %>"></c:set>
 <header class="sticky-top">
     <input type="checkbox" name="" id="chk1">
-    <img src="../coollogo_com-32663401.png">
+    <a href="/account-servlet?action=homeUser"><img src="../coollogo_com-32663401.png"></a>
     <div class="logo">
         <div class="search-box">
             <form action="/product?action=searchUser" method="post">
@@ -752,14 +751,14 @@
                       class="badge rounded-pill badge-notification bg-danger"></span>Giỏ hàng
             </a>
         </li>
-        <li (click)="checkProfile()"><a href="/">
+        <li (click)="checkProfile()"><a href="#">
             <svg class="iconm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path>
             </svg>
             <%=((Customer) session.getAttribute("userSession")).getName()%>
         </a></li>
         <li style="cursor: pointer">
-            <a href="/index.jsp">
+            <a href="/account-servlet?action=logout">
             Đăng xuất</a>
         </li>
     </ul>
@@ -835,7 +834,7 @@
             </li>
             <c:forEach varStatus="i" begin="1" end="${Math.ceil(productListSize/15)}">
                 <li class="page-item"><a class="page-link"
-                                         href="/product-servlet?action=displayPageUser&page=${i.count}">${i.count}</a>
+                                         href="/product?action=displayPageUser&page=${i.count}">${i.count}</a>
                 </li>
             </c:forEach>
             <li class="page-item">
@@ -903,14 +902,5 @@
         </div>
     </footer>
 </div>
-<script>
-    let status = ${statusOrderDetail};
-    if (!status) {
-        alert("Mua hàng thất bại");
-    } else {
-        alert("Mua hàng thành công")
-    }
-</script>
-
 </body>
 </html>

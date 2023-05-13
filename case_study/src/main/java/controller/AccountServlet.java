@@ -28,19 +28,31 @@ public class AccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        List<Product> productList;
+        List<Product> limitList;
         if (action == null) {
             action = "";
         }
         switch (action) {
             case "homeUser":
-                List<Product> productList = productService.getList();
-                List<Product> limitList = productList.subList(0, Math.min(15,productList.size()));
+                 productList = productService.getList();
+                 limitList = productList.subList(0, Math.min(15,productList.size()));
                 request.setAttribute("productList", limitList);
                 request.setAttribute("productListSize",productList.size());
                 request.getRequestDispatcher("/users/home.jsp").forward(request, response);
                 break;
+            case "logout":
+                HttpSession session = request.getSession();
+                session.invalidate();
+                request.getRequestDispatcher("/login.jsp").forward(request,response);
+                break;
             default:
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                productList = productService.getList();
+                limitList = productList.subList(0, Math.min(15,productList.size()));
+                request.setAttribute("productList", limitList);
+                request.setAttribute("productListSize",productList.size());
+                request.getRequestDispatcher("/home.jsp").forward(request, response);
+
         }
     }
 
@@ -79,7 +91,7 @@ public class AccountServlet extends HttpServlet {
                     }
                 } else {
                     request.setAttribute("statusLogin", false);
-                    request.getRequestDispatcher("/index.jsp").forward(request, response);
+                    request.getRequestDispatcher("/login.jsp").forward(request, response);
                 }
                 break;
         }

@@ -15,5 +15,7 @@ public interface IOrderDetailRepository {
 
     List<OrderDetail> getOrderDetail( int customerId);
     List<CustomerDAO> getCustomerOrder();
-
+    List<CustomerDAO> searchCustomerOrder(String customerName, String phoneNumber);
+    boolean updateOrderDetail(int quantity,int orderDetailId);
+    ProductDAO getOrderDetailById(int orderDetailId);
 }
