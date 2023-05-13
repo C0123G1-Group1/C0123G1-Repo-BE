@@ -80,6 +80,7 @@
                     <button type="button" class="btn btn-success btn-rounded"
                             onclick="window.location.href='/product?action=create'">Thêm sản phẩm
                     </button>
+                    <div style="text-align: center; color: green ;font-size: 30px" >${mess}</div>
                 </div>
                 <div class="container text-left">
                     <table id="tableProduct" class="table table-striped table-bordered"
@@ -140,7 +141,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Product</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">XÓA SẢN PHẨM</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="/product" method="post">

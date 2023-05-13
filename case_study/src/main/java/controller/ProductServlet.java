@@ -169,9 +169,9 @@ public class ProductServlet extends HttpServlet {
         boolean checkEdit = productService.edit(product);
         String mess;
         if (checkEdit) {
-            mess = "Editing is successful";
+            mess = "Chỉnh sửa thành công!";
         } else {
-            mess = "Edit failed";
+            mess = "Chỉnh sửa thất bại!";
         }
         request.setAttribute("mess", mess);
         showList(request, response);
@@ -198,6 +198,20 @@ public class ProductServlet extends HttpServlet {
         String productImage = request.getParameter("productImage");
         Product product = new Product(name, productType, describe, price, productImage);
         productService.createAt(product);
-showList(request,response);
+        boolean checkCreate = productService.createAt(product);
+        String mess;
+        if (checkCreate) {
+            mess = "Thêm mới thành công!";
+        } else {
+            mess = "Thêm mới thất bại!";
+        }
+        request.setAttribute("mess", mess);
+        try {
+            request.getRequestDispatcher("view/products/create.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
