@@ -46,4 +46,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public Customer getCustomerById(int id) {
         return customerRepository.getCustomerById(id);
     }
+
+    @Override
+    public Customer getCustomerById1(int id) {
+        return customerRepository.getCustomerById1(id);
+    }
 }
