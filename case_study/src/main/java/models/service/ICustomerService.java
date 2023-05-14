@@ -18,4 +18,5 @@ public interface ICustomerService {
     boolean editCustomer(Customer customer);
 
     Customer getCustomerById(int id);
+    Customer getCustomerById1(int id);
 }
