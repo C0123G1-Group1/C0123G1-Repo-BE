@@ -64,35 +64,6 @@
     </div>
 </nav>
 
-<%--<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">--%>
-<%--  <div class="container-fluid">--%>
-<%--    <a id="ig1-user-page" href="/products-servlet?action=displayUser" class="navbar-brand">IG1 Store</a>--%>
-<%--    <div class="collapse navbar-collapse" id="navbarSupportedContent">--%>
-<%--      <ul class="navbar-nav me-auto mb-2 mb-lg-0">--%>
-<%--        <li class="nav-item">--%>
-<%--          <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Trang chủ</a>--%>
-<%--        </li>--%>
-<%--        <li class="nav-item dropdown">--%>
-<%--          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">--%>
-<%--            Quản lý--%>
-<%--          </a>--%>
-<%--          <ul class="dropdown-menu">--%>
-<%--            <li><a class="dropdown-item" style="color: black" href="/product-servlet">Sản phẩm</a></li>--%>
-<%--            <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Khách hàng</a></li>--%>
-<%--            <li><a class="dropdown-item" style="color: black" href="/order-servlet">Hóa đơn</a></li>--%>
-<%--          </ul>--%>
-<%--        </li>--%>
-<%--      </ul>--%>
-<%--      <form class="d-flex m-0" role="search" action="/order-servlet" method="get">--%>
-<%--        <input type="text" name="action" value="searchCustomerOrder" hidden>--%>
-<%--        <input class="form-control me-2" type="search" placeholder="Tên khách hàng" aria-label="Search" name="customerName" value="${customerName}">--%>
-<%--        <input class="form-control me-2" type="search" placeholder="Số điện thoại" aria-label="Search" name="phoneNumber" value="${phoneNumber}">--%>
-<%--        <button class="btn btn-outline-dark" type="submit">Tìm</button>--%>
-<%--      </form>--%>
-<%--    </div>--%>
-<%--  </div>--%>
-<%--</nav>--%>
-
 <div class="container-fluid">
     <table class="table table-striped">
         <tr>

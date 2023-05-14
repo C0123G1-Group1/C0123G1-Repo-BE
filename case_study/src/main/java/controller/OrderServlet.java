@@ -118,6 +118,11 @@ public class OrderServlet extends HttpServlet {
         int start = max - 6;
         int end = Math.min(max, productDAOList.size());
         List<ProductDAO> limitList = productDAOList.subList(start, end);
+        long totalPrice =0;
+        for (int i = 0; i < productDAOList.size(); i++) {
+            totalPrice +=productDAOList.get(i).getPrice()* productDAOList.get(i).getQuantity();
+        }
+        request.setAttribute("totalPrice", totalPrice);
         request.setAttribute("limitDAOList", limitList);
         request.setAttribute("productDAOListSize", productDAOList.size());
         request.getRequestDispatcher("/users/order_detail.jsp").forward(request, response);
@@ -130,6 +135,11 @@ public class OrderServlet extends HttpServlet {
         boolean statusOrderDetail = orderDetailSevice.deleteOrderDetail(productOrderDetailId);
         List<ProductDAO> productDAOList = orderDetailSevice.getOrderDetailProduct(customerId);
         List<ProductDAO> limitDAOList = productDAOList.subList(0, Math.min(6, productDAOList.size()));
+        long totalPrice =0;
+        for (int i = 0; i < productDAOList.size(); i++) {
+            totalPrice +=productDAOList.get(i).getPrice()* productDAOList.get(i).getQuantity();
+        }
+        request.setAttribute("totalPrice", totalPrice);
         request.setAttribute("statusOrderDetail", statusOrderDetail);
         request.setAttribute("limitDAOList", limitDAOList);
         request.setAttribute("productDAOListSize", productDAOList.size());
@@ -140,6 +150,11 @@ public class OrderServlet extends HttpServlet {
         int customerId = Integer.parseInt(request.getParameter("customerId"));
         List<ProductDAO> productDAOList = orderDetailSevice.getOrderDetailProduct(customerId);
         List<ProductDAO> limitDAOList = productDAOList.subList(0, Math.min(6, productDAOList.size()));
+        long totalPrice =0;
+        for (int i = 0; i < productDAOList.size(); i++) {
+            totalPrice +=productDAOList.get(i).getPrice()* productDAOList.get(i).getQuantity();
+        }
+        request.setAttribute("totalPrice", totalPrice);
         request.setAttribute("limitDAOList", limitDAOList);
         request.setAttribute("productDAOListSize", productDAOList.size());
         request.getRequestDispatcher("/users/order_detail.jsp").forward(request, response);
@@ -182,6 +197,11 @@ public class OrderServlet extends HttpServlet {
                 boolean statusOrderDetail = orderDetailSevice.addOrderDetail(orderDetail);
                 List<ProductDAO> productDAOList = orderDetailSevice.getOrderDetailProduct(customerId);
                 List<ProductDAO> limitDAOList = productDAOList.subList(0, Math.min(6, productDAOList.size()));
+                long totalPrice =0;
+                for (int i = 0; i < productDAOList.size(); i++) {
+                    totalPrice +=productDAOList.get(i).getPrice()* productDAOList.get(i).getQuantity();
+                }
+                request.setAttribute("totalPrice", totalPrice);
                 request.setAttribute("statusCreateOrderDetail", statusOrderDetail);
                 request.setAttribute("limitDAOList", limitDAOList);
                 request.setAttribute("productDAOListSize", productDAOList.size());

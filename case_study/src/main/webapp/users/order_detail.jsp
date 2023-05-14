@@ -29,7 +29,6 @@
         #navbarSupportedContent ul li a {
             color: black;
         }
-        <style>
          .carousel {
              width: 100%;
              position: relative;
@@ -733,7 +732,7 @@
 <c:set var="customerId" value="${customer.id}" />
 <header class="sticky-top">
     <input type="checkbox" name="" id="chk1">
-    <button class="btn btn-outline-dark border-dark mx-2" onclick="window.location.href='/account-servlet?action=homeUser'">Home</button>
+    <button class="btn btn-outline-dark border-dark mx-2" onclick="window.location.href='/account-servlet?action=homeUser'">Trang chủ</button>
     <a href="#"><img src="../coollogo_com-32663401.png" class="m-0"></a>
     <div class="logo">
         <div class="search-box">
@@ -832,7 +831,7 @@
                 <td>${limitDAOList.getCreatAt()}</td>
                 <td>${limitDAOList.getQuantity()}</td>
                 <td>
-                    <button type="submit" class="btn btn-danger"
+                    <button type="submit" class="btn btn-warning"
                             onclick="window.location.href='/order-detail-servlet?action=update&customerId=${customerId}&orderDetailId=${limitDAOList.getOrderDetailId()}'">
                         Sửa
                     </button>
@@ -849,10 +848,16 @@
     </table>
 </div>
 <div id="pagination" class="row col-lg-12">
+    <div class="d-flex justify-content-between align-items-center bg-dark">
+        <h3 class="bg-dark text-light mb-0">Tổng tiền: ${totalPrice} VNĐ</h3>
+        <button type="button" class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Thanh toán
+        </button>
+    </div>
     <nav aria-label="Page navigation example" style="height: 100%; width: 100%">
         <ul class="pagination justify-content-center">
             <li class="page-item">
-                <a class="page-link" href="#">Previous</a>
+                <a class="page-link" href="#">Trước</a>
             </li>
             <c:forEach varStatus="i" begin="1" end="${Math.ceil(productDAOListSize/6)}">
                 <li class="page-item"><a class="page-link"
@@ -860,10 +865,66 @@
                 </li>
             </c:forEach>
             <li class="page-item">
-                <a class="page-link" href="#">Next</a>
+                <a class="page-link" href="#">Sau</a>
             </li>
         </ul>
     </nav>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel"><b>Thông tin khách hàng</b></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/account-servlet?action=register" method="post">
+                    <input type="text" name="action" value="register" hidden>
+                    <div class="form-outline mb-2">
+                        <label  class="form-label" for="user">Họ và tên</label>
+                        <input oninput="checkUser()" type="text" id="user" class="form-control form-control-lg"
+                               name="customerName" required />
+                        <small id="1" style="color: red;font-weight: bolder "></small>
+                        <span></span>
+                    </div>
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="form3Example3cg">Số điện thoại</label>
+                        <input oninput="checkPhoneNumber()" type="text" id="form3Example3cg" class="form-control form-control-lg"
+                               name="phoneNumber" required/>
+                        <small id="3" style="color: red;font-weight: bolder "></small>
+                        <span></span>
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="form3Example4cg">Địa chỉ</label>
+                            <input type="text" id="form3Example4cg" class="form-control form-control-lg" name="address" required/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-success" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#thanhToan">
+                    Xác nhận thanh toán
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="thanhToan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div align="center" class="modal-body">
+                <h1 class="modal-title fs-5 text-success" id="i">Thanh toán thành công</h1>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="window.location.href='/account-servlet?action=homeUser'">Trang chủ</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1"
@@ -893,6 +954,27 @@
     </div>
 </div>
 <script>
+
+
+    function checkUser() {
+        let name = document.getElementById("user").value;
+        let regexName = /^[A-Z][a-z]*(\s[A-Z][a-z]*)*$/;
+        if (regexName.test(name)) {
+            document.getElementById("1").innerText = "";
+        } else {
+            document.getElementById("1").innerText = "Họ và tên không hợp lệ";
+        }
+    }
+    function checkPhoneNumber() {
+        let name = document.getElementById("form3Example3cg").value;
+        let regexPhone = /^((\+84)|0)[0-9]{9}$/;
+        if (regexPhone.test(name)) {
+            document.getElementById("3").innerText = "";
+        } else {
+            document.getElementById("3").innerText = "Số điện thoại không hợp lệ";
+        }
+    }
+
     function deleteProduct(id, name) {
         document.getElementById("productId").value = id;
         document.getElementById("productName").innerText = name;

@@ -126,6 +126,11 @@ public class OrderDetailServlet extends HttpServlet {
         int customerId = customer.getId();
         List<ProductDAO> productDAOList = orderDetailSevice.getOrderDetailProduct(customerId);
         List<ProductDAO> limitDAOList = productDAOList.subList(0, Math.min(6, productDAOList.size()));
+        long totalPrice =0;
+        for (int i = 0; i < productDAOList.size(); i++) {
+            totalPrice +=productDAOList.get(i).getPrice()* productDAOList.get(i).getQuantity();
+        }
+        request.setAttribute("totalPrice", totalPrice);
         request.setAttribute("statusUpdate", statusUpdate);
         request.setAttribute("limitDAOList", limitDAOList);
         request.setAttribute("productDAOListSize", productDAOList.size());
@@ -138,6 +143,12 @@ public class OrderDetailServlet extends HttpServlet {
         customerId = Integer.parseInt(request.getParameter("customerId"));
         List<ProductDAO> productDAOList = orderDetailSevice.searchOrderDetailProduct(customerId, productName);
         List<ProductDAO> limitDAOList = productDAOList.subList(0, Math.min(6, productDAOList.size()));
+        List<ProductDAO> productDAOListPrice = orderDetailSevice.getOrderDetailProduct(customerId);
+        long totalPrice =0;
+        for (int i = 0; i < productDAOListPrice.size(); i++) {
+            totalPrice +=productDAOListPrice.get(i).getPrice()* productDAOListPrice.get(i).getQuantity();
+        }
+        request.setAttribute("totalPrice", totalPrice);
         request.setAttribute("productName", productName);
         request.setAttribute("limitDAOList", limitDAOList);
         request.setAttribute("productDAOListSize", productDAOList.size());
