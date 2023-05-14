@@ -101,7 +101,7 @@
                     </div>
                     <div id="imageContainer"></div>
                 </fieldset>
-                <button type="submit" class="btn btn-outline-primary " onclick="window.location.href='/product'">Quay
+                <button type="button" class="btn btn-outline-primary " onclick="window.location.href='/product'">Quay
                     lại
                 </button>
                 <button type="submit" class="btn btn-success" style="margin-left: 26vw" value="Save">Lưu</button>
@@ -109,6 +109,7 @@
         </div>
     </div>
 </div>
+
 <script>
     function showImage() {
         var imageUrl = document.getElementById("imageUrlInput").value;

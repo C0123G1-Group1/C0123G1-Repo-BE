@@ -81,7 +81,6 @@
                     <button type="button" class="btn btn-success btn-rounded"
                             onclick="window.location.href='/product?action=create'">Thêm sản phẩm
                     </button>
-                    <div style="text-align: center; color: green ;font-size: 30px" >${mess}</div>
                 </div>
                 <div class="container text-left">
                     <table id="tableProduct" class="table table-striped table-bordered"
@@ -133,11 +132,12 @@
             </div>
         </div>
         <footer class="text-center text-lg-start bg-light text-muted" style=" bottom: 0;right: 0;left: 0">
-        <div class="text-center p-4" style="background-color: orange; color: black">
-            © 2023 Copyright:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ig1store.com</a>
-        </div>
+            <div class="text-center p-4" style="background-color: orange; color: black">
+                © 2023 Copyright:
+                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ig1store.com</a>
+            </div>
         </footer>
+
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -145,7 +145,7 @@
                         <h1 class="modal-title fs-5" id="exampleModalLabel">XÓA SẢN PHẨM</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="/product" method="post">
+                    <form action="/product?action=delete" method="post">
                         <div class="modal-body">
                             <input type="text" name="action" value="delete" hidden>
                             <input type="text" id="id" name="id" hidden>
@@ -153,65 +153,130 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                            <button type="submit" class="btn btn-primary" style="background: red"
-                                    onclick="showDeleteSuccessAlert()">Đồng ý
+                            <button type="submit" class="btn btn-primary" style="background: red">Đồng ý
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="deleteResultModal2" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <c:if test="${checkRemove}">
+                            <div class="d-flex justify-content-center">
+                                <h5 style="color: darkgreen">Xóa thành công!</h5>
+                            </div>
+                        </c:if>
+                        <c:if test="${checkRemove == false}">
+                            <div>
+                                <h5 style="color: red" class="d-flex justify-content-center">Xóa thất bại!</h5>
+                            </div>
+                        </c:if>
+                    </div>
+                    <div class="modal-footer" style="height: 49px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editResultModal" tabindex="-1" aria-labelledby="editResultModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <c:if test="${checkEdit}">
+                            <div class="d-flex justify-content-center">
+                                <h5 style="color: darkgreen">Sửa thành công!</h5>
+                            </div>
+                        </c:if>
+                        <c:if test="${checkEdit == false}">
+                            <div>
+                                <h5 style="color: red" class="d-flex justify-content-center">Sửa thất bại!</h5>
+                            </div>
+                        </c:if>
+                    </div>
+                    <div class="modal-footer" style="height: 49px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-    <script>
-        function deleteProduct(id, name) {
-            document.getElementById("id").value = id;
-            document.getElementById("name").innerText = name;
+<script>
+    function deleteProduct(id, name) {
+        document.getElementById("id").value = id;
+        document.getElementById("name").innerText = name;
+    }
+</script>
+<script>
+    // Lấy giá trị từ localStorage (nếu có)
+    window.addEventListener('load', function () {
+        var searchInput = localStorage.getItem('searchInput');
+        if (searchInput) {
+            document.getElementById('searchInput').value = searchInput;
         }
+    });
 
-        function showDeleteSuccessAlert() {
-            // Thực hiện xóa sản phẩm thành công ở đây
-
-            // Hiển thị thông báo thành công
-            alert("Sản phẩm đã được xóa thành công!");
-        }
-    </script>
-    <script>
-        // Lấy giá trị từ localStorage (nếu có)
-        window.addEventListener('load', function () {
-            var searchInput = localStorage.getItem('searchInput');
-            if (searchInput) {
-                document.getElementById('searchInput').value = searchInput;
+    // Lưu giá trị khi người dùng nhập vào
+    function saveSearchInput() {
+        var input = document.getElementById('searchInput').value;
+        localStorage.setItem('searchInput', input);
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableProduct').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 10,
+            "language": {
+                "paginate": {
+                    "previous": "Trước",
+                    "next": "Sau"
+                }
             }
         });
-
-        // Lưu giá trị khi người dùng nhập vào
-        function saveSearchInput() {
-            var input = document.getElementById('searchInput').value;
-            localStorage.setItem('searchInput', input);
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
-    <script src="jquery/jquery-3.5.1.min.js"></script>
-    <script src="datatables/js/jquery.dataTables.min.js"></script>
-    <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+    });
+</script>
+<%--Để dưới link js bootstrap--%>
+<c:if test="${checkRemove || checkRemove == false}">
     <script>
-        $(document).ready(function () {
-            $('#tableProduct').dataTable({
-                "dom": 'lrtip',
-                "lengthChange": false,
-                "pageLength": 10,
-                "language": {
-                    "paginate": {
-                        "previous": "Trước",
-                        "next": "Sau"
-                    }
-                }
-            });
-        });
+        let deleteResultModal = new bootstrap.Modal(document.getElementById('deleteResultModal2'));
+        deleteResultModal.show();
     </script>
+</c:if>
 
+<%--Để dưới link js bootstrap--%>
+<c:if test="${checkCreate || checkCreate == false}">
+    <script>
+        let createResultModal = new bootstrap.Modal(document.getElementById('createResultModal'));
+        createResultModal.show();
+    </script>
+</c:if>
+
+<%--Để dưới link js bootstrap--%>
+<c:if test="${checkEdit || checkEdit == false}">
+    <script>
+        let editResultModal = new bootstrap.Modal(document.getElementById('editResultModal'));
+        editResultModal.show();
+    </script>
+</c:if>
 </body>
 </html>
