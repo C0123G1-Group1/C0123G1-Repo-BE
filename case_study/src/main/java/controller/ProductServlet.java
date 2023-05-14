@@ -207,26 +207,14 @@ public class ProductServlet extends HttpServlet {
         String productImage = request.getParameter("productImage");
         Product product = new Product(id, name, productType, describe, price, productImage);
         boolean checkEdit = productService.edit(product);
-        String mess;
-        if (checkEdit) {
-            mess = "Chỉnh sửa thành công!";
-        } else {
-            mess = "Chỉnh sửa thất bại!";
-        }
-        request.setAttribute("mess", mess);
+        request.setAttribute("checkEdit",checkEdit);
         showList(request, response);
     }
 
     private void removeProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         boolean checkRemove = productService.remove(id);
-        String mess;
-        if (checkRemove) {
-            mess = "Delete successfully";
-        } else {
-            mess = "Delete failed";
-        }
-        request.setAttribute("mess", mess);
+        request.setAttribute("checkRemove",checkRemove);
   showList(request,response);
     }
 
@@ -239,13 +227,7 @@ public class ProductServlet extends HttpServlet {
         Product product = new Product(name, productType, describe, price, productImage);
         productService.createAt(product);
         boolean checkCreate = productService.createAt(product);
-        String mess;
-        if (checkCreate) {
-            mess = "Thêm mới thành công!";
-        } else {
-            mess = "Thêm mới thất bại!";
-        }
-        request.setAttribute("mess", mess);
+        request.setAttribute("checkCreate",checkCreate);
         try {
             request.getRequestDispatcher("view/products/create.jsp").forward(request,response);
         } catch (ServletException e) {

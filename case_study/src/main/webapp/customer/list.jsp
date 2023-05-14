@@ -197,12 +197,12 @@
         });
     });
 </script>
+<%--Để dưới link js bootstrap--%>
 <c:if test="${check || check == false}">
     <script>
         let deleteResultModal = new bootstrap.Modal(document.getElementById('deleteResultModal2'));
         deleteResultModal.show();
     </script>
 </c:if>
-<jsp:include page="/header_footer/footer.jsp"></jsp:include>
 </body>
 </html>

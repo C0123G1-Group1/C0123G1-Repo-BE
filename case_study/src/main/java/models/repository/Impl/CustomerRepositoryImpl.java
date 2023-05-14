@@ -16,7 +16,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     private final String SELECT_ALL_CUSTOMER = "SELECT c.*,ac.user_name,ac.password FROM customers AS c INNER JOIN account_users AS ac ON c.account_id=ac.account_id;";
     private final String INSERT_CUSTOMER = "INSERT INTO customers(customer_name, email, phone_number, address, account_id) VALUES (?,?,?,?,?);";
     private final String INSERT_ACCOUNT = "INSERT INTO account_users (user_name,password) VALUE(?,?);";
-    private final String SELECT_ACCOUNT = "SELECT*FROM account_users;";
+    private final String SELECT_ACCOUNT = "SELECT*FROM account_users WHERE user_name=?;";
     private final String DELETE_CUSTOMER = "DELETE FROM customers WHERE customer_id = ?;";
     private final String DELETE_ACCOUNT_ROLE = "DELETE FROM users_role WHERE account_id = ?;";
     private final String DELETE_ACCOUNT = "DELETE FROM account_users WHERE account_id =?;";
@@ -72,6 +72,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             int transaction = preparedStatement.executeUpdate();
             if (transaction > 0) {
                 preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);
+                preparedStatement.setString(1,customer.getAccount().getUserName());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     if (resultSet.getString("user_name").equals(customer.getAccount().getUserName())) {
