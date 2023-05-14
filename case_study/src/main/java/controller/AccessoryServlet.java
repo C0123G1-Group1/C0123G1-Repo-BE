@@ -37,6 +37,7 @@ public class AccessoryServlet extends HttpServlet {
                         break;
                     }
                 }
+                break;
             default:
                 showList(request, response);
         }
@@ -119,6 +120,7 @@ public class AccessoryServlet extends HttpServlet {
                 }
                 request.getRequestDispatcher("/users/home.jsp").forward(request, response);
                 break;
+
         }
     }
 
@@ -127,20 +129,22 @@ public class AccessoryServlet extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
         List<Product> searchProductList = null;
         switch (price) {
+            case 6:
+                searchProductList = accessoryService.search(name, 0, 1000000000);
             case 1:
-                searchProductList=accessoryService.search(name,0,1000000);
+                searchProductList = accessoryService.search(name, 0, 100000);
                 break;
             case 2:
-                searchProductList = accessoryService.search(name, 0, 1000000);
+                searchProductList = accessoryService.search(name, 100001, 500000);
                 break;
             case 3:
-                searchProductList = accessoryService.search(name, 1000001, 3000000);
+                searchProductList = accessoryService.search(name, 500001, 1000000);
                 break;
             case 4:
-                searchProductList = accessoryService.search(name, 3000001, 5000000);
+                searchProductList = accessoryService.search(name, 1000001, 5000000);
                 break;
             case 5:
-                searchProductList = accessoryService.search(name, 5000001, 10000000);
+                searchProductList = accessoryService.search(name, 5000001, 1000000000);
                 break;
         }
         request.setAttribute("productList", searchProductList);
@@ -164,9 +168,9 @@ public class AccessoryServlet extends HttpServlet {
         boolean checkEdit = accessoryService.edit(product);
         String mess;
         if (checkEdit) {
-            mess = "Chỉnh sửa thành công!";
+            mess = "Chỉnh sửa thành công";
         } else {
-            mess = "Chỉnh sửa thất bại!";
+            mess = "Chinh sửa thất bại";
         }
         request.setAttribute("mess", mess);
         showList(request, response);
@@ -175,11 +179,14 @@ public class AccessoryServlet extends HttpServlet {
     private void removeProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         boolean checkRemove = accessoryService.remove(id);
+        if (checkRemove) {
+            checkRemove = accessoryService.remove(id);
+        }
         String mess;
         if (checkRemove) {
-            mess = "Xóa thành công";
-        } else {
             mess = "Xóa thất bại";
+        } else {
+            mess = "Xóa thành công";
 
         }
         request.setAttribute("mess", mess);
@@ -195,21 +202,6 @@ public class AccessoryServlet extends HttpServlet {
         Product product = new Product(name, productType, describe, price, productImage);
         accessoryService.createAt(product);
         showList(request, response);
-        boolean checkCreate = accessoryService.createAt(product);
-        String mess;
-        if (checkCreate) {
-            mess = "Thêm mới thành công!";
-        } else {
-            mess = "Thêm mới thất bại!";
-        }
-        request.setAttribute("mess", mess);
-        try {
-            request.getRequestDispatcher("view/accessorys/create.jsp").forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
+
 }
