@@ -38,37 +38,49 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid">
-    <div class="row justify-content-center" >
-        <div class="col-auto">
-           <h2>Sửa thông tin khách hàng</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-3">
-        </div>
-        <div class="col-6">
-            <form method="post" action="/customer-servlet?action=edit">
-                <input hidden type="text" name="id" value="${customer.getId()}"><br>
-                <label>Họ và tên</label>
-                <input class="form-control" required type="text" name="fullName" placeholder="Nhập họ và tên" value="${customer.getName()}"><br>
-                <label>Email</label>
-                <input class="form-control" required type="email" name="email" placeholder="Nhập email" value="${customer.getEmail()}"><br>
-                <label>Số điện thoại</label>
-                <input class="form-control" required type="number" name="phoneNumber" placeholder="Nhập số điện thoại" value="${customer.getPhoneNumber()}"><br>
-                <label>Địa chỉ</label>
-                <input class="form-control" required type="text" name="address" value="${customer.getAddress()}"><br>
-                <ul class="d-flex justify-content-between list-unstyled">
-                    <li>
-                        <button class="btn btn-warning">Sửa</button>
-                    </li>
-                    <li>
-                        <button type="button" onclick="window.location.href='/customer-servlet'" class="btn btn-primary">Trở lại</button>
-                    </li>
-                </ul>
-            </form>
-        </div>
-        <div class="col-3">
+<%--<div class="container-fluid">--%>
+<%--    <div class="row justify-content-center" >--%>
+<%--        <div class="col-auto">--%>
+<%--           <h2>Sửa thông tin khách hàng</h2>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="row">--%>
+<%--        <div class="col-3">--%>
+<%--        </div>--%>
+<%--        <div class="col-6">--%>
+
+<%--        </div>--%>
+<%--        <div class="col-3">--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<div class="container-fluid h-100">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="container p-5">
+                <h2 class="text-uppercase text-center mb-5">SỬA THÔNG TIN KHÁCH HÀNG</h2>
+                <form method="post" action="/customer-servlet?action=edit">
+                    <input hidden type="text" name="id" value="${customer.getId()}"><br>
+                    <label>Họ và tên</label>
+                    <input class="form-control" required type="text" name="fullName" placeholder="Nhập họ và tên" value="${customer.getName()}"><br>
+                    <label>Email</label>
+                    <input class="form-control" required type="email" name="email" placeholder="Nhập email" value="${customer.getEmail()}"><br>
+                    <label>Số điện thoại</label>
+                    <input class="form-control" required type="number" name="phoneNumber" placeholder="Nhập số điện thoại" value="${customer.getPhoneNumber()}"><br>
+                    <label>Địa chỉ</label>
+                    <input class="form-control" required type="text" name="address" value="${customer.getAddress()}"><br>
+                    <div class="mt-3">
+                        <ul class="d-flex justify-content-between list-unstyled">
+                            <li>
+                                <button class="btn btn-warning">Sửa</button>
+                            </li>
+                            <li>
+                                <button type="button" onclick="window.location.href='/customer-servlet'" class="btn btn-primary">Trở lại</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
