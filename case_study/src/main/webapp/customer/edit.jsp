@@ -9,24 +9,39 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Edit customer</title>
+    <title>Sửa thông tin khách hàng</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="regex.css">
 </head>
 <body>
-<jsp:include page="/header_footer/header.jsp"></jsp:include>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">
+    <div class="container-fluid">
+        <a id="ig1-user-page" href="/product" class="navbar-brand">IG1 Store</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li clx ass="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Trang chủ</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Quản lý
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Khách hàng</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Đặt hàng</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container-fluid">
     <div class="row justify-content-center" >
         <div class="col-auto">
-           <h2>Edit customer</h2>
-<%--            <h4 style="color: blue; font-weight: bold">${mess}</h4>--%>
-            <c:if test="${check}">
-                <h5 style="color: darkgreen">Edit success</h5>
-            </c:if>
-            <c:if test="${check == false}">
-                <h5 style="color: red">Edit fail</h5>
-            </c:if>
+           <h2>Sửa thông tin khách hàng</h2>
         </div>
     </div>
     <div class="row">
@@ -35,25 +50,62 @@
         <div class="col-6">
             <form method="post" action="/customer-servlet?action=edit">
                 <input hidden type="text" name="id" value="${customer.getId()}"><br>
-                <label>First And Last Name</label>
-                <input class="form-control" type="text" name="fullName" value="${customer.getName()}"><br>
+                <label>Họ và tên</label>
+                <input class="form-control" required type="text" name="fullName" placeholder="Nhập họ và tên" value="${customer.getName()}"><br>
                 <label>Email</label>
-                <input class="form-control" type="email" name="email" value="${customer.getEmail()}"><br>
-                <label>Phone Number</label>
-                <input class="form-control" type="number" name="phoneNumber" value="${customer.getPhoneNumber()}"><br>
-                <label>Address</label>
-                <input class="form-control" type="text" name="address" value="${customer.getAddress()}"><br>
-                <button class="btn btn-success">Edit</button>
+                <input class="form-control" required type="email" name="email" placeholder="Nhập email" value="${customer.getEmail()}"><br>
+                <label>Số điện thoại</label>
+                <input class="form-control" required type="number" name="phoneNumber" placeholder="Nhập số điện thoại" value="${customer.getPhoneNumber()}"><br>
+                <label>Địa chỉ</label>
+                <input class="form-control" required type="text" name="address" value="${customer.getAddress()}"><br>
+                <ul class="d-flex justify-content-between list-unstyled">
+                    <li>
+                        <button class="btn btn-warning">Sửa</button>
+                    </li>
+                    <li>
+                        <button type="button" onclick="window.location.href='/customer-servlet'" class="btn btn-primary">Trở lại</button>
+                    </li>
+                </ul>
             </form>
         </div>
         <div class="col-3">
         </div>
     </div>
 </div>
-<div></div>
-<jsp:include page="/header_footer/footer.jsp"></jsp:include>
+<%--Modal thông báo--%>
+<div class="modal fade" id="deleteResultModal3" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${check}">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="color: darkgreen">Sửa thành công!</h5>
+                    </div>
+                </c:if>
+                <c:if test="${check == false}">
+                    <div>
+                        <h5 style="color: red" class="d-flex justify-content-center">Sửa thất bại!</h5>
+                    </div>
+                </c:if>
+            </div>
+            <div class="modal-footer" style="height: 49px">
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+</script>
+<c:if test="${check || check == false}">
+    <script>
+        let deleteResultModal = new bootstrap.Modal(document.getElementById('deleteResultModal3'));
+        deleteResultModal.show();
+    </script>
+</c:if>
 </body>
 </html>

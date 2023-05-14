@@ -25,23 +25,19 @@
         <div style="display: flex; margin: 8px;position: relative">
             <div>
                 <button type="button" class="btn btn-success btn-rounded"
-                        onclick="window.location.href='/customer-servlet?action=create'">New customer
+                        onclick="window.location.href='/customer-servlet?action=create'">Thêm mới
                 </button>
             </div>
         </div>
-        <c:if test="${check}">
-            <h5 style="color: darkgreen">Delete success</h5>
-        </c:if>
-        <c:if test="${check == false}">
-            <h5 style="color: red">Delete fail</h5>
-        </c:if>
         <form action="/customer-servlet" class="d-flex my-0">
             <input type="hidden" name="action" value="search">
-            <input class="form-control me-2" type="text" placeholder="Enter name customer" aria-label="Search"
-                   name="nameCustomer" value="${nameCustomer}">
-            <input class="form-control me-2" type="text" placeholder="Enter address" aria-label="Search"
-                   name="addressCustomer" value="${addressCustomer}">
-            <button class="btn btn-info btn-rounded" type="submit">Find</button>
+            <input class="form-control me-2" type="text" placeholder="Nhập tên cần tìm" aria-label="Search"
+                   name="nameCustomer" value="${name}">
+            <input class="form-control me-2" type="text" placeholder="Nhập địa chỉ cần tìm" aria-label="Search"
+                   name="addressCustomer" value="${address}">
+            <input class="form-control me-2" type="text" placeholder="Nhập số điện thoại " aria-label="Search"
+                   name="phone" value="${phoneNumber}">
+            <button class="btn btn-info btn-rounded" type="submit">Tìm</button>
         </form>
     </div>
 </nav>
@@ -49,18 +45,18 @@
     <div class="row">
         <div class="col-1"></div>
         <div class="col-10">
-            <div>
-                <h3>List customer</h3>
+            <div class="d-flex justify-content-center">
+                <h3>Danh sách khách hàng</h3>
             </div>
             <table id="tableCustomer" class="table table-hover">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Tên</th>
                     <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Address</th>
-                    <th>Action</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
+                    <th>Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -72,19 +68,19 @@
                         <td>${customer.getPhoneNumber()}</td>
                         <td>${customer.getAddress()}</td>
                         <td>
-                            <button class="btn btn-warning"
+                            <button type="submit" class="btn btn-warning"
                                     onclick="window.location.href='/customer-servlet?action=edit&customerId=${customer.getId()}'">
-                                Edit
+                                Sửa
                             </button>
                             <button class="btn btn-danger" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal"
-                                    onclick="infoDelete('${customer.getId()}','${customer.getName()}','${customer.getAccount().getUserName()}')">
-                                Delete
+                                    onclick="infoDelete('${customer.getId()}','${customer.getName()}','${customer.getAccount().getId()}')">
+                                Xóa
                             </button>
                             <button class="btn btn-info" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal1"
                                     onclick="infoDetail('${customer.getId()}','${customer.getName()}','${customer.getCreateAt()}','${customer.getUpdateAt()}')">
-                                Detail
+                                Chi tiết
                             </button>
                         </td>
                     </tr>
@@ -102,22 +98,22 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete customer</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Xóa khách hàng</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
             <form action="/customer-servlet?action=delete" method="post">
                 <div class="modal-body">
                     <input hidden id="customerId" name="customerId">
-                    <input hidden id="nameAccount" name="nameAccount">
-                    <span>Do you want to delete the customer named</span><span id="deleteName"
-                                                                               style="color: red"></span><span> ?</span>
+                    <input hidden id="accountUserID" name="accountUserID">
+                    <span>Bạn có muốn xóa khách hàng có tên </span><span id="deleteName"
+                                                                         style="color: red"></span><span> không?</span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không
                     </button>
                     <button type="submit" class="btn btn-primary">
-                        Yes
+                        Có
                     </button>
                 </div>
             </form>
@@ -131,28 +127,51 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">Customer details</h5>
+                <h5 class="modal-title" id="exampleModalLabel1">Chi tiết khách hàng</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
             <form action="/customer-servlet?action=delete" method="post">
                 <div class="modal-body">
-                    <p>ID customer: <span id="customerIdDetail"></span></p>
-                    <p>Name customer: <span id="customerNameDetail"></span></p>
-                    <p>Create Datetime: <span id="customerCreateAtDetail"></span></p>
-                    <p>Update Datetime: <span id="customerUpdateAtDetail"></span></p>
+                    <p>ID khách hàng: <span id="customerIdDetail"></span></p>
+                    <p>Tên khách hàng: <span id="customerNameDetail"></span></p>
+                    <p>Ngày thêm: <span id="customerCreateAtDetail"></span></p>
+                    <p>Ngày sửa: <span id="customerUpdateAtDetail"></span></p>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<footer style="margin-top: 50px">
-<%--    <jsp:include page="/header_footer/footer.jsp"></jsp:include>--%>
-</footer>
+<!-- Modal status delete -->
+<div class="modal fade" id="deleteResultModal2" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${check}">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="color: darkgreen">Xóa thành công!</h5>
+                    </div>
+                </c:if>
+                <c:if test="${check == false}">
+                    <div>
+                        <h5 style="color: red" class="d-flex justify-content-center">Xóa thất bại!</h5>
+                    </div>
+                </c:if>
+            </div>
+            <div class="modal-footer" style="height: 49px">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    function infoDelete(id, name, account) {
+    function infoDelete(id, name, accountID) {
         document.getElementById("customerId").value = id;
-        document.getElementById("nameAccount").value = account;
+        document.getElementById("accountUserID").value = accountID;
         document.getElementById("deleteName").innerText = name;
     }
 
@@ -178,5 +197,12 @@
         });
     });
 </script>
+<c:if test="${check || check == false}">
+    <script>
+        let deleteResultModal = new bootstrap.Modal(document.getElementById('deleteResultModal2'));
+        deleteResultModal.show();
+    </script>
+</c:if>
+<jsp:include page="/header_footer/footer.jsp"></jsp:include>
 </body>
 </html>
