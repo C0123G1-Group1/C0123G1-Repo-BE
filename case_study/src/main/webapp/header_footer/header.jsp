@@ -6,25 +6,26 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<header class="p-3 border-bottom" style="background-image: linear-gradient(0,#ff592e,#f3362b
-)" >
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/customer-servlet" class="nav-link px-2 link-dark">Customers</a></li>
-        <li><a href="/product" class="nav-link px-2 link-dark">Products</a></li>
-        <li><a href="/accessory" class="nav-link px-2 link-dark">Accessory</a></li>
-        <li><a href="/order-servlet" class="nav-link px-2 link-dark">Orders</a></li>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">
+  <div class="container-fluid">
+    <a id="ig1-user-page" href="/product" class="navbar-brand">IG1 Store</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li clx ass="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Trang chủ</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Quản lý
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
+            <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Khách hàng</a></li>
+            <li><a class="dropdown-item" style="color: black" href="/order-servlet">Đặt hàng</a></li>
+          </ul>
+        </li>
       </ul>
-      <div class="dropdown text-end">
-        <a href="#" class="dropdown__login d-block link-dark text-decoration-none dropdown-toggle d-flex" id="dropdownUser"data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/6-anh-dai-dien-trang-inkythuatso-03-15-26-36.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
-          <p style="padding: 4px">Admin</p>
-        </a>
-        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser" >
-          <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
-      </div>
     </div>
   </div>
-</header>
+</nav>

@@ -29,7 +29,7 @@
                 <label>Type</label>
                 <select class="form-control" name="productType" id="">
                     <option value="1">Phone</option>
-                </select><br>
+                </select>
                 <label>Describe</label>
                 <input class="form-control" type="text" name="describe" required><br>
                 <label>Price</label>

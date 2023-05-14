@@ -15,10 +15,10 @@ import java.util.List;
 
 @WebServlet(name = "CustomerServlet", value = "/customer-servlet")
 public class CustomerServlet extends HttpServlet {
-    private ICustomerService customerService = new CustomerServiceImpl();
+    private final ICustomerService customerService = new CustomerServiceImpl();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -58,20 +58,6 @@ public class CustomerServlet extends HttpServlet {
             case "edit":
                 editCustomer(request, response);
                 break;
-//            case "delete":
-//                int id = Integer.parseInt(request.getParameter("id"));
-//                boolean statusDelete = customerService.deleteCustomer(id);
-//                request.setAttribute("statusDelete",statusDelete);
-//                try {
-//                    List<Customer> customerList = customerService.getAllCustomer();
-//                    request.setAttribute("customerList",customerList);
-//                    request.getRequestDispatcher("/customer/list.jsp").forward(request,response);
-//                } catch (ServletException e) {
-//                    throw new RuntimeException(e);
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                break;
         }
     }
 
@@ -95,6 +81,13 @@ public class CustomerServlet extends HttpServlet {
         Account account = new Account(userName, password);
         Customer customer = new Customer(fullName, email, phoneNumber, address, account);
         boolean check = customerService.saveCustomer(customer);
+//        String message ;
+//        if (check) {
+//            message = "Thêm thành công";
+//        } else {
+//            message = "Thêm thất bại";
+//        }
+//        request.setAttribute("mess", message);
         request.setAttribute("check",check);
         try {
             request.getRequestDispatcher("/customer/create.jsp").forward(request, response);
@@ -105,17 +98,10 @@ public class CustomerServlet extends HttpServlet {
 
     public void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("customerId"));
-        String account = request.getParameter("nameAccount");
-        boolean check = customerService.deleteCustomer(id, account);
-//        String mess = "";
-//        if (check) {
-//            mess = "Delete success";
-//        } else {
-//            mess = "Delete fail";
-//        }
-//        request.setAttribute("mess", mess);
-        request.setAttribute("check",check);
+        int accountId = Integer.parseInt(request.getParameter("accountUserID"));
+        boolean check = customerService.deleteCustomer(id, accountId);
         List<Customer> customerList = customerService.getAllCustomer();
+        request.setAttribute("check",check);
         request.setAttribute("customerList", customerList);
         try {
             request.getRequestDispatcher("/customer/list.jsp").forward(request, response);
@@ -127,25 +113,17 @@ public class CustomerServlet extends HttpServlet {
     public void searchCustomer(HttpServletRequest request, HttpServletResponse response) {
         String nameCustomer = request.getParameter("nameCustomer");
         String addressCustomer = request.getParameter("addressCustomer");
-        List<Customer> customerList = customerService.searchCustomer(nameCustomer, addressCustomer);
-        request.setAttribute("nameCustomer", nameCustomer);
-        request.setAttribute("addressCustomer", addressCustomer);
-        if (customerList.size() == 0) {
-            List<Customer> customerList1 = customerService.getAllCustomer();
-            request.setAttribute("customerList", customerList1);
-            try {
-                request.getRequestDispatcher("/customer/list.jsp").forward(request, response);
-            } catch (ServletException | IOException e) {
-                e.printStackTrace();
-            }
-        } else {
+        String phoneNumber = request.getParameter("phone");
+        List<Customer> customerList = customerService.searchCustomer(nameCustomer, addressCustomer,phoneNumber);
+        request.setAttribute("name", nameCustomer);
+        request.setAttribute("address", addressCustomer);
+        request.setAttribute("phoneNumber",phoneNumber);
             request.setAttribute("customerList", customerList);
             try {
                 request.getRequestDispatcher("/customer/list.jsp").forward(request, response);
             } catch (ServletException | IOException e) {
                 e.printStackTrace();
             }
-        }
     }
 
     private void sendCustomer(HttpServletRequest request, HttpServletResponse response) {
@@ -160,23 +138,20 @@ public class CustomerServlet extends HttpServlet {
     }
 
     public void editCustomer(HttpServletRequest request, HttpServletResponse response) {
-//        String userName= request.getParameter("userNameH");
-//        String password= request.getParameter("password");
         String id = request.getParameter("id");
         String fullName = request.getParameter("fullName");
         String email = request.getParameter("email");
         String phoneNumber = request.getParameter("phoneNumber");
         String address = request.getParameter("address");
-//        Account account =new Account(userName,password);
         Customer customer = new Customer(Integer.parseInt(id), fullName, email, phoneNumber, address);
         boolean check = customerService.editCustomer(customer);
-//        String mess = "";
+//        String message ;
 //        if (check) {
-//            mess = "Edit success";
+//            message = "Sửa thành công";
 //        } else {
-//            mess = "Edit fail";
+//            message = "Sửa thất bại";
 //        }
-//        request.setAttribute("mess", mess);
+//        request.setAttribute("mess", message);
         request.setAttribute("check",check);
         try {
             request.getRequestDispatcher("/customer/edit.jsp").forward(request, response);

@@ -17,10 +17,10 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     private final String INSERT_CUSTOMER = "INSERT INTO customers(customer_name, email, phone_number, address, account_id) VALUES (?,?,?,?,?);";
     private final String INSERT_ACCOUNT = "INSERT INTO account_users (user_name,password) VALUE(?,?);";
     private final String SELECT_ACCOUNT = "SELECT*FROM account_users;";
-    private final String DELETE_CUSTOMER = "SET SQL_SAFE_UPDATES =0;\n" +
-            "DELETE FROM customers WHERE customer_id = ?;";
-    private final String DELETE_ACCOUNT = "DELETE FROM account_users WHERE user_name=?;";
-    private final String SEARCH_CUSTOMER = "SELECT c.*,ac.user_name,ac.password FROM customers AS c INNER JOIN account_users AS ac ON c.account_id=ac.account_id WHERE c.customer_name LIKE ? AND c.address LIKE ?;";
+    private final String DELETE_CUSTOMER = "DELETE FROM customers WHERE customer_id = ?;";
+    private final String DELETE_ACCOUNT_ROLE = "DELETE FROM users_role WHERE account_id = ?;";
+    private final String DELETE_ACCOUNT = "DELETE FROM account_users WHERE account_id =?;";
+    private final String SEARCH_CUSTOMER = "SELECT c.*,ac.user_name,ac.password FROM customers AS c INNER JOIN account_users AS ac ON c.account_id=ac.account_id WHERE c.customer_name LIKE ? AND c.address LIKE ? AND c.phone_number LIKE ?;";
     private final String SELECT_CUSTOMER = "SELECT c.*,ac.user_name,ac.password FROM customers AS c INNER JOIN account_users AS ac ON c.account_id=ac.account_id WHERE c.customer_id= ?;";
     private final String EDIT_ACCOUNT = "UPDATE account_users SET password = ? WHERE  account_id=?;";
     private final String EDIT_CUSTOMER = "UPDATE customers SET customer_name=?,email=?,phone_number=?,address=?,update_at=current_timestamp() WHERE customer_id=?;";
@@ -28,7 +28,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             "FROM customers AS c\n" +
             "INNER JOIN account_users AS ac ON c.account_id = ac.account_id\n" +
             "WHERE customer_id = ?;";
-    private final  String USER_ROLE = "INSERT INTO users_role (role_id, account_id) \n" +
+    private final String USER_ROLE = "INSERT INTO users_role (role_id, account_id) \n" +
             "VALUES  ('1', ?)";
 
 
@@ -73,12 +73,11 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             if (transaction > 0) {
                 preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);
                 ResultSet resultSet = preparedStatement.executeQuery();
-
                 while (resultSet.next()) {
                     if (resultSet.getString("user_name").equals(customer.getAccount().getUserName())) {
                         preparedStatement = connection.prepareStatement(USER_ROLE);
                         int accountId = resultSet.getInt("account_id");
-                        preparedStatement.setInt(1,accountId);
+                        preparedStatement.setInt(1, accountId);
                         transaction += preparedStatement.executeUpdate();
                         preparedStatement = connection.prepareStatement(INSERT_CUSTOMER);
                         preparedStatement.setString(1, customer.getName());
@@ -104,51 +103,60 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     }
 
     @Override
-    public boolean deleteCustomer(int id, String account) {
+    public boolean deleteCustomer(int id, int accountId) {
         Connection connection = BaseRepository.getConnectDB();
+        boolean check = true;
         try {
             connection.setAutoCommit(false);
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER);
             preparedStatement.setInt(1, id);
-//            int transaction = preparedStatement.executeUpdate();
-            return preparedStatement.executeUpdate() >0;
-//            if (transaction > 0) {
-//                preparedStatement = connection.prepareStatement(DELETE_ACCOUNT);
-//                preparedStatement.setString(1, account);
-//                transaction += preparedStatement.executeUpdate();
-//            }
-//            if (transaction == 2) {
-//                connection.commit();
-//                return true;
-//            } else {
-//                connection.rollback();
-//            }
+            int count =preparedStatement.executeUpdate();
+            if (count>0) {
+                preparedStatement = connection.prepareStatement(DELETE_ACCOUNT_ROLE);
+                preparedStatement.setInt(1, accountId);
+                count +=preparedStatement.executeUpdate();
+            } else {
+                check = false;
+                connection.rollback();
+                connection.commit();
+            }
+            if (count==2) {
+                preparedStatement = connection.prepareStatement(DELETE_ACCOUNT);
+                preparedStatement.setInt(1, accountId);
+                check = preparedStatement.executeUpdate() > 0;
+                connection.commit();
+            } else {
+                check = false;
+                connection.rollback();
+                connection.commit();
+            }
         } catch (SQLException e) {
             try {
+                check=false;
                 connection.rollback();
                 connection.commit();
             } catch (SQLException ex) {
                 e.printStackTrace();
             }
-            e.printStackTrace();
         }
-        return false;
+        return check;
     }
 
     @Override
-    public List<Customer> searchCustomer(String nameCustomer, String addressCustomer) {
+    public List<Customer> searchCustomer(String nameCustomer, String addressCustomer,String phoneNumber) {
         List<Customer> customerList = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_CUSTOMER);
             preparedStatement.setString(1, '%' + nameCustomer + '%');
             preparedStatement.setString(2, '%' + addressCustomer + '%');
+            preparedStatement.setString(3, '%' + phoneNumber + '%');
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int customerId = resultSet.getInt("customer_id");
                 String name = resultSet.getString("customer_name");
                 String email = resultSet.getString("email");
-                String phoneNumber = resultSet.getString("phone_number");
+                String phone = resultSet.getString("phone_number");
                 String address = resultSet.getString("address");
                 int accountId = resultSet.getInt("account_id");
                 String createAt = resultSet.getString("create_at");
@@ -156,7 +164,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                 String userName = resultSet.getString("user_name");
                 String password = resultSet.getString("password");
                 Account account = new Account(accountId, userName, password);
-                Customer customer = new Customer(customerId, name, email, phoneNumber, address, account, createAt, updateAt);
+                Customer customer = new Customer(customerId, name, email, phone, address, account, createAt, updateAt);
                 customerList.add(customer);
             }
         } catch (SQLException e) {
@@ -216,7 +224,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_ID);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int customerId = resultSet.getInt("customer_id");
@@ -224,8 +232,8 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                 int accountId = resultSet.getInt("account_id");
                 String userName = resultSet.getString("user_name");
                 String password = resultSet.getString("password");
-                Account account = new Account(accountId,userName,password);
-                Customer customer = new Customer(customerId, cuatomerName,account);
+                Account account = new Account(accountId, userName, password);
+                Customer customer = new Customer(customerId, cuatomerName, account);
                 return customer;
             }
         } catch (SQLException e) {
