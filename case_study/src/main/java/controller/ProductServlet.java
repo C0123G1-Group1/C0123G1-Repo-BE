@@ -21,6 +21,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        int pageUser;
         List<Product> productList;
         if (action == null) {
             action = "";
@@ -33,11 +34,21 @@ public class ProductServlet extends HttpServlet {
                 showEditForm(request, response);
                 break;
             case "displayPageUser":
-                int pageUser = Integer.parseInt(request.getParameter("page"));
+                pageUser = Integer.parseInt(request.getParameter("page"));
                 productList = productService.getList();
                 for (int i = 1; i <= Math.ceil((double) productList.size() / 15); i++) {
                     if (pageUser == i) {
                         displayPageUser(request, response, productList, pageUser);
+                        break;
+                    }
+                }
+                break;
+            case "displayPageHome":
+                pageUser = Integer.parseInt(request.getParameter("page"));
+                productList = productService.getList();
+                for (int i = 1; i <= Math.ceil((double) productList.size() / 15); i++) {
+                    if (pageUser == i) {
+                        displayPageHome(request, response, productList, pageUser);
                         break;
                     }
                 }
@@ -48,6 +59,17 @@ public class ProductServlet extends HttpServlet {
 
 
     }
+
+    private static void displayPageHome(HttpServletRequest request, HttpServletResponse response, List<Product> productsList, int page) throws ServletException, IOException {
+        int max = page * 15;
+        int start = max - 15;
+        int end = Math.min(max, productsList.size());
+        List<Product> limitList = productsList.subList(start, end);
+        request.setAttribute("productList", limitList);
+        request.setAttribute("productListSize", productsList.size());
+        request.getRequestDispatcher("/home.jsp").forward(request, response);
+    }
+
     private static void displayPageUser(HttpServletRequest request, HttpServletResponse response, List<Product> productsList, int page) throws ServletException, IOException {
         int max = page * 15;
         int start = max - 15;
@@ -112,6 +134,9 @@ public class ProductServlet extends HttpServlet {
                 seachProduct(request, response);
                 break;
             case "searchUser":
+                searchUser(request, response);
+                break;
+            case "searchUserHome":
                 String productName = request.getParameter("productName");
                 if (productName.equals("")) {
                     List<Product> productList = productService.getList();
@@ -122,9 +147,24 @@ public class ProductServlet extends HttpServlet {
                     List<Product> productList = productService.searchUser(productName);
                     request.setAttribute("productList", productList);
                 }
-                request.getRequestDispatcher("/users/home.jsp").forward(request, response);
+                request.getRequestDispatcher("/home.jsp").forward(request, response);
                 break;
+
         }
+    }
+
+    private void searchUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String productName = request.getParameter("productName");
+        if (productName.equals("")) {
+            List<Product> productList = productService.getList();
+            List<Product> limitList = productList.subList(0, Math.min(15, productList.size()));
+            request.setAttribute("productList", limitList);
+            request.setAttribute("productListSize", productList.size());
+        } else {
+            List<Product> productList = productService.searchUser(productName);
+            request.setAttribute("productList", productList);
+        }
+        request.getRequestDispatcher("/users/home.jsp").forward(request, response);
     }
 
     private void seachProduct(HttpServletRequest request, HttpServletResponse response) {
