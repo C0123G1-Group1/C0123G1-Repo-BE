@@ -49,8 +49,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
-                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Customers</a></li>
-                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Order</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Khách hàng</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Hóa đơn</a></li>
                     </ul>
                 </li>
             </ul>
@@ -100,7 +101,7 @@
                     </div>
                     <div id="imageContainer"></div>
                 </fieldset>
-                <button type="submit" class="btn btn-outline-primary " onclick="window.location.href='/product'">Quay
+                <button type="button" class="btn btn-outline-primary " onclick="window.location.href='/product'">Quay
                     lại
                 </button>
                 <button type="submit" class="btn btn-success" style="margin-left: 26vw" value="Save">Lưu</button>
@@ -108,6 +109,7 @@
         </div>
     </div>
 </div>
+
 <script>
     function showImage() {
         var imageUrl = document.getElementById("imageUrlInput").value;

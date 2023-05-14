@@ -81,13 +81,6 @@ public class CustomerServlet extends HttpServlet {
         Account account = new Account(userName, password);
         Customer customer = new Customer(fullName, email, phoneNumber, address, account);
         boolean check = customerService.saveCustomer(customer);
-//        String message ;
-//        if (check) {
-//            message = "Thêm thành công";
-//        } else {
-//            message = "Thêm thất bại";
-//        }
-//        request.setAttribute("mess", message);
         request.setAttribute("check",check);
         try {
             request.getRequestDispatcher("/customer/create.jsp").forward(request, response);
@@ -145,13 +138,6 @@ public class CustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         Customer customer = new Customer(Integer.parseInt(id), fullName, email, phoneNumber, address);
         boolean check = customerService.editCustomer(customer);
-//        String message ;
-//        if (check) {
-//            message = "Sửa thành công";
-//        } else {
-//            message = "Sửa thất bại";
-//        }
-//        request.setAttribute("mess", message);
         request.setAttribute("check",check);
         try {
             request.getRequestDispatcher("/customer/edit.jsp").forward(request, response);

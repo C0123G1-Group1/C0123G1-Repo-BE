@@ -13,5 +13,8 @@ public interface IOrderDetailSevice {
     List<ProductDAO> getOrderDetailProduct(int customerId);
     List<ProductDAO> searchOrderDetailProduct(int customerId, String customerName);
     List<OrderDetail> getOrderDetail( int customerId);
+    List<CustomerDAO> searchCustomerOrder(String customerName, String phoneNumber);
     List<CustomerDAO> getCustomerOrder();
+    boolean updateOrderDetail(int quantity,int orderDetailId);
+    ProductDAO getOrderDetailById(int orderDetailId);
 }

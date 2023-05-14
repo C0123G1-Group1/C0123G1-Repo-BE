@@ -52,8 +52,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
-                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Customers</a></li>
-                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Order</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Khách hàng</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Hóa đơn</a></li>
                     </ul>
                 </li>
             </ul>
@@ -99,13 +100,39 @@
 
                 </fieldset>
                 <div>
-                <button type="submit" class="btn btn-outline-primary " onclick="window.location.href='/product'">Quay lại</button>
+                <button type="button" class="btn btn-outline-primary " onclick="window.location.href='/product'">Quay lại</button>
                 <button type="submit" class="btn btn-success" style="margin-left: 25vw">Thêm</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="createResultModal" tabindex="-1" aria-labelledby="createResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${checkCreate}">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="color: darkgreen">Thêm mới thành công!</h5>
+                    </div>
+                </c:if>
+                <c:if test="${checkCreate == false}">
+                    <div>
+                        <h5 style="color: red" class="d-flex justify-content-center">Thêm mới thất bại!</h5>
+                    </div>
+                </c:if>
+            </div>
+            <div class="modal-footer" style="height: 49px">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     function showImage() {
         var imageUrl = document.getElementById("imageUrlInput").value;
@@ -119,5 +146,13 @@
         imageContainer.appendChild(imgElement);
     }
 </script>
+
+<%--Để dưới link js bootstrap--%>
+<c:if test="${checkCreate || checkCreate == false}">
+    <script>
+        let createResultModal = new bootstrap.Modal(document.getElementById('createResultModal'));
+        createResultModal.show();
+    </script>
+</c:if>
 </body>
 </html>
