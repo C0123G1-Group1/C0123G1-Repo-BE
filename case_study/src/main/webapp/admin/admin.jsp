@@ -46,26 +46,12 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
+                            <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
                             <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Khách hàng</a></li>
                             <li><a class="dropdown-item" style="color: black" href="/order-servlet">Hóa đơn</a></li>
                         </ul>
                     </li>
                 </ul>
-                <%--            <form class="d-flex m-0" role="search" action="/product?action=search" method="post">--%>
-                <%--                <input class="form-control me-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search"--%>
-                <%--                       name="name" id="searchInput" oninput="saveSearchInput()">--%>
-                <%--                <select name="price" id="" class="form-control me-2">--%>
-                <%--                    <option value="1">--Chọn giá--</option>--%>
-                <%--                    <option value="1">Dưới 5 triệu</option>--%>
-                <%--                    <option value="2">5-10 triệu</option>--%>
-                <%--                    <option value="3">10-15 triệu</option>--%>
-                <%--                    <option value="4">Trên 15 triệu</option>--%>
-                <%--                </select>--%>
-                <%--                <button type="submit" class="btn btn-outline-primary"--%>
-                <%--                        style="background: white; width: 200px;height: auto; color: black">--%>
-                <%--                    Tìm kiếm--%>
-                <%--                </button>--%>
-                <%--            </form>--%>
             </div>
         </div>
     </nav>

@@ -739,7 +739,7 @@
             <form action="/order-detail-servlet" method="post">
                 <input type="text" name="customerId" value="${customerId}" hidden>
                 <input type="text" name="action" value="search" hidden>
-                <input style="margin-top: 30px" type="text" id="search" name="productName"
+                <input style="margin-top: 30px;width: 28vw" type="text" id="search" name="productName"
                      value="${productName}"  placeholder="Tìm kiếm sản phẩm: Iphone...">
                 <button style="margin-top: 30px">
                     <svg class="iconm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -778,26 +778,26 @@
         </label>
     </div>
 </header>
-<div align="center">
-    <c:if test="${statusOrderDetail}">
-        <h4 class="text-success">Xóa thành công</h4>
-    </c:if>
-    <c:if test="${statusOrderDetail == false}">
-        <h4 class="text-danger">Xóa thất bại</h4>
-    </c:if>
-    <c:if test="${statusUpdate}">
-        <h4 class="text-success">Cập nhật thành công</h4>
-    </c:if>
-    <c:if test="${statusUpdate == false}">
-        <h4 class="text-danger">Cập nhật thất bại</h4>
-    </c:if>
-    <c:if test="${statusCreateOrderDetail}">
-        <h4 class="text-success">Thêm mới thành công</h4>
-    </c:if>
-    <c:if test="${statusCreateOrderDetail == false}">
-        <h4 class="text-danger">Thêm mới thất bại</h4>
-    </c:if>
-</div>
+<%--<div align="center">--%>
+<%--    <c:if test="${statusOrderDetail}">--%>
+<%--        <h4 class="text-success">Xóa thành công</h4>--%>
+<%--    </c:if>--%>
+<%--    <c:if test="${statusOrderDetail == false}">--%>
+<%--        <h4 class="text-danger">Xóa thất bại</h4>--%>
+<%--    </c:if>--%>
+<%--    <c:if test="${statusUpdate}">--%>
+<%--        <h4 class="text-success">Cập nhật thành công</h4>--%>
+<%--    </c:if>--%>
+<%--    <c:if test="${statusUpdate == false}">--%>
+<%--        <h4 class="text-danger">Cập nhật thất bại</h4>--%>
+<%--    </c:if>--%>
+<%--    <c:if test="${statusCreateOrderDetail}">--%>
+<%--        <h4 class="text-success">Thêm mới thành công</h4>--%>
+<%--    </c:if>--%>
+<%--    <c:if test="${statusCreateOrderDetail == false}">--%>
+<%--        <h4 class="text-danger">Thêm mới thất bại</h4>--%>
+<%--    </c:if>--%>
+<%--</div>--%>
 
 <div>
     <table class="table table-hover">
@@ -953,8 +953,89 @@
         </div>
     </div>
 </div>
-<script>
 
+<div class="modal fade" id="exampleModalCreate" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${statusCreateOrderDetail}">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="color: darkgreen">Thêm mới thành công</h5>
+                    </div>
+                </c:if>
+                <c:if test="${statusCreateOrderDetail == false}">
+                    <div>
+                        <h5 style="color: red" class="d-flex justify-content-center">Thêm mới thất bại</h5>
+                    </div>
+                </c:if>
+            </div>
+            <div class="modal-footer" style="height: 49px">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModalUpdate" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${statusUpdate}">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="color: darkgreen">Cập thành công</h5>
+                    </div>
+                </c:if>
+                <c:if test="${statusUpdate == false}">
+                    <div>
+                        <h5 style="color: red" class="d-flex justify-content-center">Cập thất bại</h5>
+                    </div>
+                </c:if>
+            </div>
+            <div class="modal-footer" style="height: 49px">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${statusOrderDetail}">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="color: darkgreen">Xóa thành công</h5>
+                    </div>
+                </c:if>
+                <c:if test="${statusOrderDetail == false}">
+                    <div>
+                        <h5 style="color: red" class="d-flex justify-content-center">Xóa thất bại</h5>
+                    </div>
+                </c:if>
+            </div>
+            <div class="modal-footer" style="height: 49px">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
 
     function checkUser() {
         let name = document.getElementById("user").value;
@@ -980,8 +1061,28 @@
         document.getElementById("productName").innerText = name;
     }
 </script>
-</body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<c:if test="${statusCreateOrderDetail || statusCreateOrderDetail == false}">
+    <script>
+        let createResultModal = new bootstrap.Modal(document.getElementById('exampleModalCreate'));
+        createResultModal.show();
+    </script>
+</c:if>
+<c:if test="${statusUpdate || statusUpdate == false}">
+    <script>
+        let updateResultModal = new bootstrap.Modal(document.getElementById('exampleModalUpdate'));
+        updateResultModal.show();
+    </script>
+</c:if>
+<c:if test="${statusOrderDetail || statusOrderDetail == false}">
+    <script>
+        let deleteResultModal = new bootstrap.Modal(document.getElementById('exampleModal4'));
+        deleteResultModal.show();
+    </script>
+</c:if>
+
+</body>
+
 </html>

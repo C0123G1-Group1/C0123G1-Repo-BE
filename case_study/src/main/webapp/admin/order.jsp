@@ -47,6 +47,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
                         <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Khách hàng</a></li>
                         <li><a class="dropdown-item" style="color: black" href="/order-servlet">Hóa đơn</a></li>
                     </ul>
@@ -64,53 +65,76 @@
     </div>
 </nav>
 
-<div class="container-fluid">
-    <table class="table table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Tên</th>
-            <th>Email</th>
-            <th>SĐT</th>
-            <th>Địa chỉ</th>
-            <th>Ngày mua hàng</th>
-            <th>Thao tác</th>
-        </tr>
-        <c:forEach var="limitDAOList" items="${limitDAOList}">
-            <tr>
-                <td>${limitDAOList.getId()}</td>
-                <td>${limitDAOList.getName()}</td>
-                <td>${limitDAOList.getEmail()}</td>
-                <td>${limitDAOList.getPhoneNumber()}</td>
-                <td>${limitDAOList.getAddress()}</td>
-                <td>${limitDAOList.getOrderDate()}</td>
-                <td>
-                    <button type="submit" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                            onclick="window.location.href='/order-detail-servlet?action=orderDetail&customerId=${limitDAOList.getId()}'">
-                        Chi tiết đơn hàng
-                    </button>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
-</div>
+<div class="row">
+    <div class="container-fluid my-lg-2">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <h3 class="text-center">DANH SÁCH HÓA ĐƠN</h3>
+                <hr>
+                <div class="container text-left">
+                    <table id="tableProduct" class="table table-striped table-bordered"
+                           style="width:100%; margin-top: 20px">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">SĐT</th>
+                            <th scope="col">Địa chỉ</th>
+                            <th scope="col">Ngày mua hàng</th>
+                            <th scope="col">Thao tác</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="limitDAOList" items="${limitDAOList}">
+                            <tr>
+                                <td>${limitDAOList.getId()}</td>
+                                <td>${limitDAOList.getName()}</td>
+                                <td>${limitDAOList.getEmail()}</td>
+                                <td>${limitDAOList.getPhoneNumber()}</td>
+                                <td>${limitDAOList.getAddress()}</td>
+                                <td>${limitDAOList.getOrderDate()}</td>
+                                <td>
+                                    <button type="submit" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal"
+                                            onclick="window.location.href='/order-detail-servlet?action=orderDetail&customerId=${limitDAOList.getId()}'">
+                                        Chi tiết đơn hàng
+                                    </button>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>
 
-<div id="pagination" class="row col-lg-12">
-    <nav aria-label="Page navigation example" style="height: 100%; width: 100%">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#">Trước</a>
-            </li>
-            <c:forEach varStatus="i" begin="1" end="${Math.ceil(customerDAOListSize/6)}">
-                <li class="page-item"><a class="page-link"
-                                         href="/order-servlet?action=orderPage&page=${i.count}">${i.count}</a>
-                </li>
-            </c:forEach>
-            <li class="page-item">
-                <a class="page-link" href="#">Sau</a>
-            </li>
-        </ul>
-    </nav>
+        <div id="pagination" class="row col-lg-12">
+            <nav aria-label="Page navigation example" style="height: 100%; width: 100%">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="#">Trước</a>
+                    </li>
+                    <c:forEach varStatus="i" begin="1" end="${Math.ceil(customerDAOListSize/6)}">
+                        <li class="page-item"><a class="page-link"
+                                                 href="/order-servlet?action=orderPage&page=${i.count}">${i.count}</a>
+                        </li>
+                    </c:forEach>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Sau</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <footer class="text-center text-lg-start bg-light text-muted" style=" position: fixed; bottom: 0;right: 0;left: 0">
+            <div class="text-center p-4" style="background-color: orange; color: black">
+                © 2023 Copyright:
+                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ig1store.com</a>
+            </div>
+        </footer>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
