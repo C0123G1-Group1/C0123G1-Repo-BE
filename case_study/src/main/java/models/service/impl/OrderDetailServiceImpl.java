@@ -38,7 +38,22 @@ public class OrderDetailServiceImpl implements IOrderDetailSevice {
     }
 
     @Override
+    public List<CustomerDAO> searchCustomerOrder(String customerName, String phoneNumber) {
+        return orderDetailRepository.searchCustomerOrder(customerName,phoneNumber);
+    }
+
+    @Override
     public List<CustomerDAO> getCustomerOrder() {
         return orderDetailRepository.getCustomerOrder();
+    }
+
+    @Override
+    public boolean updateOrderDetail(int quantity, int orderDetailId) {
+        return orderDetailRepository.updateOrderDetail(quantity,orderDetailId);
+    }
+
+    @Override
+    public ProductDAO getOrderDetailById(int orderDetailId) {
+        return orderDetailRepository.getOrderDetailById(orderDetailId);
     }
 }
