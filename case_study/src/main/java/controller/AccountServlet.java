@@ -86,7 +86,7 @@ public class AccountServlet extends HttpServlet {
                         request.setAttribute("productListSize",productList.size());
                         request.getRequestDispatcher("/users/home.jsp").forward(request, response);
                     } else if (role.equals("admin")) {
-                        request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);
+                        response.sendRedirect("/product");
                     }
                 } else {
                     request.setAttribute("statusLogin", false);

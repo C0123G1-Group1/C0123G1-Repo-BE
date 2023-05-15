@@ -44,11 +44,11 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">
     <div class="container-fluid">
         <i onclick="window.history.back()" id="back" class="fa-solid fa-circle-chevron-left"></i>
-        <a style="margin-left: 10px" id="ig1-user-page" href="/product" class="navbar-brand">IG1 Store</a>
+        <a style="margin-left: 10px" id="ig1-user-page" href="#" class="navbar-brand">IG1 Store</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li clx ass="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Trang chủ</a>
+                    <a class="nav-link active" aria-current="page" href="/account-servlet">Đăng xuất</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
