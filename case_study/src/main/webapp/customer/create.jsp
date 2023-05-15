@@ -152,7 +152,7 @@
         if (regexName.test(name)) {
             document.getElementById("user1").innerText = "";
         } else {
-            document.getElementById("user1").innerText = "Chưa đúng định dạng kiểu tên đăng nhập!";
+            document.getElementById("user1").innerText = "Tên đăng nhập phải trên 5 chữ cái!";
         }
     }
     function checkFullName() {
