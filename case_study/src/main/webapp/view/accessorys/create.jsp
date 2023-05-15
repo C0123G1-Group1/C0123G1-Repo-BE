@@ -53,8 +53,8 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
                         <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
-                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Customers</a></li>
-                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Order</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Khách hàng</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Hóa đơn</a></li>
                     </ul>
                 </li>
             </ul>

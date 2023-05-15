@@ -15,30 +15,57 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/customer/regex.css">
+    <style>
+        #ig1-user-page{
+            color: black;
+        }
+        #ig1-user-page:hover{
+            color: white;
+        }
+        #navbarSupportedContent ul li:hover a{
+            color: white;
+        }
+
+        #navbarSupportedContent ul li a {
+            color: black;
+        }
+    </style>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <body>
-<jsp:include page="/header_footer/header.jsp"></jsp:include>
-<nav class="navbar navbar-light bg-light" style="position: sticky;top:0;left: 0;right: 0">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">
     <div class="container-fluid">
-        <div style="display: flex; margin: 8px;position: relative">
-            <div>
-                <button type="button" class="btn btn-success btn-rounded"
-                        onclick="window.location.href='/customer-servlet?action=create'">Thêm mới
-                </button>
-            </div>
+        <a id="ig1-user-page" href="/product" class="navbar-brand">IG1 Store</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Trang chủ</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Quản lý
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Khách hàng</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Hóa đơn</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form action="/customer-servlet" class="d-flex my-0"style="height: 5vh">
+                <input type="hidden" name="action" value="search">
+                <input class="form-control me-2" type="text" placeholder="Nhập tên cần tìm" aria-label="Search"
+                       name="nameCustomer" value="${name}">
+                <input class="form-control me-2" type="text" placeholder="Nhập địa chỉ cần tìm" aria-label="Search"
+                       name="addressCustomer" value="${address}">
+                <input class="form-control me-2" type="text" placeholder="Nhập số điện thoại " aria-label="Search"
+                       name="phone" value="${phoneNumber}">
+                <button style="margin-right:5px ;width: 20vw" class="btn btn-info btn-rounded" type="submit">Tìm kiếm</button>
+            </form>
         </div>
-        <form action="/customer-servlet" class="d-flex my-0">
-            <input type="hidden" name="action" value="search">
-            <input class="form-control me-2" type="text" placeholder="Nhập tên cần tìm" aria-label="Search"
-                   name="nameCustomer" value="${name}">
-            <input class="form-control me-2" type="text" placeholder="Nhập địa chỉ cần tìm" aria-label="Search"
-                   name="addressCustomer" value="${address}">
-            <input class="form-control me-2" type="text" placeholder="Nhập số điện thoại " aria-label="Search"
-                   name="phone" value="${phoneNumber}">
-            <button class="btn btn-info btn-rounded" type="submit">Tìm</button>
-        </form>
     </div>
 </nav>
 <div class="container-fluid my-lg-2">
@@ -48,15 +75,20 @@
             <div class="d-flex justify-content-center">
                 <h3>Danh sách khách hàng</h3>
             </div>
-            <table id="tableCustomer" class="table table-hover">
+            <div>
+                <button type="button" class="btn btn-success btn-rounded "
+                        onclick="window.location.href='/customer-servlet?action=create'">Thêm mới
+                </button>
+            </div>
+            <table id="tableCustomer" class="table table-striped table-bordered" >
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Tên</th>
-                    <th>Email</th>
-                    <th>Số điện thoại</th>
-                    <th>Địa chỉ</th>
-                    <th>Thao tác</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -167,7 +199,12 @@
         </div>
     </div>
 </div>
-
+<footer class="text-center text-lg-start bg-light text-muted" style=" bottom: 0;right: 0;left: 0">
+    <div class="text-center p-4" style="background-color: orange; color: black">
+        © 2023 Copyright:
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ig1store.com</a>
+    </div>
+</footer>
 <script>
     function infoDelete(id, name, accountID) {
         document.getElementById("customerId").value = id;
@@ -193,7 +230,13 @@
         $('#tableCustomer').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
-            "pageLength": 10
+            "pageLength": 10,
+            "language": {
+                "paginate": {
+                    "previous": "Trước",
+                    "next": "Sau"
+                }
+            }
         });
     });
 </script>
