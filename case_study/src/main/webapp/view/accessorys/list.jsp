@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li clx ass="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/account-servlet">Đăng xuất</a>
+                    <a class="nav-link active" aria-current="page" href="/account-servlet?action=logout">Đăng xuất</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -48,8 +48,8 @@
                         Quản lý
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
                         <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
+                        <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
                         <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Khách hàng</a></li>
                         <li><a class="dropdown-item" style="color: black" href="/order-servlet">Hóa đơn</a></li>
                     </ul>
@@ -87,9 +87,8 @@
                 <div class="container text-left">
 
                     <button type="button" class="btn btn-success btn-rounded"
-                            onclick="window.location.href='/accessory?action=create'">Thêm sản phẩm
+                            onclick="window.location.href='/accessory?action=create'">Thêm phụ kiện
                     </button>
-                    <div style="text-align: center; color: green ;font-size: 30px" >${mess}</div>
                 </div>
                 <div class="container text-left">
                     <table id="tableProduct" class="table table-striped table-bordered"
@@ -161,8 +160,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                            <button type="submit" class="btn btn-primary" style="background: red"
-                                    onclick="showDeleteSuccessAlert()">Đồng ý
+                            <button type="submit" class="btn btn-primary" style="background: red">Đồng ý
                             </button>
                         </div>
                     </form>
@@ -175,13 +173,6 @@
     function deleteProduct(id, name) {
         document.getElementById("id").value = id;
         document.getElementById("name").innerText = name;
-    }
-
-    function showDeleteSuccessAlert() {
-        // Thực hiện xóa sản phẩm thành công ở đây
-
-        // Hiển thị thông báo thành công
-        alert("Phụ kiện đã được xóa thành công!");
     }
 </script>
 <script>
@@ -205,6 +196,113 @@
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="datatables/js/jquery.dataTables.min.js"></script>
 <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${checkRemove}">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="color: darkgreen">Xóa thành công</h5>
+                    </div>
+                </c:if>
+                <c:if test="${checkRemove == false}">
+                    <div>
+                        <h5 style="color: red" class="d-flex justify-content-center">Xóa thất bại</h5>
+                    </div>
+                </c:if>
+            </div>
+            <div class="modal-footer" style="height: 49px">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${checkCreate}">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="color: darkgreen">Thêm thành công</h5>
+                    </div>
+                </c:if>
+                <c:if test="${checkCreate == false}">
+                    <div>
+                        <h5 style="color: red" class="d-flex justify-content-center">Thêm thất bại</h5>
+                    </div>
+                </c:if>
+            </div>
+            <div class="modal-footer" style="height: 49px">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editResultModal" tabindex="-1" aria-labelledby="editResultModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:if test="${checkEdit}">
+                    <div class="d-flex justify-content-center">
+                        <h5 style="color: darkgreen">Sửa thành công!</h5>
+                    </div>
+                </c:if>
+                <c:if test="${checkEdit == false}">
+                    <div>
+                        <h5 style="color: red" class="d-flex justify-content-center">Sửa thất bại!</h5>
+                    </div>
+                </c:if>
+            </div>
+            <div class="modal-footer" style="height: 49px">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+</script>
+
+<c:if test="${checkEdit || checkEdit == false}">
+    <script>
+        let editResultModal = new bootstrap.Modal(document.getElementById('editResultModal'));
+        editResultModal.show();
+    </script>
+</c:if>
+
+<c:if test="${checkCreate || checkCreate == false}">
+    <script>
+        let deleteResultModal = new bootstrap.Modal(document.getElementById('exampleModal5'));
+        deleteResultModal.show();
+    </script>
+</c:if>
+
+<c:if test="${checkRemove || checkRemove == false}">
+    <script>
+        let deleteResultModal = new bootstrap.Modal(document.getElementById('exampleModal4'));
+        deleteResultModal.show();
+    </script>
+</c:if>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
         $('#tableProduct').dataTable({

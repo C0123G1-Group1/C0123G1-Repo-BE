@@ -60,7 +60,19 @@ CREATE TABLE order_detail(
     FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
 INSERT INTO product_type (product_type_name) VALUES ("Phone"), ("Accessory");
-INSERT INTO products (product_name, product_typee_id,`describe`,price,product_image_url)
+INSERT INTO products (product_name, product_type_id,`describe`,price,product_image_url)
+VALUES ("OPPO Reno7 Pro 5G ", 1,"Với công nghệ sạc SuperVOOC 2.0 có công suất tối đa 65 W thì việc mất thời gian chờ đợi thiết bị được lấp đầy viên pin sẽ không còn là vấn đề nữa, khi chỉ mất 39 phút* là có thể sạc từ 0 - 100% pin cực kỳ nhanh chóng.",
+11900,"https://cdn.tgdd.vn/Products/Images/42/251964/OPPO-Reno7-Pro-5G-thumb-den-600x600.jpg"),
+("Xiaomi Redmi Note 12 8GB", 1,"Xiaomi Redmi Note 12 8GB/128GB -  Là mẫu điện thoại tầm trung vừa được ra mắt tại thị trường Việt Nam, máy thu hút sự chú ý đến từ người dùng nhờ được trang bị con chip Snapdragon 685 và camera 50 MP nổi bật trong phân khúc.",
+5790,"https://cdn.tgdd.vn/Products/Images/42/303298/xiaomi-redmi-note-12-4g-mono-xanh-200x200.jpg"),
+("Vivo Y33s", 1,"Thiết kế bóng bẩy, các chi tiết được hoàn thiện tốt. 
+Hiệu năng ổn định với chip MediaTek.
+Màn hình thiết kế giọt nước, màu sắc hiển thị rực rỡ.
+Camera mang lại chi tiết tốt trong môi trường đủ sáng.
+Pin lớn thoải mái sử dụng ngày dài.",
+5140,"https://cdn.tgdd.vn/Products/Images/42/249102/Vivo-y33s-yellow-thumb-600x600.jpg");
+
+INSERT INTO products (product_name, product_type_id,`describe`,price,product_image_url)
 VALUES ("Iphone X", 1,"Cấu hình:
 -Màn hình: 5.8”, Super Retina Oled
 -Camera: 12MP
@@ -84,7 +96,7 @@ Cụm Camera vuông.",20000,"https://assets.swappie.com/iphone11promaxhopea.jpg"
 -Camera: 12MP
 -Chipset: Apple A13
 Điểm nổi bật:
-Cụm Camera vuông.",11000,"https://assets.swappie.com/iphone11promaxhopea.jpg"),
+Cụm Camera vuông.",11000,"https://th.bing.com/th/id/OIP.ksHWCyAh2tBE8jEKwA05wgHaHa?pid=ImgDet&rs=1"),
 ("Iphone 11 ", 1,"Cấu hình:
 -Màn hình: 5.4”/6.1”/6.7”, Liquid Retina Ips Lcd
 -Camera: 12MP
@@ -145,6 +157,7 @@ Cụm Camera vuông.",4000,"https://cdn2.cellphones.com.vn/358x358,webp,q100/med
 -Chipset: Apple A13
 Điểm nổi bật:
 Cụm Camera vuông.",17000,"https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/s/a/samsung_galaxy_z_flip_m_i_2022-1_1.jpg"),
+
 ("Tai nghe Bluetooth Apple", 2,"Tai nghe thiết kế mới, êm ái và bền bỉ",2600,"https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/g/r/group_169_2.png"),
 ("Tai nghe không dây Samsung", 2,"Tai nghe hầm hố, trẻ trung năng động",1300,"https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/f/r/frame_1_3_9.png"),
 ("Cáp Lightning ", 2,"Đặc điểm nổi bật
@@ -173,29 +186,40 @@ Nạp pin an toàn, nhanh chóng với cổng Type C Power Delivery và 2 cổng
 Cùng lúc sạc được 3 thiết bị.
 Sạc lại qua 2 cổng vào Micro USB và Type C.
 Lõi pin Polymer bền bỉ, hạn chế chai pin.
-Dung lượng lớn 20.000 mAh, cấp đủ năng lượng cho nhiều thiết bị.",800,"https://cdn.tgdd.vn/Products/Images/57/229038/sac-du-phong-polymer-20000mah-type-c-xmobile-p69d-thumb-1-600x600.jpeg")
+Dung lượng lớn 20.000 mAh, cấp đủ năng lượng cho nhiều thiết bị.",800,"https://cdn.tgdd.vn/Products/Images/57/229038/sac-du-phong-polymer-20000mah-type-c-xmobile-p69d-thumb-1-600x600.jpeg"),
+("Loa Bluetooth Monster Sparkle", 2,"Loa Bluetooth Monster Sparkle với hệ thống đèn LED nổi bật cùng thiết kế thuôn dài đẹp mắt, công nghệ âm thanh sống động, tốc độ kết nối nhanh chóng, tiện lợi sử dụng trong những bữa tiệc cá nhân và các buổi tụ họp bạn bè hàng ngày.",
+2400,"https://cdn.tgdd.vn/Products/Images/2162/304547/loa-bluetooth-monster-sparkle-thumb-5-600x600.jpg"),
+
+("Tai nghe Bluetooth Chụp Tai Mozard K8", 2,"Thiết kế đệm tai êm và dày, giúp thoải mái khi đeo.
+Có thể kéo giãn tai nghe 3.7 cm để vừa vặn hơn khi sử dụng.
+Âm thanh phát ra to rõ, sắc nét, âm trầm dày chắc, đầy nội lực.
+Tích hợp mic thoại giúp thu giọng nói rõ ràng, tương tác tốt hơn.
+Chuẩn Bluetooth 4.2 cho khoảng cách đến 10 m.
+Dung lượng pin 300 mAh, thời gian sử dụng 15 giờ, sạc khoảng 2 giờ.
+Tương thích với các thiết bị chạy hệ điều hành: Android, Windows, iOS.",
+325,"https://cdn.tgdd.vn/Products/Images/54/235955/bluetooth-mozard-k8-thumb-5-600x600.jpg"),
+("Tai nghe Bluetooth Chụp Tai Kanen K6", 2,"Thiết kế hiện đại, năng động, có thể gấp gọn khi không sử dụng.
+Khoảng cách kết nối xa đến 10 m qua công nghệ Bluetooth 4.1. 
+Sử dụng liên tục trong 18 giờ, sạc đầy trong 2 giờ.
+Dễ dàng điều khiển qua giọng nói với Siri, Google Voice.",
+390,"https://cdn.tgdd.vn/Products/Images/54/202888/tai-nghe-bluetooth-kanen-k6-xam-gold-13-600x600.jpg"),
+("Loa Bluetooth JBL Pulse 5", 2,"Điều khiển tiện lợi với nút cứng trên loa và mở rộng tính năng khi dùng app đi kèm. 
+Nổi bật với dải đèn LED đầy màu sắc, giúp mở ra bữa tiệc hoàn hảo cả trong màn đêm. 
+Âm thanh sống động và cuốn hút với các công nghệ hiện đại. Dung lượng pin lớn, dùng liên tục 12 tiếng",
+6350,"https://cdn.tgdd.vn/Products/Images/2162/299608/loa-bluetooth-jbl-pulse-5-thumb.-600x600.jpeg")
+
 ;
 INSERT INTO `ig1_store`.`roles` (`role_id`, `role_name`) VALUES ('1', 'users');
 INSERT INTO `ig1_store`.`roles` (`role_id`, `role_name`) VALUES ('2', 'admin');
-INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`)
-VALUES  ('1', '1'), ('1', '2'),('1', '3'),('1', '4'),('1', '5'),('1', '6'),('1', '7'),('1', '8'),('1', '9'),('1', '10'),('1', '11'),
-('1', '12'),('1', '13'),('1', '14'),('1', '15'),('1', '16'),('1', '17'),('1', '18'),('1', '19'),('1', '20'),('1', '21'),
-('1', '22'),('1', '23'),('1', '24'),('1', '25'),('1', '26'),(2,27);
-;
+
 INSERT INTO account_users (user_name,`password`) VALUES ("khanh", "khanh123"), ("thien", "thien123"),
-("khang", "khang123"), ("hai", "hai123"),
+														("khang", "khang123"), ("hai", "hai123"),
                                                          ("hoa", "hoa123"), ("an", "an123"),
 														("bao", "bao123"), ("cuong", "cuong123"),
                                                          ("dung", "dung123"), ("chau", "chau123"),
 														("nga", "nga123"), ("toan", "toan123"),
                                                          ("van", "van123"), ("vu", "vu123"),
-														("thang", "thang123"), ("vien", "vien123"),
-														("dinh", "dinh123"), ("nam", "nam123"),
-														("chien", "chien123"),("nhan", "nhan123"),
-														("vuong", "vuong123"), ("tu", "tu123"),
-														("tuan", "tuan123"), ("tuyet", "tuyet123"),
-														("mai", "mai123"), ("mai2", "mai123"),
-                                                        ("admin","admin123");
+														("thang", "thang123"),("admin", "admin123");
 INSERT INTO customers (customer_name, email,phone_number,address,account_id)
 VALUES ("Kiều Quốc Khánh","quockhanh@gmail.com", "0123456001","Quảng Nam", 1),
 ("Nguyễn Trung Thiện","trungthien@gmail.com", "0123456002","Quảng Nam", 2),
@@ -211,15 +235,20 @@ VALUES ("Kiều Quốc Khánh","quockhanh@gmail.com", "0123456001","Quảng Nam"
 ("Bùi Toàn","buitoan@gmail.com", "0123456012","Lâm Đồng", 12),
 ("Bùi Thúy Vân","thuyvan@gmail.com", "0123456013","Quảng Nam", 13),
 ("Nguyễn Quốc Vũ","quocvu@gmail.com", "0123456014","Quảng Nam", 14),
-("Nguyễn Viết Thắng","thang@gmail.com", "0123456015","Sơn La", 15),
-("Hồ Viễn","hovien@gmail.com", "0123456016","Huế", 16),
-("Nguyễn Đức Định","ducinh@gmail.com", "0123456017","Quảng Nam", 17),
-("Lý Văn Nam","vannam@gmail.com", "0123456018","Thanh Hóa", 18),
-("Hà Thái Chiến","thaichien@gmail.com", "0123456019","Bình Thuận", 19),
-("Đỗ Thành Nhân","thanhnhan@gmail.com", "0123456020","Huế", 20),
-("Đỗ Vương","dovuong@gmail.com", "0123456021","Hà Nam", 21),
-("Đỗ Tứ","dotu@gmail.com", "0123456022","Hà Giang", 22),
-("Nguyễn Anh Tuấn","anhtuan@gmail.com", "0123456023","Đà Nẵng", 23),
-("Ngô Thị Ánh Tuyết","anhtuyet@gmail.com", "0123456024","Quảng Nam", 24),
-("Trương Hà Mai","hamai@gmail.com", "0123456025","Nghệ An", 25),
-("Nguyễn Thảo Mai","thaomai@gmail.com", "0123456026","Thái Bình", 26);
+("Nguyễn Viết Thắng","thang@gmail.com", "0123456015","Sơn La", 15);
+
+INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`)
+VALUES  ('1', '1'), ('1', '2'),('1', '3'),('1', '4'),('1', '5'),('1', '6'),('1', '7'),('1', '8'),('1', '9'),('1', '10'),('1', '11'),
+('1', '12'),('1', '13'),('1', '14'),('1', '15'),(2,16);
+;
+
+
+
+
+
+
+
+
+
+
+
