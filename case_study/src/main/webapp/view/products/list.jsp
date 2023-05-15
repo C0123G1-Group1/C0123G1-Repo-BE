@@ -48,7 +48,7 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex m-0" role="search" action="/product?action=search" method="post">
+            <form class="d-flex m-0" role="search" action="/product?action=search" method="post" style="height: 5vh">
                 <input class="form-control me-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search"
                        name="name" id="searchInput" oninput="saveSearchInput()">
                 <select name="price" id="" class="form-control me-2">
@@ -59,7 +59,7 @@
                     <option value="4">Trên 15 triệu</option>
                 </select>
                 <button type="submit" class="btn btn-outline-primary"
-                        style="background: white; width: 200px;height: auto; color: black">
+                        style="background: white; width: 203px;height: auto; color: black">
                     Tìm kiếm
                 </button>
             </form>
