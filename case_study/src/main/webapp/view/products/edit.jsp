@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li clx ass="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Trang chủ</a>
+                    <a class="nav-link active" aria-current="page" href="/account-servlet?action=logout">Đăng xuất</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -101,7 +101,7 @@
                     </div>
                     <div id="imageContainer"></div>
                 </fieldset>
-                <button type="submit" class="btn btn-outline-primary " onclick="window.location.href='/product'">Quay
+                <button type="button" class="btn btn-outline-primary " onclick="window.location.href='/product'">Quay
                     lại
                 </button>
                 <button type="submit" class="btn btn-success" style="margin-left: 26vw" value="Save">Lưu</button>
@@ -109,6 +109,7 @@
         </div>
     </div>
 </div>
+
 <script>
     function showImage() {
         var imageUrl = document.getElementById("imageUrlInput").value;

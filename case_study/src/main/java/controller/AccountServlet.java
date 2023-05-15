@@ -75,7 +75,7 @@ public class AccountServlet extends HttpServlet {
                     }
                 }
                 if (account != null) {
-                    customer = customerService.getCustomerById(account.getId());
+                    customer = customerService.getCustomerById1(account.getId());
                     HttpSession session = request.getSession();
                     session.setAttribute("userSession", customer);
                     String role = accountService.checkRole(account.getId());
@@ -86,7 +86,7 @@ public class AccountServlet extends HttpServlet {
                         request.setAttribute("productListSize",productList.size());
                         request.getRequestDispatcher("/users/home.jsp").forward(request, response);
                     } else if (role.equals("admin")) {
-                        request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);
+                        response.sendRedirect("/product");
                     }
                 } else {
                     request.setAttribute("statusLogin", false);
@@ -97,12 +97,13 @@ public class AccountServlet extends HttpServlet {
     }
 
     private void registerAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String userName = request.getParameter("userName");
         String customerName = request.getParameter("customerName");
         String email = request.getParameter("email");
         String phoneNumber = request.getParameter("phoneNumber");
         String address = request.getParameter("address");
         String password = request.getParameter("password");
-        Account account = new Account(customerName, password);
+        Account account = new Account(userName, password);
         Customer customer = new Customer(customerName, email, phoneNumber, address, account);
         boolean statusRegister = customerService.saveCustomer(customer);
         request.setAttribute("statusRegister", statusRegister);

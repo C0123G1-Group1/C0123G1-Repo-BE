@@ -765,7 +765,7 @@
                 <%=((Customer) session.getAttribute("userSession")).getName()%>
             </a></li>
             <li style="cursor: pointer">
-                <a href="/index.jsp">
+                <a href="/account-servlet?action=logout">
                     Đăng xuất</a>
             </li>
         </ul>

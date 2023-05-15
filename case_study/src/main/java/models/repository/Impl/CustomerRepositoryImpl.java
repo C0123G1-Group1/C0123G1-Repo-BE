@@ -28,6 +28,10 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             "FROM customers AS c\n" +
             "INNER JOIN account_users AS ac ON c.account_id = ac.account_id\n" +
             "WHERE customer_id = ?;";
+    private final String SELECT_CUSTOMER_ID1 = "SELECT *\n" +
+            "FROM customers AS c\n" +
+            "INNER JOIN account_users AS ac ON c.account_id = ac.account_id\n" +
+            "WHERE ac.account_id = ?;";
     private final String USER_ROLE = "INSERT INTO users_role (role_id, account_id) \n" +
             "VALUES  ('1', ?)";
 
@@ -225,6 +229,29 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_ID);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int customerId = resultSet.getInt("customer_id");
+                String cuatomerName = resultSet.getString("customer_name");
+                int accountId = resultSet.getInt("account_id");
+                String userName = resultSet.getString("user_name");
+                String password = resultSet.getString("password");
+                Account account = new Account(accountId, userName, password);
+                Customer customer = new Customer(customerId, cuatomerName, account);
+                return customer;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    @Override
+    public Customer getCustomerById1(int id) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_ID1);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
