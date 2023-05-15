@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li clx ass="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Trang chủ</a>
+                    <a class="nav-link active" aria-current="page" href="/account-servlet">Đăng xuất</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
