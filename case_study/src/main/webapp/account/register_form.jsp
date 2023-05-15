@@ -16,24 +16,24 @@
     <style>
         .gradient-custom-3 {
             /* fallback for old browsers */
-            background: #84fab0;
+            background: #f57627;
 
             /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+            background: -webkit-linear-gradient(to right, rgba(250, 199, 132, 0.5), rgba(244, 151, 143, 0.5));
 
             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+            background: linear-gradient(to right, rgba(250, 199, 132, 0.5), rgba(244, 151, 143, 0.5))
         }
 
         .gradient-custom-4 {
             /* fallback for old browsers */
-            background: #84fab0;
+            background: #e75704;
 
             /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+            background: -webkit-linear-gradient(to right, rgba(231, 87, 4, 0.87), rgba(255, 193, 68, 0.8));
 
             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+            background: linear-gradient(to right, rgba(231, 87, 4, 0.87), rgba(255, 193, 68, 0.8))
         }
     </style>
 </head>
